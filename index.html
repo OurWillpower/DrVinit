@@ -3,62 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Dr. Vinit Chafekar, MD – Physician & DGO | Shree Varad Maternity</title>
+
   <meta name="description" content="Dr. Vinit Chafekar, MD – Physician & DGO at Shree Varad Maternity. Compassionate maternity, antenatal and women's health care. Book appointments online." />
   <meta name="keywords" content="Gynecologist, Maternity clinic, Antenatal care, Women's health, Dr Vinit Chafekar, Shree Varad Maternity" />
   <link rel="canonical" href="https://shreevaradmaternity.com/" />
+
+  <!-- Favicon + Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.svg" />
+  <link rel="mask-icon" href="/favicon.svg" color="#0B5C4A" />
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="/favicon.svg" />
+
+  <!-- Manifest (optional, for mobile install) -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#0B5C4A" />
+
+  <!-- Social Media / OG Preview -->
+  <meta property="og:title" content="Shree Varad Maternity — Dr. Vinit Chafekar" />
+  <meta property="og:description" content="Trusted maternity, antenatal and women's health care by Dr. Vinit Chafekar, MD – Physician & DGO." />
+  <meta property="og:image" content="https://shreevaradmaternity.com/assets/og-image.jpg" />
+  <meta property="og:url" content="https://shreevaradmaternity.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome for icons -->
-  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
-  <!-- Basic styling; we'll add a dedicated CSS file next -->
-  <style>
-    :root{
-      --brand:#0B5C4A;
-      --accent:#D9F2E9;
-      --muted:#6b7280;
-      --card:#ffffff;
-      --glass: rgba(255,255,255,0.72);
-      --radius:14px;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#fbfdfc 0%,#f7fbfa 100%);color:#0f1724;line-height:1.5}
-    header{backdrop-filter: blur(6px);position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));box-shadow:0 2px 8px rgba(11,92,74,0.06)}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo-mark{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--brand),#1e8f6f);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:'Playfair Display';box-shadow:0 6px 18px rgba(11,92,74,0.12)}
-    .nav-links{display:flex;gap:18px;align-items:center}
-    .nav-links a{color:var(--brand);text-decoration:none;font-weight:600}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:48px 0}
-    .hero-left h1{font-family:'Playfair Display',serif;font-size:36px;margin:0 0 8px}
-    .hero-left p{color:var(--muted);margin:0 0 18px}
-    .cta{display:flex;gap:12px}
-    .btn{padding:12px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
-    .btn-primary{background:var(--brand);color:white;box-shadow:0 8px 24px rgba(11,92,74,0.12)}
-    .btn-ghost{background:transparent;border:2px solid var(--brand);color:var(--brand)}
-    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 6px 20px rgba(16,24,40,0.06)}
-    .doctor-photo{width:100%;height:100%;border-radius:12px;object-fit:cover;display:block}
-    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-    .service{padding:18px;border-radius:12px;background:linear-gradient(180deg,var(--accent),#ffffff);min-height:120px}
-    .section{padding:48px 0}
-    .two-col{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start}
-    .testimonials{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    footer{border-top:1px solid #eef2f2;padding:24px 0;margin-top:36px;color:var(--muted)}
-    /* responsive */
-    @media (max-width:1000px){.hero,.two-col{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.testimonials{grid-template-columns:1fr}}
-    @media (max-width:600px){.nav-links{display:none}.container{padding:16px}.hero-left h1{font-size:26px}}
-  </style>
 
-  <!-- Structured data for SEO -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- JS -->
+  <script defer src="/scripts.js"></script>
+
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"MedicalBusiness",
     "name":"Shree Varad Maternity & Women's Health Clinic",
     "url":"https://shreevaradmaternity.com/",
-    "logo":"https://shreevaradmaternity.com/assets/logo.png",
+    "logo":"https://shreevaradmaternity.com/logo.svg",
     "description":"Shree Varad Maternity & Women's Health Clinic - Dr. Vinit Chafekar, MD - Physician & DGO. Compassionate antenatal, maternity, and women's healthcare.",
     "telephone":"+91-XXXXXXXXXX",
     "address":{
@@ -73,6 +65,7 @@
   }
   </script>
 </head>
+
 <body>
   <header>
     <div class="container nav" role="navigation" aria-label="Main navigation">
