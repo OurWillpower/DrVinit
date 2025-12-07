@@ -1,0 +1,17 @@
+{
+  "name": "shree-varad-maternity-site",
+  "version": "1.0.0",
+  "description": "Static website for Shree Varad Maternity with Netlify Functions for appointments.",
+  "private": true,
+  "scripts": {
+    "start": "netlify dev",
+    "build": "echo \"No build step - static site\""
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^7.8.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "18.x"
+  }
+}
