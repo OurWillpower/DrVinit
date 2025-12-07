@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="18" fill="#0B5C4A"/>
+  <text x="50" y="64" text-anchor="middle"
+        font-family="Playfair Display, serif"
+        font-size="48" font-weight="700"
+        fill="#D9F2E9">
+    SV
+  </text>
+</svg>
