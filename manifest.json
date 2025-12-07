@@ -1,0 +1,25 @@
+{
+  "name": "Shree Varad Maternity",
+  "short_name": "ShreeVarad",
+  "description": "Shree Varad Maternity & Women's Health Clinic — Dr. Vinit Chafekar, MD (Physician & DGO). Antenatal, maternity and women's health care.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#0B5C4A",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logo.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
