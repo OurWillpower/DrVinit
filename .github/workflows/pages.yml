@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+# Trigger on push to main (change to 'master' if your default branch is master)
+on:
+  push:
+    branches:
+      - main
+      # - master   # uncomment this line if your default branch is 'master'
+
+# Concurrency helps avoid overlapping deployments
+concurrency:
+  group: 'pages-deploy'
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node (optional, in case you later add an NPM build)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # If you add a static-site generator later, run its build step here.
+      # For a plain static site (index.html + assets) the "artifact" step below will pick up files in the repo root.
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Adjust the path if your site is in a subfolder (e.g. 'dist' or 'public')
+          path: ./
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
+        with:
+          # nothing required here; the action deploys the uploaded artifact
+
+      - name: Post-deploy success message
+        run: echo "Pages deployment finished."
