@@ -1,0 +1,10 @@
+# robots.txt for shreevaradmaternity.com
+# Allow all search engines to crawl the site.
+User-agent: *
+Disallow:
+
+# Sitemap (update if your sitemap lives at a different path)
+Sitemap: https://shreevaradmaternity.com/sitemap.xml
+
+# Crawl-delay for polite crawling (seconds)
+Crawl-delay: 10
