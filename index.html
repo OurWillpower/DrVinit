@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shree Varad Maternity — Premium Maternity & Women's Health | Dr. Vinit Chafekar</title>
-  <meta name="description" content="Premium obstetrics & gynecology care in Pune. Dr. Vinit Chafekar provides antenatal care, fertility support, minimally invasive and robotic surgery, comprehensive women's health and more." />
-  <meta name="keywords" content="maternity clinic Pune, gynecology Pune, antenatal care, infertility treatment, laparoscopy, robotic surgery, women's health" />
+
+  <title>Dr. Vinit Chafekar — Shree Varad Maternity | Premium Maternity & Women's Health</title>
+  <meta name="description" content="Shree Varad Maternity — Dr. Vinit Chafekar. Premium maternity, antenatal, fertility and women's health care in Pune. Book appointments online." />
+  <meta name="keywords" content="maternity clinic Pune, obstetrics, gynecology, antenatal care, infertility, PCOS, neonatal care" />
   <link rel="canonical" href="https://ourwillpower.github.io/DrVinit/" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -13,27 +14,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 
   <!-- Scripts -->
   <script defer src="scripts.js"></script>
 
-  <!-- OG -->
-  <meta property="og:title" content="Shree Varad Maternity — Dr. Vinit Chafekar" />
-  <meta property="og:description" content="Premium maternity & women's health care — antenatal, fertility, minimally invasive and robotic surgery." />
-  <meta property="og:image" content="assets/og-image.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"MedicalClinic",
+    "name":"Shree Varad Maternity",
+    "description":"Premium maternity & women's health care led by Dr. Vinit Chafekar, MD (Physician) & DGO. Antenatal care, deliveries, fertility support and advanced gynecology.",
+    "url":"https://ourwillpower.github.io/DrVinit/",
+    "telephone":"+91 7039196489",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"Pune",
+      "addressRegion":"Maharashtra",
+      "addressCountry":"IN"
+    },
+    "medicalSpecialty":"Gynecology"
+  }
+  </script>
+
+  <meta name="theme-color" content="#0B5C4A" />
 </head>
 <body>
-  <!-- Floating WhatsApp -->
+
+  <!-- Floating WhatsApp (premium circular) -->
   <a class="whatsapp-float" href="https://wa.me/917039196489?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A10.4 10.4 0 0 0 3.5 20.5L2 22l1.7-1.2A10.4 10.4 0 1 0 20.5 3.5zM12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" fill="white" opacity="0.06"/><path d="M17.2 14.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.8.1-.8.6-1.9.8-3.2.5-.9-.2-1.6-.7-2.3-1.2-1.2-1-1.8-2.3-1.9-3.9-.1-1.1.4-1.9 1.1-2.6.5-.5 1-.8 1.6-.9.3 0 .6.1.8.2.2.1.4.3.5.6.1.3.1.6 0 .9-.1.2-.2.5-.3.7-.1.2 0 .4.1.6.2.5.8 1.4 1.8 2.2 1.1.9 2.1 1.3 3.1 1.6.3.1.6.1.7.3.1.2.1.5 0 .7-.1.3-.4.5-.7.6z" fill="#fff"/></svg>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .667C7.64.667.667 7.64.667 16c0 2.82.733 5.587 2.133 8.013L.667 32l8.267-2.053A15.28 15.28 0 0 0 16 31.333c8.36 0 15.333-6.973 15.333-15.333C31.333 7.64 24.36.667 16 .667zm8.293 21.013c-.347.973-2.013 1.907-2.787 2-1.813.16-4.027.293-6.8-2.28-2.507-2.24-3.12-4.053-3.467-4.733-.347-.693-.08-1.053.08-1.2.213-.213.573-.533.88-.8.24-.213.533-.24.827-.08.267.133 1.12 1.347 1.28 1.627.16.267.213.507.04.773-.187.293-.28.453-.427.707-.147.24-.307.507-.133.8.173.293.773 1.28 1.653 2.08 1.147 1.013 2.133 1.307 2.467 1.467.347.173.547.147.747-.08.24-.267.533-.64.84-1.013.227-.28.507-.32.8-.213.293.093 1.853.88 2.16 1.04.307.147.507.213.587.333.08.12.08.693-.267 1.667z" fill="#fff"/></svg>
   </a>
 
-  <!-- Header -->
-  <header class="site-header">
+  <!-- Site header -->
+  <header class="site-header" role="banner">
     <div class="container header-inner">
-      <div class="brand">
+      <div class="brand" role="heading" aria-level="1">
         <div class="logo-mark" aria-hidden="true">SV</div>
         <div class="brand-text">
           <div class="brand-title">Shree Varad Maternity</div>
@@ -41,15 +58,14 @@
         </div>
       </div>
 
-      <nav class="main-nav" aria-label="Primary">
+      <nav class="main-nav" role="navigation" aria-label="Main menu">
         <a href="#services">Services</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <div class="header-actions">
-        <!-- Global book CTA removed intentionally -->
-        <a class="btn btn-ghost" href="tel:+917039196489" aria-label="Call clinic">📞 +91 7039196489</a>
+      <div class="header-actions" aria-hidden="false">
+        <a class="btn btn-ghost" href="tel:+917039196489">📞 +91 7039196489</a>
       </div>
     </div>
   </header>
@@ -58,207 +74,239 @@
   <main>
     <section class="hero container">
       <div class="hero-left">
-        <h1>Premium Maternity & Women's Health Care — Compassionate, Evidence-Based</h1>
-        <p class="lead">Specialised obstetrics and gynecology services including antenatal care, fertility support, minimally invasive and robotic surgery — delivered with a modern, patient-centered approach.</p>
-        <div class="hero-actions">
-          <a class="btn btn-ghost" href="#services">View Services</a>
+        <div class="eyebrow">Trusted care · Modern facilities · Compassionate teams</div>
+        <h1>Premium Maternity & Women’s Health</h1>
+        <p class="hero-sub">Comprehensive antenatal care, safe deliveries and advanced gynecology led by Dr. Vinit Chafekar. Evidence-led care with a warm, personal touch.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#services">Explore Services</a>
+          <a class="btn btn-outline" href="#contact">Contact Clinic</a>
+        </div>
+
+        <div class="hero-highlights" aria-hidden="true">
+          <div class="highlight">
+            <div class="h-title">Advanced Surgery</div>
+            <div class="h-sub">Laparoscopy & Robotic care</div>
+          </div>
+          <div class="highlight">
+            <div class="h-title">Personalised Care</div>
+            <div class="h-sub">Tailored antenatal plans</div>
+          </div>
+          <div class="highlight">
+            <div class="h-title">Newborn Support</div>
+            <div class="h-sub">Neonatal coordination</div>
+          </div>
         </div>
       </div>
 
-      <aside class="hero-right">
-        <div class="card hero-card">
-          <img src="assets/dr-vinit-small.jpg" alt="Dr Vinit Chafekar" class="hero-doctor" />
+      <aside class="hero-right" aria-hidden="false">
+        <div class="hero-card" role="figure" aria-label="Dr Vinit Chafekar">
+          <img src="assets/dr-vinit-small.jpg" alt="Dr. Vinit Chafekar" class="doctor-photo">
           <div class="hero-card-body">
-            <div class="muted">Dr. Vinit Chafekar</div>
-            <div class="strong">MD (Physician), DGO</div>
+            <div class="doctor-name">Dr. Vinit Chafekar</div>
+            <div class="doctor-qual">MD (Physician), DGO</div>
+            <div class="doctor-meta">Shree Varad Maternity</div>
           </div>
         </div>
       </aside>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="container services-section">
-      <h2 class="section-title">Services — Comprehensive Care</h2>
-      <p class="muted section-intro">A spectrum of services for women at every life stage. Click "Book" on any service to request an appointment.</p>
+    <!-- Services section (premium cards) -->
+    <section id="services" class="container services-section" aria-labelledby="services-title">
+      <h2 id="services-title" class="section-heading">Comprehensive Services</h2>
+      <p class="section-lead">A full spectrum of obstetrics, gynecology and newborn care — delivered with clinical excellence and compassionate support.</p>
 
       <div class="services-grid">
-
-        <!-- Service: General Health Checkups -->
-        <article class="service-card" id="svc-general-health">
-          <div class="service-image" style="background-image:url('assets/services/general-health.jpg')" role="img" aria-label="General Health Checkups"></div>
-          <div class="service-body">
+        <!-- Card: General Health -->
+        <article class="service-card" id="svc01">
+          <div class="service-media" style="background-image:url('assets/services/general-health.jpg')" role="img" aria-label="General Health Checkups"></div>
+          <div class="service-content">
             <h3>General Health Checkups</h3>
-            <p class="muted">Wellness screening, preventive evaluation and comprehensive women's health checks including screening tests and lifestyle counselling.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="General Health Checkups" data-service-id="svc01" aria-label="Book General Health Checkup">Book</a>
+            <p class="muted">Wellness screening, preventive exams and personalized health plans for women at every stage.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="General Health Checkups" data-service-id="svc01" aria-label="Book General Health Checkup">Book</button>
+              <span class="pill-accent">Wellness</span>
             </div>
           </div>
         </article>
 
-        <!-- Antenatal & Pregnancy Care -->
-        <article class="service-card" id="svc-antenatal">
-          <div class="service-image" style="background-image:url('assets/services/antenatal.jpg')" role="img" aria-label="Antenatal Care"></div>
-          <div class="service-body">
+        <!-- Antenatal -->
+        <article class="service-card" id="svc02">
+          <div class="service-media" style="background-image:url('assets/services/antenatal.jpg')" role="img" aria-label="Antenatal Care"></div>
+          <div class="service-content">
             <h3>Antenatal & Pregnancy Care</h3>
-            <p class="muted">Routine antenatal visits, screening, nutrition advice and personalized birth planning for safe pregnancy journeys.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Antenatal & Pregnancy Care" data-service-id="svc02" aria-label="Book Antenatal Care">Book</a>
+            <p class="muted">Routine and high-risk antenatal monitoring, nutrition guidance and personalised birth planning.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Antenatal & Pregnancy Care" data-service-id="svc02" aria-label="Book Antenatal Care">Book</button>
+              <span class="pill-accent">Pregnancy</span>
             </div>
           </div>
         </article>
 
         <!-- Infertility -->
-        <article class="service-card" id="svc-infertility">
-          <div class="service-image" style="background-image:url('assets/services/infertility.jpg')" role="img" aria-label="Infertility Treatment"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc03">
+          <div class="service-media" style="background-image:url('assets/services/infertility.jpg')" role="img" aria-label="Infertility Evaluation"></div>
+          <div class="service-content">
             <h3>Infertility Evaluation & Support</h3>
-            <p class="muted">Comprehensive infertility workup, counseling, ovulation support and coordination for assisted fertility procedures.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Infertility Evaluation & Support" data-service-id="svc03" aria-label="Book Infertility Consultation">Book</a>
+            <p class="muted">Discrete, compassionate fertility assessment and coordination with assisted reproduction specialists.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Infertility Evaluation & Support" data-service-id="svc03" aria-label="Book Infertility Consultation">Book</button>
+              <span class="pill-accent">Fertility</span>
             </div>
           </div>
         </article>
 
         <!-- Laparoscopy -->
-        <article class="service-card" id="svc-laparoscopy">
-          <div class="service-image" style="background-image:url('assets/services/laparoscopy.jpg')" role="img" aria-label="Laparoscopic Surgery"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc04">
+          <div class="service-media" style="background-image:url('assets/services/laparoscopy.jpg')" role="img" aria-label="Laparoscopic Surgery"></div>
+          <div class="service-content">
             <h3>Minimal Invasive (Laparoscopic) Surgery</h3>
-            <p class="muted">Keyhole surgery for fibroids, ovarian cysts and endometriosis — quicker recovery and minimal scarring.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Minimal Invasive (Laparoscopic) Surgery" data-service-id="svc04" aria-label="Book Laparoscopic Surgery Consult">Book</a>
+            <p class="muted">State-of-the-art keyhole surgery for fibroids, cysts and endometriosis — faster recovery & smaller scars.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Minimal Invasive (Laparoscopic) Surgery" data-service-id="svc04" aria-label="Book Laparoscopic Surgery Consult">Book</button>
+              <span class="pill-accent">Surgery</span>
             </div>
           </div>
         </article>
 
-        <!-- Robotic Surgery -->
-        <article class="service-card" id="svc-robotic">
-          <div class="service-image" style="background-image:url('assets/services/robotic.jpg')" role="img" aria-label="Robotic Surgery"></div>
-          <div class="service-body">
+        <!-- Robotic -->
+        <article class="service-card" id="svc05">
+          <div class="service-media" style="background-image:url('assets/services/robotic.jpg')" role="img" aria-label="Robotic Surgery"></div>
+          <div class="service-content">
             <h3>Robotic & Advanced Surgical Care</h3>
             <p class="muted">Precision robotic procedures for complex gynecological conditions when clinically indicated.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Robotic & Advanced Surgical Care" data-service-id="svc05" aria-label="Book Robotic Surgery Consultation">Book</a>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Robotic & Advanced Surgical Care" data-service-id="svc05" aria-label="Book Robotic Surgery Consultation">Book</button>
+              <span class="pill-accent">Advanced</span>
             </div>
           </div>
         </article>
 
-        <!-- High-risk pregnancy -->
-        <article class="service-card" id="svc-highrisk">
-          <div class="service-image" style="background-image:url('assets/services/high-risk.jpg')" role="img" aria-label="High-Risk Pregnancy"></div>
-          <div class="service-body">
+        <!-- High-risk -->
+        <article class="service-card" id="svc06">
+          <div class="service-media" style="background-image:url('assets/services/high-risk.jpg')" role="img" aria-label="High-Risk Pregnancy"></div>
+          <div class="service-content">
             <h3>High-Risk Pregnancy Management</h3>
-            <p class="muted">Specialized monitoring, multi-disciplinary care and individualized delivery planning for complex pregnancies.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="High-Risk Pregnancy Management" data-service-id="svc06" aria-label="Book High-Risk Pregnancy Consultation">Book</a>
+            <p class="muted">Specialised monitoring and multidisciplinary plans for complex pregnancies, safeguarding mother & baby.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="High-Risk Pregnancy Management" data-service-id="svc06" aria-label="Book High-Risk Pregnancy Consultation">Book</button>
+              <span class="pill-accent">High-risk</span>
             </div>
           </div>
         </article>
 
         <!-- PCOS -->
-        <article class="service-card" id="svc-pcos">
-          <div class="service-image" style="background-image:url('assets/services/pcos.jpg')" role="img" aria-label="PCOS Care"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc07">
+          <div class="service-media" style="background-image:url('assets/services/pcos.jpg')" role="img" aria-label="PCOS Care"></div>
+          <div class="service-content">
             <h3>PCOS & Hormonal Health</h3>
-            <p class="muted">Endocrine assessment, lifestyle programs and medical options to manage PCOS and restore reproductive health.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="PCOS & Hormonal Health" data-service-id="svc07" aria-label="Book PCOS Consultation">Book</a>
+            <p class="muted">Endocrine evaluation, lifestyle programs and targeted medical care to restore balance and fertility.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="PCOS & Hormonal Health" data-service-id="svc07" aria-label="Book PCOS Consultation">Book</button>
+              <span class="pill-accent">Hormonal</span>
             </div>
           </div>
         </article>
 
         <!-- Menopause -->
-        <article class="service-card" id="svc-menopause">
-          <div class="service-image" style="background-image:url('assets/services/menopause.jpg')" role="img" aria-label="Menopause Care"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc08">
+          <div class="service-media" style="background-image:url('assets/services/menopause.jpg')" role="img" aria-label="Menopause Care"></div>
+          <div class="service-content">
             <h3>Menopause Care & Bone Health</h3>
-            <p class="muted">Symptom management, bone health monitoring and individualized hormone therapy where appropriate.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Menopause Care & Bone Health" data-service-id="svc08" aria-label="Book Menopause Consultation">Book</a>
+            <p class="muted">Symptom management, bone health screening and personalised hormone therapy where appropriate.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Menopause Care & Bone Health" data-service-id="svc08" aria-label="Book Menopause Consultation">Book</button>
+              <span class="pill-accent">Wellbeing</span>
             </div>
           </div>
         </article>
 
         <!-- C-Section -->
-        <article class="service-card" id="svc-cesarean">
-          <div class="service-image" style="background-image:url('assets/services/cesarean.jpg')" role="img" aria-label="Cesarean Delivery"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc09">
+          <div class="service-media" style="background-image:url('assets/services/cesarean.jpg')" role="img" aria-label="Cesarean Delivery"></div>
+          <div class="service-content">
             <h3>Planned & Emergency Cesarean Delivery</h3>
-            <p class="muted">Safe cesarean services with modern anesthesia and post-op care protocols for mother and baby.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Planned & Emergency Cesarean Delivery" data-service-id="svc09" aria-label="Book Cesarean Consultation">Book</a>
+            <p class="muted">Planned and emergency cesarean services with modern anesthesia and attentive post-op care.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Planned & Emergency Cesarean Delivery" data-service-id="svc09" aria-label="Book Cesarean Consultation">Book</button>
+              <span class="pill-accent">Delivery</span>
             </div>
           </div>
         </article>
 
         <!-- Hysteroscopy -->
-        <article class="service-card" id="svc-hysteroscopy">
-          <div class="service-image" style="background-image:url('assets/services/hysteroscopy.jpg')" role="img" aria-label="Hysteroscopy"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc10">
+          <div class="service-media" style="background-image:url('assets/services/hysteroscopy.jpg')" role="img" aria-label="Hysteroscopy"></div>
+          <div class="service-content">
             <h3>Hysteroscopy & Endometrial Procedures</h3>
-            <p class="muted">Diagnostic and operative hysteroscopy for irregular bleeding, polyps and uterine pathology.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Hysteroscopy & Endometrial Procedures" data-service-id="svc10" aria-label="Book Hysteroscopy Consultation">Book</a>
+            <p class="muted">Diagnostic and operative hysteroscopy for abnormal bleeding, polyps and uterine pathology.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Hysteroscopy & Endometrial Procedures" data-service-id="svc10" aria-label="Book Hysteroscopy Consultation">Book</button>
+              <span class="pill-accent">Gynaecology</span>
             </div>
           </div>
         </article>
 
         <!-- Colposcopy -->
-        <article class="service-card" id="svc-colposcopy">
-          <div class="service-image" style="background-image:url('assets/services/colposcopy.jpg')" role="img" aria-label="Colposcopy"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc11">
+          <div class="service-media" style="background-image:url('assets/services/colposcopy.jpg')" role="img" aria-label="Colposcopy"></div>
+          <div class="service-content">
             <h3>Colposcopy & Cervical Screening</h3>
-            <p class="muted">PAP/HPV screening, detailed cervical evaluation and early treatment of pre-cancerous lesions.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Colposcopy & Cervical Screening" data-service-id="svc11" aria-label="Book Colposcopy">Book</a>
+            <p class="muted">Screening and early treatment for cervical pre-cancerous conditions, PAP & HPV coordination.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Colposcopy & Cervical Screening" data-service-id="svc11" aria-label="Book Colposcopy">Book</button>
+              <span class="pill-accent">Screening</span>
             </div>
           </div>
         </article>
 
         <!-- Lactation -->
-        <article class="service-card" id="svc-lactation">
-          <div class="service-image" style="background-image:url('assets/services/lactation.jpg')" role="img" aria-label="Lactation Support"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc12">
+          <div class="service-media" style="background-image:url('assets/services/lactation.jpg')" role="img" aria-label="Lactation Support"></div>
+          <div class="service-content">
             <h3>Lactation Support & Postnatal Care</h3>
-            <p class="muted">Breastfeeding guidance, newborn feeding support, and structured postnatal follow-ups.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Lactation Support & Postnatal Care" data-service-id="svc12" aria-label="Book Lactation Support">Book</a>
+            <p class="muted">Evidence-based breastfeeding support, newborn feeding guidance and structured postnatal follow-up.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Lactation Support & Postnatal Care" data-service-id="svc12" aria-label="Book Lactation Support">Book</button>
+              <span class="pill-accent">Postnatal</span>
             </div>
           </div>
         </article>
 
         <!-- Family planning -->
-        <article class="service-card" id="svc-familyplanning">
-          <div class="service-image" style="background-image:url('assets/services/family-planning.jpg')" role="img" aria-label="Family Planning"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc13">
+          <div class="service-media" style="background-image:url('assets/services/family-planning.jpg')" role="img" aria-label="Family Planning"></div>
+          <div class="service-content">
             <h3>Family Planning & Contraception</h3>
-            <p class="muted">Counseling and options including IUD, implants, sterilization counseling and short-term methods.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Family Planning & Contraception" data-service-id="svc13" aria-label="Book Family Planning">Book</a>
+            <p class="muted">Non-judgmental counseling and a full range of contraceptive options, with clear guidance.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Family Planning & Contraception" data-service-id="svc13" aria-label="Book Family Planning">Book</button>
+              <span class="pill-accent">Planning</span>
             </div>
           </div>
         </article>
 
         <!-- Urogynecology -->
-        <article class="service-card" id="svc-urogyn">
-          <div class="service-image" style="background-image:url('assets/services/urogyn.jpg')" role="img" aria-label="Urogynecology"></div>
-          <div class="service-body">
+        <article class="service-card" id="svc14">
+          <div class="service-media" style="background-image:url('assets/services/urogyn.jpg')" role="img" aria-label="Urogynecology"></div>
+          <div class="service-content">
             <h3>Urogynecology & Pelvic Floor Health</h3>
-            <p class="muted">Assessment and treatment for incontinence, prolapse and pelvic floor rehabilitation.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Urogynecology & Pelvic Floor Health" data-service-id="svc14" aria-label="Book Urogynecology">Book</a>
+            <p class="muted">Assessment and treatment for incontinence, prolapse and pelvic floor rehabilitation pathways.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Urogynecology & Pelvic Floor Health" data-service-id="svc14" aria-label="Book Urogynecology">Book</button>
+              <span class="pill-accent">Pelvic Floor</span>
             </div>
           </div>
         </article>
 
-        <!-- Neonatal coordination -->
-        <article class="service-card" id="svc-neonatal">
-          <div class="service-image" style="background-image:url('assets/services/neonatal.jpg')" role="img" aria-label="Neonatal Care"></div>
-          <div class="service-body">
+        <!-- Neonatal -->
+        <article class="service-card" id="svc15">
+          <div class="service-media" style="background-image:url('assets/services/neonatal.jpg')" role="img" aria-label="Neonatal Care"></div>
+          <div class="service-content">
             <h3>Neonatal & Newborn Care Coordination</h3>
-            <p class="muted">Immediate newborn assessment, breastfeeding initiation and pediatric referrals when required.</p>
-            <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" data-service="Neonatal & Newborn Care Coordination" data-service-id="svc15" aria-label="Book Neonatal Care">Book</a>
+            <p class="muted">Immediate newborn assessment, breastfeeding initiation support and pediatric referrals.</p>
+            <div class="service-foot">
+              <button class="btn btn-pill" data-apt="open" data-service="Neonatal & Newborn Care Coordination" data-service-id="svc15" aria-label="Book Neonatal Care">Book</button>
+              <span class="pill-accent">Newborn</span>
             </div>
           </div>
         </article>
@@ -267,42 +315,55 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="container section about-section">
-      <h2 class="section-title">About the Clinic</h2>
-      <div class="two-col">
-        <div>
-          <p class="muted">Shree Varad Maternity combines clinical excellence with personalised care. Our team offers modern surgical options, evidence-based medical management and holistic support through pregnancy and beyond.</p>
+    <section id="about" class="container about" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-heading">About Dr. Vinit Chafekar</h2>
+      <div class="about-grid">
+        <div class="about-left">
+          <p class="muted">Dr. Vinit Chafekar combines clinical experience in medicine and obstetrics with a patient-centered approach. At Shree Varad Maternity we prioritise safety, clear communication, and evidence-based decisions for every mother and newborn.</p>
+          <ul class="feature-list">
+            <li>MD (Physician), DGO — Obstetrics & Gynecology</li>
+            <li>High-risk pregnancy expertise</li>
+            <li>Minimally invasive & advanced surgical care</li>
+            <li>Comprehensive newborn coordination</li>
+          </ul>
         </div>
-        <aside>
-          <div class="card">
-            <img src="assets/dr-vinit.jpg" alt="Dr Vinit Chafekar" class="doctor-img">
-            <p class="muted">Dr. Vinit Chafekar — MD (Physician), DGO</p>
+        <aside class="about-right">
+          <div class="card staff-card">
+            <img src="assets/dr-vinit.jpg" alt="Dr Vinit Chafekar" class="staff-photo">
+            <div class="staff-meta">
+              <div class="staff-name">Dr. Vinit Chafekar</div>
+              <div class="staff-role">MD (Physician), DGO</div>
+            </div>
           </div>
         </aside>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="container section contact-section">
-      <h2 class="section-title">Contact & Booking</h2>
-      <div class="two-col">
-        <div class="card">
+    <section id="contact" class="container contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-heading">Contact & Book</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
           <p><strong>Phone:</strong> <a href="tel:+917039196489">+91 7039196489</a></p>
           <p><strong>Email:</strong> <a href="mailto:info@shreevaradmaternity.com">info@shreevaradmaternity.com</a></p>
-          <p class="muted">To request appointments, use the Book buttons on service cards.</p>
+          <p class="muted">For queries, call the clinic. To request an appointment, use the Book buttons on each service card.</p>
         </div>
-        <div class="card" style="padding:0;">
-          <iframe title="clinic map" src="https://www.google.com/maps/embed?pb=PLACEHOLDER" style="width:100%;height:260px;border:0;" loading="lazy"></iframe>
+        <div class="map-card">
+          <iframe title="clinic map" src="https://www.google.com/maps/embed?pb=PLACEHOLDER" style="width:100%;height:260px;border:0" loading="lazy"></iframe>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer class="site-footer">
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
-      <div>© <span id="year"></span> Shree Varad Maternity</div>
-      <div class="muted">All rights reserved</div>
+      <div class="footer-left">
+        <strong>Shree Varad Maternity</strong>
+        <div class="muted">Dr. Vinit Chafekar — MD (Physician), DGO</div>
+      </div>
+      <div class="footer-right muted">© <span id="year"></span> All rights reserved</div>
     </div>
   </footer>
 
