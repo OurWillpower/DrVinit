@@ -7,6 +7,7 @@
   <meta name="description" content="Premium obstetrics & gynecology care in Pune. Dr. Vinit Chafekar provides antenatal care, fertility support, minimally invasive and robotic surgery, comprehensive women's health and more." />
   <meta name="keywords" content="maternity clinic Pune, gynecology Pune, antenatal care, infertility treatment, laparoscopy, robotic surgery, women's health" />
   <link rel="canonical" href="https://ourwillpower.github.io/DrVinit/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -17,14 +18,14 @@
   <!-- Scripts -->
   <script defer src="scripts.js"></script>
 
-  <!-- Social -->
+  <!-- OG -->
   <meta property="og:title" content="Shree Varad Maternity — Dr. Vinit Chafekar" />
   <meta property="og:description" content="Premium maternity & women's health care — antenatal, fertility, minimally invasive and robotic surgery." />
   <meta property="og:image" content="assets/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 </head>
 <body>
-  <!-- Floating WhatsApp (kept) -->
+  <!-- Floating WhatsApp -->
   <a class="whatsapp-float" href="https://wa.me/917039196489?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" aria-label="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A10.4 10.4 0 0 0 3.5 20.5L2 22l1.7-1.2A10.4 10.4 0 1 0 20.5 3.5zM12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" fill="white" opacity="0.06"/><path d="M17.2 14.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.8.1-.8.6-1.9.8-3.2.5-.9-.2-1.6-.7-2.3-1.2-1.2-1-1.8-2.3-1.9-3.9-.1-1.1.4-1.9 1.1-2.6.5-.5 1-.8 1.6-.9.3 0 .6.1.8.2.2.1.4.3.5.6.1.3.1.6 0 .9-.1.2-.2.5-.3.7-.1.2 0 .4.1.6.2.5.8 1.4 1.8 2.2 1.1.9 2.1 1.3 3.1 1.6.3.1.6.1.7.3.1.2.1.5 0 .7-.1.3-.4.5-.7.6z" fill="#fff"/></svg>
   </a>
@@ -47,8 +48,8 @@
       </nav>
 
       <div class="header-actions">
-        <a class="btn btn-ghost" href="tel:+917039196489">📞 +91 7039196489</a>
-        <a class="btn btn-primary" href="#contact">Book Appointment</a>
+        <!-- removed global Book Appointment as requested -->
+        <a class="btn btn-ghost" href="tel:+917039196489" aria-label="Call clinic">📞 +91 7039196489</a>
       </div>
     </div>
   </header>
@@ -59,9 +60,7 @@
       <div class="hero-left">
         <h1>Premium Maternity & Women's Health Care — Compassionate, Evidence-Based</h1>
         <p class="lead">Specialised obstetrics and gynecology services including antenatal care, fertility support, minimally invasive and robotic surgery — delivered with a modern, patient-centered approach.</p>
-
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">Book Appointment</a>
           <a class="btn btn-ghost" href="#services">View Services</a>
         </div>
       </div>
@@ -83,6 +82,7 @@
       <p class="muted section-intro">A spectrum of services for women at every life stage. Click "Book" on any service to request an appointment.</p>
 
       <div class="services-grid">
+
         <!-- Service: General Health Checkups -->
         <article class="service-card">
           <div class="service-image" style="background-image:url('assets/services/general-health.jpg')" role="img" aria-label="General Health Checkups"></div>
@@ -90,7 +90,7 @@
             <h3>General Health Checkups</h3>
             <p class="muted">Wellness screening, preventive evaluation and comprehensive women's health checks including screening tests and lifestyle counselling.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book General Health Checkup">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="General Health Checkups" aria-label="Book General Health Checkup">Book</a>
             </div>
           </div>
         </article>
@@ -102,7 +102,7 @@
             <h3>Antenatal & Pregnancy Care</h3>
             <p class="muted">Routine antenatal visits, screening, nutrition advice and personalized birth planning for safe pregnancy journeys.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Antenatal Care">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Antenatal & Pregnancy Care" aria-label="Book Antenatal Care">Book</a>
             </div>
           </div>
         </article>
@@ -114,7 +114,7 @@
             <h3>Infertility Evaluation & Support</h3>
             <p class="muted">Comprehensive infertility workup, counseling, ovulation support and coordination for assisted fertility procedures.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Infertility Consultation">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Infertility Evaluation & Support" aria-label="Book Infertility Consultation">Book</a>
             </div>
           </div>
         </article>
@@ -126,7 +126,7 @@
             <h3>Minimal Invasive (Laparoscopic) Surgery</h3>
             <p class="muted">Keyhole surgery for fibroids, ovarian cysts and endometriosis — quicker recovery and minimal scarring.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Laparoscopic Surgery Consult">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Minimal Invasive (Laparoscopic) Surgery" aria-label="Book Laparoscopic Surgery Consult">Book</a>
             </div>
           </div>
         </article>
@@ -138,7 +138,7 @@
             <h3>Robotic & Advanced Surgical Care</h3>
             <p class="muted">Precision robotic procedures for complex gynecological conditions when clinically indicated.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Robotic Surgery Consultation">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Robotic & Advanced Surgical Care" aria-label="Book Robotic Surgery Consultation">Book</a>
             </div>
           </div>
         </article>
@@ -150,7 +150,7 @@
             <h3>High-Risk Pregnancy Management</h3>
             <p class="muted">Specialized monitoring, multi-disciplinary care and individualized delivery planning for complex pregnancies.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book High-Risk Pregnancy Consultation">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="High-Risk Pregnancy Management" aria-label="Book High-Risk Pregnancy Consultation">Book</a>
             </div>
           </div>
         </article>
@@ -162,7 +162,7 @@
             <h3>PCOS & Hormonal Health</h3>
             <p class="muted">Endocrine assessment, lifestyle programs and medical options to manage PCOS and restore reproductive health.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book PCOS Consultation">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="PCOS & Hormonal Health" aria-label="Book PCOS Consultation">Book</a>
             </div>
           </div>
         </article>
@@ -174,7 +174,7 @@
             <h3>Menopause Care & Bone Health</h3>
             <p class="muted">Symptom management, bone health monitoring and individualized hormone therapy where appropriate.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Menopause Consultation">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Menopause Care & Bone Health" aria-label="Book Menopause Consultation">Book</a>
             </div>
           </div>
         </article>
@@ -186,7 +186,7 @@
             <h3>Planned & Emergency Cesarean Delivery</h3>
             <p class="muted">Safe cesarean services with modern anesthesia and post-op care protocols for mother and baby.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Cesarean Consultation">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Planned & Emergency Cesarean Delivery" aria-label="Book Cesarean Consultation">Book</a>
             </div>
           </div>
         </article>
@@ -198,7 +198,7 @@
             <h3>Hysteroscopy & Endometrial Procedures</h3>
             <p class="muted">Diagnostic and operative hysteroscopy for irregular bleeding, polyps and uterine pathology.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Hysteroscopy Consultation">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Hysteroscopy & Endometrial Procedures" aria-label="Book Hysteroscopy Consultation">Book</a>
             </div>
           </div>
         </article>
@@ -210,7 +210,7 @@
             <h3>Colposcopy & Cervical Screening</h3>
             <p class="muted">PAP/HPV screening, detailed cervical evaluation and early treatment of pre-cancerous lesions.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Colposcopy">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Colposcopy & Cervical Screening" aria-label="Book Colposcopy">Book</a>
             </div>
           </div>
         </article>
@@ -222,7 +222,7 @@
             <h3>Lactation Support & Postnatal Care</h3>
             <p class="muted">Breastfeeding guidance, newborn feeding support, and structured postnatal follow-ups.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Lactation Support">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Lactation Support & Postnatal Care" aria-label="Book Lactation Support">Book</a>
             </div>
           </div>
         </article>
@@ -234,7 +234,7 @@
             <h3>Family Planning & Contraception</h3>
             <p class="muted">Counseling and options including IUD, implants, sterilization counseling and short-term methods.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Family Planning">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Family Planning & Contraception" aria-label="Book Family Planning">Book</a>
             </div>
           </div>
         </article>
@@ -246,7 +246,7 @@
             <h3>Urogynecology & Pelvic Floor Health</h3>
             <p class="muted">Assessment and treatment for incontinence, prolapse and pelvic floor rehabilitation.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Urogynecology">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Urogynecology & Pelvic Floor Health" aria-label="Book Urogynecology">Book</a>
             </div>
           </div>
         </article>
@@ -258,7 +258,7 @@
             <h3>Neonatal & Newborn Care Coordination</h3>
             <p class="muted">Immediate newborn assessment, breastfeeding initiation and pediatric referrals when required.</p>
             <div class="service-cta">
-              <a class="btn btn-outline" href="#" data-apt="open" aria-label="Book Neonatal Care">Book Appointment</a>
+              <a class="btn btn-outline" href="#" data-apt="open" data-service="Neonatal & Newborn Care Coordination" aria-label="Book Neonatal Care">Book</a>
             </div>
           </div>
         </article>
@@ -289,7 +289,7 @@
         <div class="card">
           <p><strong>Phone:</strong> <a href="tel:+917039196489">+91 7039196489</a></p>
           <p><strong>Email:</strong> <a href="mailto:info@shreevaradmaternity.com">info@shreevaradmaternity.com</a></p>
-          <p class="muted">For urgent concerns, call the clinic. To request appointments, use the Book buttons on service cards or the Book Appointment link above.</p>
+          <p class="muted">To request appointments, use the Book buttons on service cards.</p>
         </div>
         <div class="card" style="padding:0;">
           <iframe title="clinic map" src="https://www.google.com/maps/embed?pb=PLACEHOLDER" style="width:100%;height:260px;border:0;" loading="lazy"></iframe>
@@ -309,3 +309,4 @@
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
+
