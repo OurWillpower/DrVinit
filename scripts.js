@@ -1,20 +1,19 @@
 /**
- * scripts.js — Full replacement
+ * scripts.js — Full replacement (service-aware + first-time/repeat option)
  *
  * - Opens appointment modal from any element with data-apt="open"
- * - If opened from a service card, pre-fills the notes with "Service: <Service Name>"
- * - Submits to Google Form (background GET to formResponse) and opens WhatsApp with that info
+ * - If opened from a service card (or button with data-service), pre-fills the notes with "Service: <Service Name>"
+ * - Adds "First time visit / Repeat visit" radio fields into the modal
+ * - Submits to Google Forms (background GET) and opens WhatsApp with the selected service and visit type
  *
- * DELETE your old scripts.js and replace with this exact file.
+ * Replace Google Form entry IDs in CONFIG.FIELD_MAP with your real entry.* IDs when available.
  */
 
 const CONFIG = {
-  // WhatsApp clinic number (E.164 without +)
-  WHATSAPP_NUMBER: '917039196489',
+  WHATSAPP_NUMBER: '917039196489',  // E.164 without plus
   WHATSAPP_MESSAGE_HEADER: 'Appointment request for Shree Varad Maternity',
-  // Google Form endpoint (formResponse)
   GOOGLE_FORM_ACTION: 'https://docs.google.com/forms/d/e/1FAIpQLSeeST1jrxlWgftoUHKq8KtmyXjBPj-F8-bzg5EXlj2lrkSorA/formResponse',
-  // Field map: update these if your Google Form entry IDs change.
+  // Add your real Google Form entry IDs here (update when you have them).
   FIELD_MAP: {
     firstName: 'entry.2000000000',
     lastName: 'entry.2000000001',
@@ -22,20 +21,19 @@ const CONFIG = {
     email: 'entry.2000000003',
     date: 'entry.2000000004',
     time: 'entry.2000000005',
-    notes: 'entry.2000000006'
+    notes: 'entry.2000000006',
+    firstTime: 'entry.2000000007'  // NEW: first-time vs repeat
   },
   PHONE_DISPLAY: '+91 7039196489',
   CONTACT_EMAIL: 'info@shreevaradmaternity.com'
 };
 
-/* ----------------- Helpers ----------------- */
+/* Helpers */
 function $qs(sel, root=document){ return root.querySelector(sel); }
-function $qsa(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
-function urlEncode(obj){
-  return Object.keys(obj).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&');
-}
+function $qsa(sel, root=document){ return Array.from((root||document).querySelectorAll(sel)); }
+function urlEncode(obj){ return Object.keys(obj).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k])).join('&'); }
 
-/* ----------------- Contact links init ----------------- */
+/* Init contact links */
 function initContactLinks(){
   $qsa('a[href^="tel:"]').forEach(a => {
     a.href = `tel:${CONFIG.PHONE_DISPLAY.replace(/\s/g,'')}`;
@@ -46,9 +44,8 @@ function initContactLinks(){
   });
 }
 
-/* ----------------- Modal UI ----------------- */
+/* Modal creation with firstTime radio */
 function createAppointmentModal(prefillService = '') {
-  // If modal exists, just focus first input and update notes
   if ($qs('#appointment-modal')) {
     const notes = $qs('#apt-form textarea[name="notes"]');
     if (notes && prefillService) {
@@ -58,10 +55,10 @@ function createAppointmentModal(prefillService = '') {
     return;
   }
 
-  const modalHtml = `
-  <div id="appointment-modal" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:12000;">
+  const html = `
+  <div id="appointment-modal" style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:12000">
     <div id="appointment-backdrop" style="position:absolute;inset:0;background:rgba(6,9,12,0.5)"></div>
-    <div role="dialog" aria-modal="true" aria-label="Book appointment" style="position:relative;max-width:580px;width:94%;background:#fff;border-radius:12px;padding:20px;z-index:12001;box-shadow:0 20px 60px rgba(2,6,23,0.18)">
+    <div role="dialog" aria-modal="true" aria-label="Book appointment" style="position:relative;max-width:600px;width:94%;background:#fff;border-radius:12px;padding:20px;z-index:12001;box-shadow:0 20px 60px rgba(2,6,23,0.18)">
       <button id="apt-close" aria-label="Close" style="position:absolute;right:12px;top:10px;background:none;border:0;font-size:20px;cursor:pointer">✕</button>
       <h3 style="margin:0 0 8px;font-family:'Playfair Display',serif">Book an Appointment</h3>
       <p style="margin:0 0 12px;color:#556074">Please provide a few details and we will contact you to confirm the booking.</p>
@@ -76,6 +73,13 @@ function createAppointmentModal(prefillService = '') {
           <input name="time" type="time" style="padding:10px;border-radius:8px;border:1px solid #e6e9ef" />
         </div>
 
+        <!-- First time / Repeat -->
+        <fieldset style="margin-top:10px;border:0;padding:0">
+          <legend style="font-weight:700;margin-bottom:6px">Visit type</legend>
+          <label style="margin-right:12px"><input type="radio" name="firstTime" value="First time visit" checked /> First time</label>
+          <label><input type="radio" name="firstTime" value="Repeat visit" /> Repeat</label>
+        </fieldset>
+
         <textarea name="notes" placeholder="Short note / symptoms (optional)" rows="4" style="width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid #e6e9ef"></textarea>
 
         <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
@@ -89,64 +93,40 @@ function createAppointmentModal(prefillService = '') {
   </div>
   `;
 
-  document.body.insertAdjacentHTML('beforeend', modalHtml);
+  document.body.insertAdjacentHTML('beforeend', html);
 
-  // Event wiring
   $qs('#apt-close').addEventListener('click', closeModal);
   $qs('#apt-cancel').addEventListener('click', closeModal);
   $qs('#appointment-backdrop').addEventListener('click', closeModal);
   $qs('#apt-form').addEventListener('submit', handleAptSubmit);
 
-  // Prefill service into notes if provided
   if (prefillService) {
     const notes = $qs('#apt-form textarea[name="notes"]');
     if (notes) notes.value = `Service: ${prefillService}\n\n`;
   }
 
-  // focus on first name
   const first = $qs('#apt-form input[name="firstName"]');
   if (first) first.focus();
 }
 
-function closeModal() {
-  const modal = $qs('#appointment-modal');
-  if (modal) modal.remove();
-}
+function closeModal(){ const modal = $qs('#appointment-modal'); if (modal) modal.remove(); }
 
-/* ----------------- Submission ----------------- */
+/* Submit to Google Form (background) */
 function submitToGoogleForm(data) {
-  // Build payload mapping using CONFIG.FIELD_MAP
   try {
-    const mapping = {};
     const fm = CONFIG.FIELD_MAP || {};
-    if (fm.firstName) mapping[fm.firstName] = data.firstName || '';
-    if (fm.lastName) mapping[fm.lastName] = data.lastName || '';
-    if (fm.phone) mapping[fm.phone] = data.phone || '';
-    if (fm.email) mapping[fm.email] = data.email || '';
-    if (fm.date) mapping[fm.date] = data.date || '';
-    if (fm.time) mapping[fm.time] = data.time || '';
-    if (fm.notes) mapping[fm.notes] = data.notes || '';
+    const payload = {};
+    if (fm.firstName) payload[fm.firstName] = data.firstName || '';
+    if (fm.lastName) payload[fm.lastName] = data.lastName || '';
+    if (fm.phone) payload[fm.phone] = data.phone || '';
+    if (fm.email) payload[fm.email] = data.email || '';
+    if (fm.date) payload[fm.date] = data.date || '';
+    if (fm.time) payload[fm.time] = data.time || '';
+    if (fm.notes) payload[fm.notes] = data.notes || '';
+    if (fm.firstTime) payload[fm.firstTime] = data.firstTime || '';
 
-    // Fallback: if mapping empty, send to generic entry.* placeholders (best-effort)
-    const hasMapping = Object.keys(mapping).length > 0;
-    let query;
-    if (hasMapping) {
-      query = urlEncode(mapping);
-    } else {
-      // last-resort: generic entries (may not match your form)
-      query = urlEncode({
-        'entry.0': data.firstName || '',
-        'entry.1': data.lastName || '',
-        'entry.2': data.phone || '',
-        'entry.3': data.email || '',
-        'entry.4': data.date || '',
-        'entry.5': data.time || '',
-        'entry.6': data.notes || ''
-      });
-    }
-
+    const query = urlEncode(payload);
     const url = CONFIG.GOOGLE_FORM_ACTION + '?' + query;
-    // Use GET with no-cors: fire-and-forget record into Google Forms
     fetch(url, { method: 'GET', mode: 'no-cors' })
       .then(() => console.info('Google Form submitted (no-cors)'))
       .catch(err => console.warn('Google Form submit error', err));
@@ -155,6 +135,7 @@ function submitToGoogleForm(data) {
   }
 }
 
+/* Form submit handler */
 function handleAptSubmit(e) {
   e.preventDefault();
   const form = e.target;
@@ -169,13 +150,18 @@ function handleAptSubmit(e) {
     email: form.email.value.trim(),
     date: form.date.value,
     time: form.time.value,
+    firstTime: (form.firstTime && form.firstTime.value) ? form.firstTime.value : 'First time visit',
     notes: form.notes.value.trim()
   };
 
-  // Submit to Google Form in background
+  // Ensure service line exists in notes (if not, try to include firstTime)
+  if (!data.notes.toLowerCase().includes('service:') && data.firstTime) {
+    data.notes = `Visit type: ${data.firstTime}\n\n` + data.notes;
+  }
+
   submitToGoogleForm(data);
 
-  // Build WhatsApp message (including detected Service if present)
+  // Build WhatsApp message
   const messageLines = [
     CONFIG.WHATSAPP_MESSAGE_HEADER,
     '',
@@ -185,6 +171,8 @@ function handleAptSubmit(e) {
     data.date ? `Preferred Date: ${data.date}` : '',
     data.time ? `Preferred Time: ${data.time}` : '',
     '',
+    `Visit Type: ${data.firstTime || '-'}`,
+    '',
     `Notes: ${data.notes || '-'}`,
     '',
     'Please confirm available slots. Thank you!'
@@ -192,16 +180,13 @@ function handleAptSubmit(e) {
 
   const message = messageLines.join('\n');
 
-  // Open WhatsApp
   try {
     const waUrl = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(waUrl, '_blank');
-
     feedback.textContent = 'Opening WhatsApp...';
-    setTimeout(() => { closeModal(); }, 1200);
+    setTimeout(() => closeModal(), 1200);
   } catch (err) {
     console.warn('WhatsApp open failed', err);
-    // fallback: open mailto
     const subject = encodeURIComponent('Appointment request - Shree Varad Maternity');
     const body = encodeURIComponent(message);
     window.location.href = `mailto:${CONFIG.CONTACT_EMAIL}?subject=${subject}&body=${body}`;
@@ -210,27 +195,21 @@ function handleAptSubmit(e) {
   }
 }
 
-/* ----------------- Wiring buttons to open modal and prefill service ----------------- */
+/* Wire service Book buttons and top links */
 function wireAppointmentButtons() {
-  // Listen for clicks on any element with data-apt="open"
   document.body.addEventListener('click', function(ev){
     const btn = ev.target.closest('[data-apt="open"]');
     if (!btn) return;
     ev.preventDefault();
 
-    // Determine service name:
-    // 1) If button has data-service attribute, use it.
-    // 2) Else find nearest .service-card and read its <h3> text.
-    // 3) Else fallback to aria-label or button text.
-    let serviceName = '';
+    // explicit service via data-service preferred
+    let serviceName = (btn.dataset && btn.dataset.service) ? btn.dataset.service.trim() : '';
 
-    if (btn.dataset && btn.dataset.service) {
-      serviceName = btn.dataset.service;
-    } else {
-      const serviceCard = btn.closest('.service-card');
-      if (serviceCard) {
-        const h3 = serviceCard.querySelector('h3');
-        if (h3 && h3.textContent.trim()) serviceName = h3.textContent.trim();
+    if (!serviceName) {
+      const card = btn.closest('.service-card');
+      if (card) {
+        const h3 = card.querySelector('h3');
+        if (h3 && h3.textContent) serviceName = h3.textContent.trim();
       }
     }
 
@@ -238,41 +217,27 @@ function wireAppointmentButtons() {
       serviceName = btn.getAttribute('aria-label').replace(/Book\s*/i,'').trim();
     }
 
-    if (!serviceName) {
-      // maybe the button text itself contains the service
-      const text = (btn.textContent || '').trim();
-      if (text && text.length < 60) serviceName = text;
-    }
-
-    // Remove words like "Book Appointment" from serviceName if present
-    serviceName = serviceName.replace(/Book Appointment|Book|Appointment/ig,'').trim();
-
     createAppointmentModal(serviceName);
   });
 
-  // Also attach to top "Book Appointment" primary button(s)
+  // ensure no global Book CTA conflicts — if someone still has a .btn-primary with Book text, treat it as scroll to services
   $qsa('.btn-primary').forEach(btn => {
-    // If it's a Book Appointment main CTA (href="#contact" or text contains 'Book')
-    const href = btn.getAttribute('href') || '';
-    if (href === '#contact' || /book/i.test(btn.textContent)) {
-      btn.setAttribute('data-apt','open');
+    const txt = (btn.textContent || '').toLowerCase();
+    if (txt.includes('book') && !btn.hasAttribute('data-apt')) {
+      // keep as link to #services
+      if (btn.getAttribute('href') === '#contact') btn.setAttribute('href','#services');
     }
   });
 }
 
-/* ----------------- Init ----------------- */
+/* Init */
 function initSite() {
   initContactLinks();
   wireAppointmentButtons();
-  // expose helper for debugging
   window.ShreeVarad = window.ShreeVarad || {};
   window.ShreeVarad.openApt = createAppointmentModal;
   window.ShreeVarad.config = CONFIG;
 }
 
-// Run on load
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initSite);
-} else {
-  initSite();
-}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSite);
+else initSite();
