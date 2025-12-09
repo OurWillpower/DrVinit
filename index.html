@@ -47,7 +47,7 @@
                         sans: ['"Lato"', 'sans-serif'],
                     },
                     boxShadow: {
-                        'gold': '0 20px 40px -10px rgba(212, 175, 55, 0.15)',
+                        'gold': '0 20px 50px -12px rgba(212, 175, 55, 0.5)', /* Increased Intensity */
                         'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
                     }
                 }
@@ -67,9 +67,9 @@
             background: linear-gradient(to right, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.7) 50%, rgba(10, 25, 47, 0.4) 100%);
         }
 
-        /* Golden Fade Effect */
+        /* Stronger Golden Fade Effect */
         .gold-fade-overlay {
-            background: linear-gradient(to top, rgba(212, 175, 55, 0.15) 0%, rgba(10, 25, 47, 0) 100%);
+            background: linear-gradient(to top, rgba(212, 175, 55, 0.3) 0%, rgba(10, 25, 47, 0) 100%);
         }
 
         /* Custom Scrollbar */
@@ -402,12 +402,12 @@
                     { title: 'Nutrition & Yoga', icon: 'fa-apple-whole', bg: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80', desc: 'Holistic wellness for maternity & health.', tags: 'Wellness' }
                 ].filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()) || s.desc.toLowerCase().includes(searchQuery.toLowerCase()) || s.tags.toLowerCase().includes(searchQuery.toLowerCase()))" :key="service.title">
                     
-                    <div class="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-gold hover:border-brand-gold/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col"
+                    <div class="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-gold hover:border-brand-gold transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col"
                          data-aos="fade-up"
                          @click="bookingModalOpen = true; selectedService = service.title">
                         
                         <div class="absolute inset-0 z-0">
-                            <img :src="service.bg" class="w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-all duration-700 transform scale-100 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
+                            <img :src="service.bg" class="w-full h-full object-cover opacity-15 group-hover:opacity-30 transition-all duration-700 transform scale-100 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
                         </div>
                         
                         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 gold-fade-overlay z-0 pointer-events-none"></div>
