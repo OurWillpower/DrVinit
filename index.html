@@ -69,7 +69,7 @@
 
         /* Golden Fade Effect */
         .gold-fade-overlay {
-            background: linear-gradient(to top, rgba(212, 175, 55, 0.2) 0%, rgba(10, 25, 47, 0) 100%);
+            background: linear-gradient(to top, rgba(212, 175, 55, 0.25) 0%, rgba(10, 25, 47, 0) 100%);
         }
 
         /* Custom Scrollbar */
@@ -194,6 +194,11 @@
                     <a href="#home" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">Home</a>
                     <a href="#services" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">Services</a>
                     <a href="#tools" class="text-brand-gold hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">Smart Tools</a>
+                    
+                    <a href="https://blog.shreevaradmaternity.com" target="_blank" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold flex items-center gap-1">
+                        Blog <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-brand-gold/70"></i>
+                    </a>
+
                     <a href="#about" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">About</a>
                     <a href="#contact" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">Contact</a>
                     <a href="tel:+917039196489" class="bg-brand-gold text-brand-navy px-6 py-2 rounded-full font-bold hover:bg-white hover:text-brand-navy transition-all shadow-lg transform hover:scale-105 border border-transparent hover:border-brand-gold">
@@ -215,6 +220,7 @@
                 <a href="#home" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Home</a>
                 <a href="#services" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Services</a>
                 <a href="#tools" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-gold font-bold bg-brand-teal/50">Smart Tools</a>
+                <a href="https://blog.shreevaradmaternity.com" target="_blank" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Blog</a>
                 <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">About</a>
                 <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Contact</a>
             </div>
@@ -422,7 +428,7 @@
                     { title: 'Cancer Screening', icon: 'fa-magnifying-glass', bg: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80', desc: 'Pap smears & preventive oncology.', tags: 'Wellness' },
                     { title: 'Midlife & Menopause', icon: 'fa-fan', bg: 'https://images.unsplash.com/photo-1584950969599-733d0279c29f?auto=format&fit=crop&w=600&q=80', desc: 'Expert care for midlife transitions.', tags: 'Wellness' },
                     { title: 'Nutrition & Yoga', icon: 'fa-apple-whole', bg: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80', desc: 'Holistic wellness for maternity & health.', tags: 'Wellness' }
-                ]" :key="service.title">
+                ].filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()) || s.desc.toLowerCase().includes(searchQuery.toLowerCase()) || s.tags.toLowerCase().includes(searchQuery.toLowerCase()))" :key="service.title">
                     
                     <div class="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-gold hover:border-brand-gold/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col"
                          data-aos="fade-up"
@@ -591,21 +597,32 @@
 
     <footer class="bg-brand-navy text-brand-slate py-16 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div class="text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+                <div class="text-center md:text-left md:w-1/3">
                     <div class="flex items-center gap-3 justify-center md:justify-start mb-4">
                         <div class="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-navy font-bold font-serif">SV</div>
                         <span class="text-brand-white font-serif font-bold text-2xl tracking-wide">Shree Varad</span>
                     </div>
-                    <p class="text-sm max-w-xs mx-auto md:mx-0 leading-relaxed">Premium maternity and gynecological care in Kalyan.</p>
+                    <p class="text-sm max-w-xs mx-auto md:mx-0 leading-relaxed mb-6">Premium maternity and gynecological care in Kalyan. Dedicated to the health and joy of every mother and child.</p>
+                    <p class="text-xs text-gray-500">© 2024 Dr. Vinit Chafekar. All rights reserved.</p>
                 </div>
                 
-                <div class="flex flex-col items-center md:items-end gap-4">
-                    <div class="flex space-x-6">
-                        <a href="#" class="bg-brand-teal w-10 h-10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all duration-300"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="bg-brand-teal w-10 h-10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all duration-300"><i class="fa-brands fa-instagram"></i></a>
+                <div class="flex flex-col items-center md:items-end gap-4 md:w-1/3">
+                    <h4 class="text-brand-gold font-bold uppercase tracking-widest text-sm">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300">
+                            <i class="fa-brands fa-youtube text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
                     </div>
-                    <p class="text-xs text-gray-500">© 2024 Dr. Vinit Chafekar. All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -689,7 +706,7 @@
 
     <script>
         // PASTE YOUR GEMINI API KEY HERE
-        const GEMINI_API_KEY = 'PASTE_YOUR_GEMINI_API_KEY_HERE'; 
+        const GEMINI_API_KEY = AIzaSyAfP3m7SKfM1OfzYL_AEyyfAvAIFvFjtOU; 
 
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
