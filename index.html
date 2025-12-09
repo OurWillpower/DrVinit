@@ -1,48 +1,342 @@
-/* scripts.js — booking prefill, year, mobile-friendly behaviors */
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dr. Vinit Chafekar — Shree Varad Maternity</title>
+  <meta name="description" content="Shree Varad Maternity — Dr. Vinit Chafekar. Premium maternity, antenatal, fertility & women's healthcare in Pune. Book online." />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#033120">
+</head>
+<body>
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Set current year in footer
-  var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  <!-- Floating WhatsApp -->
+  <a class="wa" href="https://wa.me/917039196489?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 3.5c-4.9-4.9-12.9-4.9-17.8 0-3.7 3.7-4.5 9.3-2.3 13.8L.3 24l6.1-1.5c4.6 1.9 10.2 1.4 13.9-2.3 4.9-4.9 4.9-12.9 0-17.8z" fill="#fff"/></svg>
+  </a>
 
-  // Prefill hidden service field when Book clicked
-  document.body.addEventListener('click', function (evt) {
-    var btn = evt.target.closest('.btn-book');
-    if (!btn) return;
-    var service = btn.getAttribute('data-service') || '';
-    var svcField = document.getElementById('serviceField');
-    if (!svcField) {
-      var form = document.querySelector('#bookModal form');
-      if (form) {
-        var hidden = document.createElement('input');
-        hidden.type = 'hidden';
-        hidden.name = 'entry.555555555';
-        hidden.id = 'serviceField';
-        hidden.value = service;
-        form.appendChild(hidden);
-      }
-    } else {
-      svcField.value = service;
-    }
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container d-flex align-items-center justify-content-between py-3">
+      <div class="d-flex align-items-center gap-3">
+        <div class="brand-mark" aria-hidden="true">SV</div>
+        <div>
+          <div class="brand-title">Shree Varad Maternity</div>
+          <div class="brand-sub">Dr. Vinit Chafekar, MD — Physician &amp; DGO</div>
+        </div>
+      </div>
 
-    // Update modal title for clarity
-    var title = document.querySelector('#bookModal .modal-title');
-    if (title) title.textContent = 'Book — ' + (service || 'Appointment');
+      <nav class="d-none d-md-flex gap-3 align-items-center">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a class="phone-link" href="tel:+917039196489">📞 +91 7039196489</a>
+      </nav>
 
-    // Focus first input shortly after modal shows
-    setTimeout(function () {
-      var first = document.querySelector('#bookModal input[type="text"], #bookModal input[type="tel"], #bookModal input[type="email"], #bookModal select');
-      if (first) first.focus();
-    }, 220);
-  });
+      <div class="d-md-none">
+        <a class="phone-link" href="tel:+917039196489">📞</a>
+      </div>
+    </div>
+  </header>
 
-  // Smooth scroll for hero CTA
-  var heroCta = document.querySelector('.btn-hero');
-  if (heroCta) {
-    heroCta.addEventListener('click', function (e) {
-      e.preventDefault();
-      var target = document.querySelector('#services');
-      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
-    });
-  }
-});
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="hero-figure" role="img" aria-label="Premium green & gold hero"></div>
+
+      <div class="hero-overlay container">
+        <div class="hero-content">
+          <div class="hero-copy">
+            <div class="eyebrow">Trusted care · Modern facilities · Compassionate teams</div>
+            <h1 class="hero-title">Clinical excellence for mothers.<br><small>Warm, evidence-led care you can trust.</small></h1>
+            <div class="gold-underline" aria-hidden="true"></div>
+            <p class="lead">Personalised antenatal programmes, safe deliveries, fertility support and advanced gynecology — delivered with empathy and clinical rigour.</p>
+
+            <div class="hero-cta">
+              <a href="#services" class="btn btn-hero">Explore Services</a>
+              <a href="mailto:info@shreevaradmaternity.com" class="btn btn-ghost">Contact Clinic</a>
+            </div>
+
+            <ul class="hero-features">
+              <li>Minimally invasive surgery</li>
+              <li>High-risk pregnancy expertise</li>
+              <li>Neonatal coordination</li>
+            </ul>
+          </div>
+
+          <!-- HERO CARD (flows below on narrow screens) -->
+          <aside class="hero-card" aria-hidden="true">
+            <div class="portrait-ring">
+              <div class="portrait-initials">VC</div>
+            </div>
+            <div class="hero-meta">
+              <div class="meta-name">Dr. Vinit Chafekar</div>
+              <div class="meta-role">MD (Physician), DGO</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services (12 restored) -->
+    <section id="services" class="section container">
+      <div class="d-flex align-items-start justify-content-between mb-3">
+        <div>
+          <h2 class="section-title">Our Services</h2>
+          <p class="section-desc">A comprehensive spectrum of obstetrics, gynecology, newborn and wellness care. Click Book to request an appointment.</p>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <!-- 01 -->
+        <article class="svc-card" id="svc01">
+          <div class="svc-visual" role="img" aria-label="General Health placeholder"></div>
+          <div class="svc-body">
+            <h3>General Health Checkups</h3>
+            <p class="muted">Wellness screening, preventive exams and personalised plans for women's health.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="General Health Checkups" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Wellness</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 -->
+        <article class="svc-card" id="svc02">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Antenatal &amp; Pregnancy Care</h3>
+            <p class="muted">Routine and high-risk antenatal monitoring, nutrition guidance and personalised birth planning.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Antenatal & Pregnancy Care" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Pregnancy</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 -->
+        <article class="svc-card" id="svc03">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Infertility Evaluation &amp; Support</h3>
+            <p class="muted">Compassionate fertility evaluation and support; referrals to specialists where required.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Infertility Evaluation & Support" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Fertility</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 -->
+        <article class="svc-card" id="svc04">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Minimal Invasive (Laparoscopic) Surgery</h3>
+            <p class="muted">Keyhole surgery for fibroids, cysts and endometriosis — faster recovery &amp; smaller scars.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Minimal Invasive (Laparoscopic) Surgery" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Surgery</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05 -->
+        <article class="svc-card" id="svc05">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Robotic &amp; Advanced Surgical Care</h3>
+            <p class="muted">Precision robotic procedures for select gynecological conditions.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Robotic & Advanced Surgical Care" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Advanced</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 06 -->
+        <article class="svc-card" id="svc06">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>High-Risk Pregnancy Management</h3>
+            <p class="muted">Specialised monitoring and multidisciplinary plans for complex pregnancies.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="High-Risk Pregnancy Management" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">High-risk</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 07 -->
+        <article class="svc-card" id="svc07">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Preconception Counselling</h3>
+            <p class="muted">Optimising health before pregnancy — tests, supplements and risk assessment.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Preconception Counselling" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Counselling</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 08 -->
+        <article class="svc-card" id="svc08">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Postnatal & Newborn Care</h3>
+            <p class="muted">Breastfeeding support, newborn checks and post-partum recovery guidance.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Postnatal & Newborn Care" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Newborn</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 09 -->
+        <article class="svc-card" id="svc09">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Menstrual & PCOS Management</h3>
+            <p class="muted">Diagnosis and long-term management of irregular periods, PCOS and hormonal issues.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Menstrual & PCOS Management" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Hormone</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10 -->
+        <article class="svc-card" id="svc10">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Fibroid & Uterine Health</h3>
+            <p class="muted">Investigation and treatment options for fibroids, heavy bleeding and uterine pathology.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Fibroid & Uterine Health" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Uterus</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 11 -->
+        <article class="svc-card" id="svc11">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Contraception & Family Planning</h3>
+            <p class="muted">Counselling on modern contraception options, IUDs and planning pregnancy spacing.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Contraception & Family Planning" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Family</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 12 -->
+        <article class="svc-card" id="svc12">
+          <div class="svc-visual"></div>
+          <div class="svc-body">
+            <h3>Menopause & Midlife Care</h3>
+            <p class="muted">Holistic midlife care, symptom management and preventive health screening.</p>
+            <div class="svc-foot">
+              <button class="btn-book" data-service="Menopause & Midlife Care" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+              <div class="tag">Midlife</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section container">
+      <div class="about-grid">
+        <div>
+          <h2 class="section-title">About Dr. Vinit Chafekar</h2>
+          <p class="section-desc muted">MD (Physician), DGO — experienced in obstetrics and gynecology with a patient-first approach. Focus: high-risk pregnancy, minimally invasive surgery and neonatal coordination.</p>
+          <ul class="muted">
+            <li>High-risk pregnancy expertise</li>
+            <li>Minimally invasive &amp; robotic support</li>
+            <li>Comprehensive newborn coordination</li>
+          </ul>
+        </div>
+
+        <aside class="profile-card">
+          <div class="profile-photo"><span>VC</span></div>
+          <div class="profile-meta">
+            <div class="profile-name">Dr. Vinit Chafekar</div>
+            <div class="profile-role muted">MD (Physician), DGO</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section container">
+      <h2 class="section-title">Contact &amp; Book</h2>
+      <p class="section-desc muted">Use the Book button on any service to request an appointment. We will contact you on WhatsApp/phone to confirm.</p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <p><strong>Phone:</strong> <a href="tel:+917039196489">+91 7039196489</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info@shreevaradmaternity.com">info@shreevaradmaternity.com</a></p>
+        </div>
+
+        <div class="map-card">
+          <div class="map-placeholder muted">Clinic address &amp; map (embed later)</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container d-flex justify-content-between align-items-center py-3">
+      <div>Shree Varad Maternity — Dr. Vinit Chafekar</div>
+      <div class="muted">© <span id="year"></span></div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal (Google Form) -->
+  <div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form id="bookForm" class="modal-content" action="https://docs.google.com/forms/d/e/1FAIpQLSeeST1jrxlWgftoUHKq8KtmyXjBPj-F8-bzg5EXlj2lrkSorA/formResponse" method="GET" target="_blank">
+        <div class="modal-header">
+          <h5 class="modal-title">Book Appointment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label class="form-label">Your name</label>
+          <input name="entry.111111111" type="text" class="form-control mb-2" placeholder="Name" required>
+
+          <label class="form-label">Phone</label>
+          <input name="entry.222222222" type="tel" class="form-control mb-2" placeholder="+91 9XXXXXXXXX" required>
+
+          <label class="form-label">Email (optional)</label>
+          <input name="entry.333333333" type="email" class="form-control mb-2" placeholder="you@example.com">
+
+          <label class="form-label">First time or Repeat visit?</label>
+          <select name="entry.444444444" class="form-select mb-2" required>
+            <option>First time visit</option>
+            <option>Repeat visit</option>
+          </select>
+
+          <input type="hidden" name="entry.555555555" id="serviceField" value="">
+          <div class="form-text muted">We will contact you on WhatsApp or phone to confirm the appointment.</div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Send request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Theme JS -->
+  <script src="scripts.js"></script>
+</body>
+</html>
