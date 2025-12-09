@@ -47,7 +47,7 @@
                         sans: ['"Lato"', 'sans-serif'],
                     },
                     boxShadow: {
-                        'gold': '0 20px 50px -12px rgba(212, 175, 55, 0.5)', /* Increased Intensity */
+                        'gold': '0 20px 40px -10px rgba(212, 175, 55, 0.25)',
                         'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
                     }
                 }
@@ -67,9 +67,9 @@
             background: linear-gradient(to right, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.7) 50%, rgba(10, 25, 47, 0.4) 100%);
         }
 
-        /* Stronger Golden Fade Effect */
+        /* Golden Fade Effect */
         .gold-fade-overlay {
-            background: linear-gradient(to top, rgba(212, 175, 55, 0.3) 0%, rgba(10, 25, 47, 0) 100%);
+            background: linear-gradient(to top, rgba(212, 175, 55, 0.2) 0%, rgba(10, 25, 47, 0) 100%);
         }
 
         /* Custom Scrollbar */
@@ -354,53 +354,39 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-4">Our Medical Services</h2>
-                
-                <div class="flex flex-wrap justify-center gap-3 mb-8">
-                    <button @click="searchQuery = ''" class="px-4 py-2 rounded-full text-sm font-bold border border-brand-navy transition-colors hover:bg-brand-navy hover:text-white" :class="searchQuery === '' ? 'bg-brand-navy text-white' : 'text-brand-navy'">All</button>
-                    <button @click="searchQuery = 'Pregnancy'" class="px-4 py-2 rounded-full text-sm font-bold border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors">Pregnancy</button>
-                    <button @click="searchQuery = 'Surgery'" class="px-4 py-2 rounded-full text-sm font-bold border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors">Surgery</button>
-                    <button @click="searchQuery = 'Wellness'" class="px-4 py-2 rounded-full text-sm font-bold border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors">Wellness</button>
-                </div>
-
-                <div class="relative max-w-lg mx-auto group">
-                    <input type="text" x-model="searchQuery" placeholder="Search services..." 
-                           class="w-full px-8 py-4 rounded-full border-2 border-gray-200 focus:outline-none focus:border-brand-gold focus:ring-0 shadow-sm transition-all text-lg group-hover:shadow-md">
-                    <div class="absolute right-2 top-2 bg-brand-gold w-10 h-10 rounded-full flex items-center justify-center text-white">
-                        <i class="fa-solid fa-search"></i>
-                    </div>
-                </div>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">Comprehensive spectrum of 16 specialised medical services for women and children.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <template x-for="service in [
                     /* Stage 1: Adolescence & Young Adult */
-                    { title: 'Adolescent Health', icon: 'fa-child-reaching', bg: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80', desc: 'Puberty, periods & teen hygiene guidance.', tags: 'Wellness' },
-                    { title: 'PCOS Management', icon: 'fa-venus', bg: 'https://images.unsplash.com/photo-1623944889288-cd147dbb5b19?auto=format&fit=crop&w=600&q=80', desc: 'Hormonal balance & long-term care.', tags: 'Wellness' },
+                    { title: 'Adolescent Health', icon: 'fa-child-reaching', bg: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80', desc: 'Puberty, periods & teen hygiene guidance.' },
+                    { title: 'PCOS Management', icon: 'fa-venus', bg: 'https://images.unsplash.com/photo-1623944889288-cd147dbb5b19?auto=format&fit=crop&w=600&q=80', desc: 'Hormonal balance & long-term care.' },
                     
                     /* Stage 2: Planning & Conception */
-                    { title: 'Family Planning', icon: 'fa-people-roof', bg: 'https://images.unsplash.com/photo-1581574919402-5b7d76de2022?auto=format&fit=crop&w=600&q=80', desc: 'Contraception counselling & IUD insertion.', tags: 'Wellness' },
-                    { title: 'Pre-Conception', icon: 'fa-comments', bg: 'https://images.unsplash.com/photo-1631815587646-b85a160c63db?auto=format&fit=crop&w=600&q=80', desc: 'Optimising health before pregnancy starts.', tags: 'Pregnancy' },
-                    { title: 'Infertility Support', icon: 'fa-seedling', bg: 'https://images.unsplash.com/photo-1598462799335-b2234cd3d047?auto=format&fit=crop&w=600&q=80', desc: 'Compassionate fertility evaluation & care.', tags: 'Wellness' },
+                    { title: 'Family Planning', icon: 'fa-people-roof', bg: 'https://images.unsplash.com/photo-1581574919402-5b7d76de2022?auto=format&fit=crop&w=600&q=80', desc: 'Contraception counselling & IUD insertion.' },
+                    { title: 'Pre-Conception', icon: 'fa-comments', bg: 'https://images.unsplash.com/photo-1631815587646-b85a160c63db?auto=format&fit=crop&w=600&q=80', desc: 'Optimising health before pregnancy starts.' },
+                    { title: 'Infertility Support', icon: 'fa-seedling', bg: 'https://images.unsplash.com/photo-1598462799335-b2234cd3d047?auto=format&fit=crop&w=600&q=80', desc: 'Compassionate fertility evaluation & care.' },
                     
                     /* Stage 3: Pregnancy (Antenatal) */
-                    { title: 'Antenatal Care', icon: 'fa-baby-carriage', bg: 'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&w=600&q=80', desc: 'Routine & high-risk pregnancy monitoring.', tags: 'Pregnancy' },
-                    { title: 'High-Risk Pregnancy', icon: 'fa-heartbeat', bg: 'https://images.unsplash.com/photo-1622394723049-74a0953dc370?auto=format&fit=crop&w=600&q=80', desc: 'Specialised monitoring for mother & baby.', tags: 'Pregnancy' },
-                    { title: 'Ultrasound Scan', icon: 'fa-wifi', bg: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80', desc: 'Advanced fetal & pelvic imaging.', tags: 'Pregnancy' },
+                    { title: 'Antenatal Care', icon: 'fa-baby-carriage', bg: 'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&w=600&q=80', desc: 'Routine & high-risk pregnancy monitoring.' },
+                    { title: 'High-Risk Pregnancy', icon: 'fa-heartbeat', bg: 'https://images.unsplash.com/photo-1622394723049-74a0953dc370?auto=format&fit=crop&w=600&q=80', desc: 'Specialised monitoring for mother & baby.' },
+                    { title: 'Ultrasound Scan', icon: 'fa-wifi', bg: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80', desc: 'Advanced fetal & pelvic imaging.' },
                     
                     /* Stage 4: Postnatal & New Mother */
-                    { title: 'Postnatal Care', icon: 'fa-hands-holding-child', bg: 'https://images.unsplash.com/photo-1623091411395-09e79fdbfcf3?auto=format&fit=crop&w=600&q=80', desc: 'Breastfeeding & recovery support.', tags: 'Pregnancy' },
+                    { title: 'Postnatal Care', icon: 'fa-hands-holding-child', bg: 'https://images.unsplash.com/photo-1623091411395-09e79fdbfcf3?auto=format&fit=crop&w=600&q=80', desc: 'Breastfeeding & recovery support.' },
                     
                     /* Stage 5: General Gynae & Surgery */
-                    { title: 'General Checkups', icon: 'fa-user-nurse', bg: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80', desc: 'Wellness screening & preventive exams.', tags: 'Wellness' },
-                    { title: 'Laparoscopy', icon: 'fa-microscope', bg: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&q=80', desc: 'Keyhole surgery for faster recovery.', tags: 'Surgery' },
-                    { title: 'Robotic Surgery', icon: 'fa-robot', bg: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&w=600&q=80', desc: 'Precision procedures for complex cases.', tags: 'Surgery' },
+                    { title: 'General Checkups', icon: 'fa-user-nurse', bg: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80', desc: 'Wellness screening & preventive exams.' },
+                    { title: 'Laparoscopy', icon: 'fa-microscope', bg: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&q=80', desc: 'Keyhole surgery for faster recovery.' },
+                    { title: 'Robotic Surgery', icon: 'fa-robot', bg: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&w=600&q=80', desc: 'Precision procedures for complex cases.' },
                     
                     /* Stage 6: Women's Wellness & Later Life */
-                    { title: 'Breast Health', icon: 'fa-ribbon', bg: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=600&q=80', desc: 'Examination, awareness & mastitis care.', tags: 'Wellness' },
-                    { title: 'Cancer Screening', icon: 'fa-magnifying-glass', bg: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80', desc: 'Pap smears & preventive oncology.', tags: 'Wellness' },
-                    { title: 'Midlife & Menopause', icon: 'fa-fan', bg: 'https://images.unsplash.com/photo-1584950969599-733d0279c29f?auto=format&fit=crop&w=600&q=80', desc: 'Expert care for midlife transitions.', tags: 'Wellness' },
-                    { title: 'Nutrition & Yoga', icon: 'fa-apple-whole', bg: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80', desc: 'Holistic wellness for maternity & health.', tags: 'Wellness' }
-                ].filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()) || s.desc.toLowerCase().includes(searchQuery.toLowerCase()) || s.tags.toLowerCase().includes(searchQuery.toLowerCase()))" :key="service.title">
+                    { title: 'Breast Health', icon: 'fa-ribbon', bg: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=600&q=80', desc: 'Examination, awareness & mastitis care.' },
+                    { title: 'Cancer Screening', icon: 'fa-magnifying-glass', bg: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80', desc: 'Pap smears & preventive oncology.' },
+                    { title: 'Midlife & Menopause', icon: 'fa-fan', bg: 'https://images.unsplash.com/photo-1584950969599-733d0279c29f?auto=format&fit=crop&w=600&q=80', desc: 'Expert care for midlife transitions.' },
+                    { title: 'Nutrition & Yoga', icon: 'fa-apple-whole', bg: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80', desc: 'Holistic wellness for maternity & health.' }
+                ]" :key="service.title">
                     
                     <div class="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-gold hover:border-brand-gold transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col"
                          data-aos="fade-up"
@@ -429,9 +415,103 @@
                     </div>
                 </template>
             </div>
-            
-             <div x-show="!$el.querySelector('.grid').children.length" class="text-center py-12">
-                <p class="text-gray-500">No services found matching your search.</p>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-navy/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2 block">Stories of Hope</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-4">What Our Patients Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Real stories of joy, recovery, and new beginnings from families we've had the privilege to serve.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-brand-light p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-brand-gold/20" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-brand-gold text-4xl mb-4 opacity-50"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="text-gray-600 mb-6 italic leading-relaxed">"Dr. Vinit is not just a doctor but a guide. My high-risk pregnancy was managed with such precision and calm that I never felt anxious. Truly the best in Kalyan."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-white font-bold">A</div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy">Aditi Sharma</h4>
+                            <div class="text-brand-gold text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-light p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-brand-gold/20" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-brand-gold text-4xl mb-4 opacity-50"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="text-gray-600 mb-6 italic leading-relaxed">"The staff at Shree Varad is incredibly supportive. My laparoscopic surgery had a very fast recovery, just as promised. The hospital is hygienic and modern."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-white font-bold">P</div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy">Priya Deshmukh</h4>
+                            <div class="text-brand-gold text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-light p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-brand-gold/20" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-brand-gold text-4xl mb-4 opacity-50"><i class="fa-solid fa-quote-left"></i></div>
+                    <p class="text-gray-600 mb-6 italic leading-relaxed">"We struggled with infertility for years. Dr. Vinit's patient approach and accurate diagnosis helped us conceive. We are forever grateful for our little miracle."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy flex items-center justify-center text-white font-bold">R</div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy">Rohan & Sneha</h4>
+                            <div class="text-brand-gold text-xs">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-navy text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif font-bold mb-4">Patient Education & FAQ</h2>
+                <p class="text-brand-slate">Answers to common questions about your health and our procedures.</p>
+            </div>
+
+            <div x-data="{ active: null }" class="space-y-4">
+                <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
+                    <button @click="active === 1 ? active = null : active = 1" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none">
+                        <span class="font-bold text-lg">When should I consult for pregnancy?</span>
+                        <i class="fa-solid transition-transform duration-300" :class="active === 1 ? 'fa-minus text-brand-gold' : 'fa-plus text-gray-400'"></i>
+                    </button>
+                    <div x-show="active === 1" x-collapse class="px-6 pb-4 text-brand-slate text-sm leading-relaxed border-t border-white/5 pt-4">
+                        We recommend a pre-conception visit if you are planning. Otherwise, as soon as you miss your period or test positive at home, book an appointment for early dating scans and health checks.
+                    </div>
+                </div>
+
+                <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
+                    <button @click="active === 2 ? active = null : active = 2" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none">
+                        <span class="font-bold text-lg">Is Laparoscopic Surgery painful?</span>
+                        <i class="fa-solid transition-transform duration-300" :class="active === 2 ? 'fa-minus text-brand-gold' : 'fa-plus text-gray-400'"></i>
+                    </button>
+                    <div x-show="active === 2" x-collapse class="px-6 pb-4 text-brand-slate text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Laparoscopy is 'Minimal Access Surgery'. Compared to open surgery, pain is significantly less, hospital stay is shorter (often 1-2 days), and recovery is much faster.
+                    </div>
+                </div>
+
+                <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
+                    <button @click="active === 3 ? active = null : active = 3" class="w-full px-6 py-4 flex justify-between items-center text-left focus:outline-none">
+                        <span class="font-bold text-lg">Do you handle high-risk deliveries?</span>
+                        <i class="fa-solid transition-transform duration-300" :class="active === 3 ? 'fa-minus text-brand-gold' : 'fa-plus text-gray-400'"></i>
+                    </button>
+                    <div x-show="active === 3" x-collapse class="px-6 pb-4 text-brand-slate text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Yes, Dr. Vinit specializes in High-Risk Obstetrics, including cases of gestational diabetes, hypertension (preeclampsia), and twins. Our facility is equipped for emergencies.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
