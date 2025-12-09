@@ -1,47 +1,43 @@
-/* scripts.js
- - Prefill booking modal service field
- - Set page year
- - Lightweight behavior, no external dependencies required besides Bootstrap
-*/
+/* scripts.js — booking prefill, year, small UX (Bottle Green theme) */
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Set year in footer
-  var yEl = document.getElementById('year');
-  if (yEl) yEl.textContent = new Date().getFullYear();
+  // Set year
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Prefill service when Book button clicked
+  // Prefill service name on modal open (listens for Book buttons)
   document.body.addEventListener('click', function (evt) {
     var btn = evt.target.closest('.btn-book');
     if (!btn) return;
-    var service = btn.getAttribute('data-service') || btn.getAttribute('data-apt-service') || '';
+    var service = btn.getAttribute('data-service') || '';
     var svcField = document.getElementById('serviceField');
     if (!svcField) {
-      // If form field not present (older form), create hidden input for Google Form naming convention
-      var modalForm = document.querySelector('#bookModal form');
-      if (modalForm) {
+      // create hidden input if missing
+      var form = document.querySelector('#bookModal form');
+      if (form) {
         var hidden = document.createElement('input');
         hidden.type = 'hidden';
         hidden.name = 'entry.555555555';
         hidden.id = 'serviceField';
         hidden.value = service;
-        modalForm.appendChild(hidden);
+        form.appendChild(hidden);
       }
     } else {
       svcField.value = service;
     }
 
-    // Update modal title (if present)
-    var modalTitle = document.querySelector('#bookModal .modal-title');
-    if (modalTitle) modalTitle.textContent = 'Book — ' + (service || 'Appointment');
+    // Update modal title
+    var title = document.querySelector('#bookModal .modal-title');
+    if (title) title.textContent = 'Book — ' + (service || 'Appointment');
 
-    // focus first input after a small delay (Bootstrap will show modal)
+    // Focus first field shortly after modal opens
     setTimeout(function () {
-      var firstInput = document.querySelector('#bookModal input[type="text"], #bookModal input[type="tel"], #bookModal input[type="email"], #bookModal select');
-      if (firstInput) firstInput.focus();
-    }, 250);
+      var first = document.querySelector('#bookModal input[type="text"], #bookModal input[type="tel"], #bookModal input[type="email"], #bookModal select');
+      if (first) first.focus();
+    }, 220);
   });
 
-  // Small accessibility: allow Enter on hero 'Explore Services' to scroll smoothly
+  // Smooth scroll for Explore Services
   var heroCta = document.querySelector('.btn-hero');
   if (heroCta) {
     heroCta.addEventListener('click', function (e) {
