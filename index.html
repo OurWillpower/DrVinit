@@ -6,100 +6,172 @@
   <title>Dr. Vinit Chafekar — Shree Varad Maternity</title>
   <meta name="description" content="Shree Varad Maternity — Dr. Vinit Chafekar. Premium maternity, antenatal, fertility & women's health care in Pune. Book online." />
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap CSS (stable CDN) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
+    /* Editorial premium theme (single file) */
     :root{
-      --deep:#07358a;  /* navy */
-      --sky:#4ea6ff;   /* accent */
-      --gold:#f2c94c;  /* gold */
-      --muted:#5b646f;
+      --deep:#072b66;
+      --sky:#3fa8ff;
+      --gold:#d9b44a;
+      --muted:#596067;
+      --bg:#fbfcfe;
       --card:#ffffff;
-      --radius:12px;
     }
+    *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      font-family:Inter,system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      margin:0;background:linear-gradient(180deg,#fff 0%,#f6f9ff 100%);color:#062733;
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      color:var(--deep);
+      background:var(--bg);
       -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
     }
+
     /* header */
-    .site-top{background:transparent;box-shadow:none;padding:14px 0}
-    .brand-mark{width:56px;height:56px;border-radius:12px;background:linear-gradient(180deg,#eaf3ff,#e6f6ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--deep)}
-    .hero{
-      padding:36px 0 18px;
+    .site-header{background:transparent;padding:18px 0;border-bottom:1px solid rgba(7,43,102,0.04);position:sticky;top:0;z-index:40}
+    .brand-mark{width:60px;height:60px;border-radius:14px;background:linear-gradient(180deg,#edf6ff,#e9f4ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--deep)}
+    .brand-text .title{font-weight:700}
+    .brand-text .sub{font-size:13px;color:var(--muted)}
+
+    /* hero - editorial */
+    .hero {
+      position:relative;
+      margin:28px 0 46px;
     }
-    .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.95), #fff);
-      border-radius:18px;padding:28px;
-      box-shadow:0 20px 60px rgba(7,53,138,0.06);
-      display:flex;gap:28px;align-items:center;
+    .hero-figure{
+      width:100%;
+      height:360px;
+      border-radius:16px;
+      overflow:hidden;
+      display:block;
+      background-size:cover;
+      background-position:center;
+      box-shadow:0 30px 80px rgba(7,43,102,0.08);
+      background-image:linear-gradient(135deg, rgba(63,168,255,0.10), rgba(7,43,102,0.02));
     }
-    .hero-copy h1{font-family:"Playfair Display", serif;font-size:30px;margin:0;color:var(--deep);line-height:1.04}
-    .hero-copy p.lead{color:var(--muted);margin-top:10px;font-size:15px}
-    .gold-underline{height:6px;width:120px;border-radius:8px;background:linear-gradient(90deg,var(--gold),#e6c46e);margin:16px 0}
-    .hero-media{min-width:220px;max-width:280px;position:relative}
-    .hero-bg{
-      width:100%;height:220px;border-radius:12px;background-size:cover;background-position:center;box-shadow:inset 0 0 120px rgba(255,255,255,0.06);
-      background-image:linear-gradient(135deg, rgba(78,166,255,0.10), rgba(7,53,138,0.02));
+    /* overlay container */
+    .hero-overlay{
+      position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;
+      pointer-events:none;
     }
-    .doctor-circle{position:absolute;right:12px;bottom:-28px;width:96px;height:96px;border-radius:999px;padding:6px;background:#fff;border:3px solid rgba(242,201,76,0.12);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(7,53,138,0.08)}
+
+    .hero-inner{
+      max-width:1180px;margin:0 auto;padding:28px;display:flex;gap:28px;align-items:center;justify-content:space-between;
+      position:relative;
+    }
+
+    .hero-copy{
+      flex:1 1 58%;
+      pointer-events:auto;
+      max-width:720px;
+    }
+
+    .hero-copy h1{
+      font-family:"Playfair Display",serif;
+      font-weight:700;
+      font-size:36px;
+      margin:0 0 12px;
+      color:var(--deep);
+      line-height:1.02;
+      letter-spacing:-0.4px;
+    }
+    .hero-copy h1 small{display:block;font-weight:600;color:var(--deep);font-size:20px;margin-top:6px}
+
+    .gold-divider{height:8px;width:140px;border-radius:6px;background:linear-gradient(90deg,var(--gold),#e8c86d);margin:18px 0;box-shadow:0 12px 36px rgba(217,180,74,0.09)}
+
+    .hero-copy p.lead{
+      color:var(--muted);
+      font-size:17px;
+      max-width:60ch;
+      margin-bottom:18px;
+    }
+
+    .hero-cta{display:flex;gap:12px;align-items:center}
+    .btn-primary-hero{background:linear-gradient(90deg,var(--deep),#0a54b8);color:#fff;padding:12px 18px;border-radius:12px;border:0;font-weight:800;box-shadow:0 18px 48px rgba(7,43,102,0.12)}
+
+    /* doctor portrait (inside hero) */
+    .doctor-wrap{flex:0 0 300px;display:flex;justify-content:center;align-items:flex-end;position:relative}
+    .doctor-card{width:260px;height:260px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 30px 80px rgba(7,43,102,0.08);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .doctor-circle{position:absolute;right:18px;bottom:-40px;width:120px;height:120px;border-radius:999px;padding:6px;background:#fff;border:3px solid rgba(217,180,74,0.12);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(7,43,102,0.08)}
     .doctor-circle img{width:100%;height:100%;object-fit:cover;border-radius:999px}
 
     /* services */
-    .services {padding:28px 0}
-    .card-service{border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(7,53,138,0.04);border:1px solid rgba(7,53,138,0.03)}
-    .card-service .media{height:170px;background-size:cover;background-position:center;background-color:#eef6ff}
-    .card-service .card-body{padding:16px}
-    .btn-book{background:linear-gradient(90deg,var(--deep),#114bbf);color:#fff;border-radius:10px;padding:8px 12px;border:0;font-weight:700}
-    .chip{padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(242,201,76,0.08), rgba(78,166,255,0.02));color:var(--gold);font-weight:700}
+    .section {padding:28px 0}
+    .section-title{font-family:"Playfair Display",serif;font-size:24px;color:var(--deep);margin-bottom:8px}
+    .section-desc{color:var(--muted);margin-bottom:18px}
+
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+    .svc-card{background:var(--card);border-radius:12px;overflow:hidden;border:1px solid rgba(7,43,102,0.03);box-shadow:0 18px 50px rgba(7,43,102,0.04);display:flex;flex-direction:column}
+    .svc-media{height:200px;background-size:cover;background-position:center}
+    .svc-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:12px}
+    .svc-body h4{margin:0;font-size:16px;color:var(--deep)}
+    .svc-body p{margin:0;color:var(--muted);font-size:14px}
+    .svc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+    .btn-book{background:linear-gradient(90deg,var(--deep),#114bbf);color:#fff;padding:9px 12px;border-radius:10px;border:0;font-weight:800}
+    .tag{padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(217,180,74,0.08), rgba(63,168,255,0.03));color:var(--gold);font-weight:700}
+
+    /* about & contact */
+    .about-grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+    .profile-photo{width:140px;height:140px;border-radius:12px;object-fit:cover;box-shadow:0 18px 50px rgba(7,43,102,0.06)}
 
     /* footer */
-    footer.site-footer{padding:18px 0;border-top:1px solid rgba(7,53,138,0.04);color:var(--muted)}
-    /* responsive tweaks */
-    @media (max-width:767px){
-      .hero-card{flex-direction:column;align-items:flex-start;padding:20px}
-      .hero-media{width:100%}
-      .hero-bg{height:180px}
-      .doctor-circle{right:18px;bottom:-26px;width:86px;height:86px}
+    footer{padding:28px 0;border-top:1px solid rgba(7,43,102,0.04);color:var(--muted)}
+
+    /* WhatsApp floater */
+    .wa{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,#25D366,#1ebe57);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 44px rgba(2,6,23,0.18);z-index:2000}
+
+    /* responsive */
+    @media (max-width:991px){
+      .hero-figure{height:320px}
+      .hero-inner{flex-direction:column-reverse;padding:16px;gap:18px}
+      .doctor-wrap{width:100%;display:flex;justify-content:center}
+      .doctor-card{width:100%;height:200px}
+      .doctor-circle{right:16px;bottom:-36px;width:100px;height:100px}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .hero-copy h1{font-size:26px}
+    }
+    @media (max-width:575px){
+      .hero-figure{height:260px}
+      .services-grid{grid-template-columns:1fr}
+      .doctor-card{height:160px}
+      .doctor-circle{width:86px;height:86px;bottom:-34px}
       .hero-copy h1{font-size:22px}
+      .hero-copy p.lead{font-size:15px}
     }
 
-    /* Floating whatsapp */
-    .wa-float{position:fixed;right:18px;bottom:18px;width:56px;height:56px;background:linear-gradient(180deg,#25D366,#1ebe57);border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 36px rgba(2,6,23,0.18);z-index:10000}
-    .wa-float svg{width:28px;height:28px;fill:#fff}
-
-    /* small improvement for service grid spacing at small widths */
-    .services-grid .col {margin-bottom:14px}
+    /* focus outlines */
+    a:focus, button:focus{outline:3px solid rgba(63,168,255,0.14);outline-offset:3px}
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-top">
+  <!-- header -->
+  <header class="site-header">
     <div class="container">
       <div class="d-flex align-items-center justify-content-between">
         <div class="d-flex align-items-center gap-3">
-          <div class="brand-mark">SV</div>
-          <div>
-            <div style="font-weight:700">Shree Varad Maternity</div>
-            <div style="font-size:13px;color:var(--muted)">Dr. Vinit Chafekar, MD — Physician &amp; DGO</div>
+          <div class="brand-mark" aria-hidden="true">SV</div>
+          <div class="brand-text">
+            <div class="title">Shree Varad Maternity</div>
+            <div class="sub">Dr. Vinit Chafekar, MD — Physician &amp; DGO</div>
           </div>
         </div>
 
-        <div class="d-none d-md-flex align-items-center gap-3">
-          <nav class="d-flex gap-3 align-items-center">
-            <a href="#services" class="text-decoration-none" style="color:var(--muted)">Services</a>
-            <a href="#about" class="text-decoration-none" style="color:var(--muted)">About</a>
-            <a href="#contact" class="text-decoration-none" style="color:var(--muted)">Contact</a>
+        <div class="d-none d-md-flex align-items-center gap-4">
+          <nav class="d-flex gap-3">
+            <a href="#services" style="color:var(--muted);text-decoration:none">Services</a>
+            <a href="#about" style="color:var(--muted);text-decoration:none">About</a>
+            <a href="#contact" style="color:var(--muted);text-decoration:none">Contact</a>
           </nav>
           <a href="tel:+917039196489" style="color:var(--deep);font-weight:700;text-decoration:none">📞 +91 7039196489</a>
         </div>
 
-        <!-- Collapse toggle on small -->
         <div class="d-md-none">
           <a href="tel:+917039196489" style="color:var(--deep);font-weight:700;text-decoration:none">📞</a>
         </div>
@@ -107,31 +179,35 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- hero -->
   <main>
     <section class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="hero-copy flex-fill">
-            <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Trusted care · Modern facilities · Compassionate teams</div>
-            <h1>Clinical excellence for mothers.<br><small style="font-weight:600;color:var(--deep)">Warm, evidence-led care you can trust.</small></h1>
-            <div class="gold-underline" aria-hidden="true"></div>
-            <p class="lead">Personalised antenatal programs, safe deliveries, fertility support and advanced gynecology — delivered with empathy and clinical rigor.</p>
-            <div style="margin-top:12px">
-              <a class="btn btn-primary" href="#services" style="background:linear-gradient(90deg,var(--deep),#114bbf);border:none;padding:10px 16px;border-radius:10px;font-weight:700">Explore Services</a>
-            </div>
+      <div class="hero-figure" style="background-image:url('assets/hero-bg.jpg');"></div>
 
-            <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-              <span style="background:linear-gradient(90deg, rgba(78,166,255,0.06), rgba(242,201,76,0.02));padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:700">Minimally invasive surgery</span>
-              <span style="background:linear-gradient(90deg, rgba(78,166,255,0.06), rgba(242,201,76,0.02));padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:700">High-risk pregnancy expertise</span>
-              <span style="background:linear-gradient(90deg, rgba(78,166,255,0.06), rgba(242,201,76,0.02));padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:700">Neonatal coordination</span>
+      <div class="hero-overlay">
+        <div class="hero-inner container">
+          <div class="hero-copy">
+            <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Trusted care · Modern facilities · Compassionate teams</div>
+            <h1>Clinical excellence for mothers.<br><small>Warm, evidence-led care you can trust.</small></h1>
+            <div class="gold-divider" aria-hidden="true"></div>
+            <p class="lead">Personalised antenatal programs, safe deliveries, fertility support and advanced gynecology — delivered with empathy and clinical rigor.</p>
+
+            <div class="hero-cta">
+              <a class="btn-primary-hero" href="#services">Explore Services</a>
             </div>
           </div>
 
-          <div class="hero-media">
-            <div class="hero-bg" style="background-image:url('assets/hero-bg.jpg');"></div>
-            <div class="doctor-circle">
-              <!-- doctor small portrait -->
+          <div class="doctor-wrap">
+            <div class="doctor-card" aria-hidden="false">
+              <!-- optional small decoration or pattern -->
+              <img src="assets/hero-small-pattern.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.06;position:absolute;inset:0;">
+              <div style="padding:18px;text-align:left;z-index:2">
+                <div style="font-weight:700;font-size:16px">Dr. Vinit Chafekar</div>
+                <div style="color:var(--muted);font-size:13px;margin-top:6px">MD (Physician), DGO</div>
+              </div>
+            </div>
+
+            <div class="doctor-circle" aria-hidden="false">
               <img src="assets/dr-vinit-small.jpg" alt="Dr Vinit">
             </div>
           </div>
@@ -139,145 +215,140 @@
       </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="services">
+    <!-- services -->
+    <section id="services" class="section">
       <div class="container">
-        <h3 style="font-family:'Playfair Display',serif;color:var(--deep)">Our Services</h3>
-        <p style="color:var(--muted)">A full spectrum of obstetrics, gynecology, newborn and wellness care — click Book to request an appointment.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:20px">
+          <div>
+            <div class="section-title">Our Services</div>
+            <div class="section-desc">A comprehensive spectrum of obstetrics, gynecology, newborn and wellness care. Click Book to request an appointment.</div>
+          </div>
+        </div>
 
-        <div class="row services-grid">
-          <!-- Card 1 -->
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card card-service">
-              <div class="media" style="background-image:url('assets/services/general-health.jpg');height:170px;background-size:cover;background-position:center"></div>
-              <div class="card-body">
-                <h5 style="margin-bottom:6px">General Health Checkups</h5>
-                <p class="text-muted" style="margin-bottom:10px">Wellness screening, preventive exams and personalised plans for women's health.</p>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="General Health Checkups">Book</button>
-                  <div class="chip">Wellness</div>
-                </div>
+        <div class="services-grid" style="margin-top:18px">
+          <!-- card 1 -->
+          <article class="svc-card" id="svc01">
+            <div class="svc-media" style="background-image:url('assets/services/general-health.jpg')"></div>
+            <div class="svc-body">
+              <h4>General Health Checkups</h4>
+              <p>Wellness screening, preventive exams and personalised plans for women's health.</p>
+              <div class="svc-foot">
+                <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="General Health Checkups">Book</button>
+                <div class="tag">Wellness</div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Card 2 -->
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card card-service">
-              <div class="media" style="background-image:url('assets/services/antenatal.jpg');height:170px;background-size:cover;background-position:center"></div>
-              <div class="card-body">
-                <h5>Antenatal & Pregnancy Care</h5>
-                <p class="text-muted">Routine and high-risk antenatal monitoring, nutrition guidance and personalised birth planning.</p>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="Antenatal & Pregnancy Care">Book</button>
-                  <div class="chip">Pregnancy</div>
-                </div>
+          <!-- card 2 -->
+          <article class="svc-card" id="svc02">
+            <div class="svc-media" style="background-image:url('assets/services/antenatal.jpg')"></div>
+            <div class="svc-body">
+              <h4>Antenatal & Pregnancy Care</h4>
+              <p>Routine and high-risk antenatal monitoring, nutrition guidance and personalised birth planning.</p>
+              <div class="svc-foot">
+                <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="Antenatal & Pregnancy Care">Book</button>
+                <div class="tag">Pregnancy</div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Card 3 -->
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card card-service">
-              <div class="media" style="background-image:url('assets/services/infertility.jpg');height:170px;background-size:cover;background-position:center"></div>
-              <div class="card-body">
-                <h5>Infertility Evaluation & Support</h5>
-                <p class="text-muted">Compassionate fertility evaluation and coordination with specialists.</p>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="Infertility Evaluation & Support">Book</button>
-                  <div class="chip">Fertility</div>
-                </div>
+          <!-- card 3 -->
+          <article class="svc-card" id="svc03">
+            <div class="svc-media" style="background-image:url('assets/services/infertility.jpg')"></div>
+            <div class="svc-body">
+              <h4>Infertility Evaluation & Support</h4>
+              <p>Discrete fertility assessment and coordinated specialist referrals.</p>
+              <div class="svc-foot">
+                <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="Infertility Evaluation & Support">Book</button>
+                <div class="tag">Fertility</div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Card 4 -->
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card card-service">
-              <div class="media" style="background-image:url('assets/services/laparoscopy.jpg');height:170px;background-size:cover;background-position:center"></div>
-              <div class="card-body">
-                <h5>Minimal Invasive (Laparoscopic) Surgery</h5>
-                <p class="text-muted">Keyhole surgery for fibroids, cysts and endometriosis — faster recovery & smaller scars.</p>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="Minimal Invasive (Laparoscopic) Surgery">Book</button>
-                  <div class="chip">Surgery</div>
-                </div>
+          <!-- card 4 -->
+          <article class="svc-card" id="svc04">
+            <div class="svc-media" style="background-image:url('assets/services/laparoscopy.jpg')"></div>
+            <div class="svc-body">
+              <h4>Minimal Invasive (Laparoscopic) Surgery</h4>
+              <p>Keyhole surgery for fibroids, cysts and endometriosis — faster recovery & smaller scars.</p>
+              <div class="svc-foot">
+                <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="Minimal Invasive (Laparoscopic) Surgery">Book</button>
+                <div class="tag">Surgery</div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Card 5 -->
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card card-service">
-              <div class="media" style="background-image:url('assets/services/robotic.jpg');height:170px;background-size:cover;background-position:center"></div>
-              <div class="card-body">
-                <h5>Robotic & Advanced Surgical Care</h5>
-                <p class="text-muted">Precision robotic procedures for select gynecological conditions.</p>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="Robotic & Advanced Surgical Care">Book</button>
-                  <div class="chip">Advanced</div>
-                </div>
+          <!-- card 5 -->
+          <article class="svc-card" id="svc05">
+            <div class="svc-media" style="background-image:url('assets/services/robotic.jpg')"></div>
+            <div class="svc-body">
+              <h4>Robotic & Advanced Surgical Care</h4>
+              <p>Precision robotic procedures for select gynecological conditions.</p>
+              <div class="svc-foot">
+                <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="Robotic & Advanced Surgical Care">Book</button>
+                <div class="tag">Advanced</div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Card 6 -->
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="card card-service">
-              <div class="media" style="background-image:url('assets/services/high-risk.jpg');height:170px;background-size:cover;background-position:center"></div>
-              <div class="card-body">
-                <h5>High-Risk Pregnancy Management</h5>
-                <p class="text-muted">Specialised monitoring and multidisciplinary plans for complex pregnancies.</p>
-                <div class="d-flex align-items-center justify-content-between">
-                  <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="High-Risk Pregnancy Management">Book</button>
-                  <div class="chip">High-risk</div>
-                </div>
+          <!-- card 6 -->
+          <article class="svc-card" id="svc06">
+            <div class="svc-media" style="background-image:url('assets/services/high-risk.jpg')"></div>
+            <div class="svc-body">
+              <h4>High-Risk Pregnancy Management</h4>
+              <p>Specialised monitoring and multidisciplinary plans for complex pregnancies.</p>
+              <div class="svc-foot">
+                <button class="btn-book" data-bs-toggle="modal" data-bs-target="#bookModal" data-service="High-Risk Pregnancy Management">Book</button>
+                <div class="tag">High-risk</div>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Add remaining cards similarly (svc07..svc15) -->
+          <!-- add remaining cards (svc07..svc15) using same structure -->
         </div>
       </div>
     </section>
 
-    <!-- About -->
+    <!-- about -->
     <section id="about" class="section">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-8">
-            <h4 style="font-family:'Playfair Display',serif;color:var(--deep)">About Dr. Vinit Chafekar</h4>
-            <p class="text-muted">MD (Physician), DGO — experienced in obstetrics and gynecology with a patient-first approach. Focus areas: high-risk pregnancy, minimally invasive surgery and newborn coordination.</p>
-            <ul class="text-muted">
+        <div class="about-grid">
+          <div>
+            <h3 class="section-title">About Dr. Vinit Chafekar</h3>
+            <p class="section-desc">MD (Physician), DGO — experienced in obstetrics and gynecology with a patient-first approach. Focus areas include high-risk pregnancy, minimally invasive surgery and newborn coordination.</p>
+            <ul style="color:var(--muted)">
               <li>High-risk pregnancy expertise</li>
               <li>Minimally invasive & robotic support</li>
               <li>Comprehensive newborn coordination</li>
             </ul>
           </div>
-          <div class="col-md-4 text-center">
-            <img src="assets/dr-vinit.jpg" alt="Dr Vinit" style="width:140px;height:140px;border-radius:12px;object-fit:cover;box-shadow:0 12px 30px rgba(7,53,138,0.06)">
-            <div style="margin-top:10px;font-weight:700">Dr. Vinit Chafekar</div>
+
+          <aside style="text-align:center">
+            <img src="assets/dr-vinit.jpg" alt="Dr Vinit" class="profile-photo">
+            <div style="margin-top:12px;font-weight:700">Dr. Vinit Chafekar</div>
             <div style="color:var(--muted)">MD (Physician), DGO</div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- contact -->
     <section id="contact" class="section">
       <div class="container">
-        <h4 style="font-family:'Playfair Display',serif;color:var(--deep)">Contact & Book</h4>
+        <h3 class="section-title">Contact & Book</h3>
+        <div class="section-desc" style="margin-bottom:18px;color:var(--muted)">Use the Book button on any service to request an appointment.</div>
+
         <div class="row">
           <div class="col-md-8">
-            <div class="card" style="border-radius:12px;padding:16px">
+            <div style="border-radius:12px;padding:16px;background:var(--card);box-shadow:0 12px 36px rgba(7,43,102,0.04)">
               <p><strong>Phone:</strong> <a href="tel:+917039196489">+91 7039196489</a></p>
               <p><strong>Email:</strong> <a href="mailto:info@shreevaradmaternity.com">info@shreevaradmaternity.com</a></p>
-              <p class="text-muted">Use the Book button on any service to request an appointment.</p>
             </div>
           </div>
+
           <div class="col-md-4">
-            <div style="border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(7,53,138,0.04)">
-              <iframe title="map" src="https://www.google.com/maps/embed?pb=PLACEHOLDER" style="border:0;width:100%;height:200px" loading="lazy"></iframe>
+            <div style="border-radius:12px;overflow:hidden;box-shadow:0 12px 36px rgba(7,43,102,0.04)">
+              <iframe title="map" src="https://www.google.com/maps/embed?pb=PLACEHOLDER" style="border:0;width:100%;height:220px" loading="lazy"></iframe>
             </div>
           </div>
         </div>
@@ -286,20 +357,20 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
+  <!-- footer -->
+  <footer>
     <div class="container d-flex justify-content-between align-items-center">
       <div>Shree Varad Maternity — Dr. Vinit Chafekar</div>
       <div style="color:var(--muted)">© <span id="year"></span></div>
     </div>
   </footer>
 
-  <!-- WhatsApp floating (duplicate safe) -->
-  <a class="wa-float" href="https://wa.me/917039196489?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" aria-label="WhatsApp">
+  <!-- WhatsApp floater -->
+  <a class="wa" href="https://wa.me/917039196489?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 3.5c-4.9-4.9-12.9-4.9-17.8 0-3.7 3.7-4.5 9.3-2.3 13.8L.3 24l6.1-1.5c4.6 1.9 10.2 1.4 13.9-2.3 4.9-4.9 4.9-12.9 0-17.8z" fill="#25D366"/></svg>
   </a>
 
-  <!-- Booking Modal -->
+  <!-- Booking modal (bootstrap) -->
   <div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <form class="modal-content" id="bookForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeeST1jrxlWgftoUHKq8KtmyXjBPj-F8-bzg5EXlj2lrkSorA/formResponse" method="GET" target="_blank">
@@ -308,9 +379,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <!-- We will prefill the 'service' hidden field via script below -->
           <div class="mb-2">
-            <label class="form-label">Your name</label>
+            <label class="form-label">Name</label>
             <input name="entry.111111111" type="text" class="form-control" placeholder="Your name" required>
           </div>
           <div class="mb-2">
@@ -331,7 +401,7 @@
           </div>
 
           <input type="hidden" name="entry.555555555" id="serviceField" value="">
-          <div class="form-text text-muted">We'll send confirmation via WhatsApp or phone.</div>
+          <div class="form-text text-muted">We'll contact you on WhatsApp/phone to confirm.</div>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Send Request</button>
@@ -340,21 +410,18 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS + small script to prefill modal service -->
+  <!-- bootstrap + script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Prefill service name into hidden input when opening modal
+    // Prefill service when opening modal
     document.addEventListener('click', function(e){
-      const btn = e.target.closest('[data-bs-target="#bookModal"]');
+      const btn = e.target.closest('[data-bs-toggle="modal"][data-bs-target="#bookModal"]');
       if(!btn) return;
-      const service = btn.dataset.service || btn.getAttribute('data-service') || '';
+      const service = btn.dataset.service || '';
       document.getElementById('serviceField').value = service;
-      // Also update modal title for clarity
-      const modalTitle = document.querySelector('#bookModal .modal-title');
-      if(modalTitle) modalTitle.textContent = 'Book — ' + (service || 'Appointment');
+      const title = document.querySelector('#bookModal .modal-title');
+      if(title) title.textContent = 'Book — ' + (service || 'Appointment');
     });
-
-    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
