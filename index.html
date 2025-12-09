@@ -228,7 +228,6 @@
     </nav>
 
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden bg-brand-navy">
-        
         <template x-for="(slide, index) in slides" :key="index">
             <div x-show="currentSlide === index"
                  x-transition:enter="transition transform duration-1000 ease-out"
@@ -245,7 +244,6 @@
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left w-full pt-16">
             <div class="md:w-3/4 lg:w-2/3">
-                
                 <div class="inline-block px-5 py-2 mb-6 border border-brand-gold/30 rounded-full bg-brand-navy/60 backdrop-blur-md shadow-lg" data-aos="fade-down">
                     <span class="text-brand-gold text-sm font-semibold tracking-wider uppercase flex items-center gap-2">
                         <i class="fa-regular fa-clock"></i> <span x-text="greeting + ', Welcome to Shree Varad'"></span>
@@ -253,7 +251,6 @@
                         <span x-text="clinicStatus" :class="statusColor"></span>
                     </span>
                 </div>
-
                 <div class="h-48 md:h-56">
                     <template x-for="(slide, index) in slides" :key="index">
                         <div x-show="currentSlide === index"
@@ -269,7 +266,6 @@
                         </div>
                     </template>
                 </div>
-                
                 <div class="flex flex-col sm:flex-row gap-5 justify-center md:justify-start mt-8" data-aos="fade-up" data-aos-delay="200">
                     <button @click="bookingModalOpen = true; selectedService = 'General Inquiry'" class="px-10 py-4 bg-brand-gold text-brand-navy font-bold rounded-lg shadow-lg shadow-brand-gold/20 hover:bg-white hover:text-brand-navy transition-all transform hover:-translate-y-1">
                         Book Appointment
@@ -296,32 +292,26 @@
                 <div class="md:w-1/2 relative group" data-aos="fade-right">
                     <div class="absolute -top-4 -left-4 w-32 h-32 bg-brand-gold/10 rounded-full z-0 group-hover:scale-110 transition-transform duration-500"></div>
                     <div class="absolute -bottom-4 -right-4 w-48 h-48 bg-brand-navy/5 rounded-full z-0"></div>
-                    
                     <div class="relative z-10 w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                         <img src="assets/doctor.jpg" alt="Dr. Vinit Chafekar" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
                     </div>
-                    
                     <div class="absolute bottom-10 -right-6 bg-brand-navy p-6 shadow-xl rounded-lg border-l-4 border-brand-gold z-20 transform group-hover:translate-x-2 transition-transform">
                         <p class="font-serif text-3xl font-bold text-brand-gold">10+</p>
                         <p class="text-xs text-brand-white uppercase tracking-wider mt-1">Years of<br>Excellence</p>
                     </div>
                 </div>
-
                 <div class="md:w-1/2" data-aos="fade-left">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="h-0.5 w-10 bg-brand-gold"></div>
                         <h4 class="text-brand-gold font-bold uppercase tracking-widest text-sm">Meet the Expert</h4>
                     </div>
-                    
                     <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6">
                         Dr. Vinit Chafekar <br>
                         <span class="text-xl font-sans font-normal text-gray-500 block mt-2">MD (Physician), DGO</span>
                     </h2>
-                    
                     <p class="text-gray-600 mb-6 leading-relaxed text-lg">
                         Dr. Vinit combines advanced medical expertise with a compassionate, patient-first philosophy. Specializing in high-risk pregnancies and minimally invasive procedures, he is dedicated to ensuring the safety and well-being of both mother and child in Kalyan.
                     </p>
-                    
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                         <div class="flex items-center gap-3 p-3 bg-brand-light rounded-lg">
                             <i class="fa-solid fa-baby-carriage text-brand-gold text-xl"></i>
@@ -380,7 +370,7 @@
                              </div>
                          </div>
 
-                         <div class="p-3 bg-white border-t border-gray-200 flex gap-2">
+                         <div class="p-3 bg-white border-t border-gray-200 flex gap-2 relative z-20">
                              <input type="text" id="chat-input" placeholder="Ask a question..." class="flex-1 bg-gray-100 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-gold text-brand-navy">
                              <button onclick="sendMessage()" class="w-10 h-10 bg-brand-navy rounded-full text-brand-gold hover:bg-brand-gold hover:text-brand-navy transition-colors flex items-center justify-center">
                                  <i class="fa-solid fa-paper-plane"></i>
@@ -428,7 +418,7 @@
                     { title: 'Cancer Screening', icon: 'fa-magnifying-glass', bg: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80', desc: 'Pap smears & preventive oncology.', tags: 'Wellness' },
                     { title: 'Midlife & Menopause', icon: 'fa-fan', bg: 'https://images.unsplash.com/photo-1584950969599-733d0279c29f?auto=format&fit=crop&w=600&q=80', desc: 'Expert care for midlife transitions.', tags: 'Wellness' },
                     { title: 'Nutrition & Yoga', icon: 'fa-apple-whole', bg: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80', desc: 'Holistic wellness for maternity & health.', tags: 'Wellness' }
-                ].filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()) || s.desc.toLowerCase().includes(searchQuery.toLowerCase()) || s.tags.toLowerCase().includes(searchQuery.toLowerCase()))" :key="service.title">
+                ]" :key="service.title">
                     
                     <div class="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-gold hover:border-brand-gold/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col"
                          data-aos="fade-up"
@@ -604,7 +594,8 @@
                         <span class="text-brand-white font-serif font-bold text-2xl tracking-wide">Shree Varad</span>
                     </div>
                     <p class="text-sm max-w-xs mx-auto md:mx-0 leading-relaxed mb-6">Premium maternity and gynecological care in Kalyan. Dedicated to the health and joy of every mother and child.</p>
-                    <p class="text-xs text-gray-500">© 2024 Dr. Vinit Chafekar. All rights reserved.</p>
+                    <p class="text-xs text-gray-500">&copy; 2025 Dr. Vinit Chafekar. All rights reserved.</p>
+                    <p class="text-xs text-brand-slate/50 mt-2">Site designed and developed by "WillPro Technologies, Mumbai"</p>
                 </div>
                 
                 <div class="flex flex-col items-center md:items-end gap-4 md:w-1/3">
@@ -706,7 +697,7 @@
 
     <script>
         // PASTE YOUR GEMINI API KEY HERE
-        const GEMINI_API_KEY = AIzaSyAfP3m7SKfM1OfzYL_AEyyfAvAIFvFjtOU; 
+        const GEMINI_API_KEY = 'PASTE_YOUR_GEMINI_API_KEY_HERE'; 
 
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
