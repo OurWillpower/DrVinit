@@ -216,7 +216,7 @@
         </div>
 
         <div x-show="mobileMenuOpen" 
-             class="md:hidden bg-brand-navy border-t border-gray-700 absolute w-full shadow-xl">
+             class="md:hidden bg-brand-navy border-t border-gray-700 absolute w-full shadow-xl z-50">
             <div class="px-4 pt-4 pb-6 space-y-2">
                 <a href="#home" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Home</a>
                 <a href="#services" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Services</a>
@@ -229,6 +229,7 @@
     </nav>
 
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden bg-brand-navy">
+        
         <template x-for="(slide, index) in slides" :key="index">
             <div x-show="currentSlide === index"
                  x-transition:enter="transition transform duration-1000 ease-out"
@@ -243,15 +244,17 @@
             </div>
         </template>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left w-full pt-16">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left w-full pt-20 md:pt-16">
             <div class="md:w-3/4 lg:w-2/3">
+                
                 <div class="inline-block px-5 py-2 mb-6 border border-brand-gold/30 rounded-full bg-brand-navy/60 backdrop-blur-md shadow-lg" data-aos="fade-down">
-                    <span class="text-brand-gold text-sm font-semibold tracking-wider uppercase flex items-center gap-2">
+                    <span class="text-brand-gold text-xs md:text-sm font-semibold tracking-wider uppercase flex items-center gap-2">
                         <i class="fa-regular fa-clock"></i> <span x-text="greeting + ', Welcome to Shree Varad'"></span>
                         <span class="w-1 h-1 bg-white rounded-full mx-1"></span>
                         <span x-text="clinicStatus" :class="statusColor"></span>
                     </span>
                 </div>
+
                 <div class="h-48 md:h-56">
                     <template x-for="(slide, index) in slides" :key="index">
                         <div x-show="currentSlide === index"
@@ -261,17 +264,18 @@
                              x-transition:leave="transition ease-in duration-300"
                              x-transition:leave-start="opacity-100 translate-y-0"
                              x-transition:leave-end="opacity-0 -translate-y-4"
-                             class="absolute">
-                            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 leading-tight drop-shadow-lg" x-text="slide.title"></h1>
-                            <p class="text-brand-slate text-xl md:text-2xl font-light" x-text="slide.subtitle"></p>
+                             class="absolute w-full">
+                            <h1 class="text-3xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 leading-tight drop-shadow-lg" x-text="slide.title"></h1>
+                            <p class="text-brand-slate text-lg md:text-2xl font-light" x-text="slide.subtitle"></p>
                         </div>
                     </template>
                 </div>
+                
                 <div class="flex flex-col sm:flex-row gap-5 justify-center md:justify-start mt-8" data-aos="fade-up" data-aos-delay="200">
-                    <button @click="bookingModalOpen = true; selectedService = 'General Inquiry'" class="px-10 py-4 bg-brand-gold text-brand-navy font-bold rounded-lg shadow-lg shadow-brand-gold/20 hover:bg-white hover:text-brand-navy transition-all transform hover:-translate-y-1">
+                    <button @click="bookingModalOpen = true; selectedService = 'General Inquiry'" class="px-10 py-4 bg-brand-gold text-brand-navy font-bold rounded-lg shadow-lg shadow-brand-gold/20 hover:bg-white hover:text-brand-navy transition-all transform hover:-translate-y-1 w-full sm:w-auto">
                         Book Appointment
                     </button>
-                    <a href="#services" class="px-10 py-4 border border-brand-slate text-brand-white font-semibold rounded-lg hover:bg-white hover:text-brand-navy hover:border-white transition-all">
+                    <a href="#services" class="px-10 py-4 border border-brand-slate text-brand-white font-semibold rounded-lg hover:bg-white hover:text-brand-navy hover:border-white transition-all w-full sm:w-auto text-center">
                         View Specialties
                     </a>
                 </div>
@@ -287,32 +291,38 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-white overflow-hidden">
+    <section id="about" class="py-16 md:py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2 relative group" data-aos="fade-right">
                     <div class="absolute -top-4 -left-4 w-32 h-32 bg-brand-gold/10 rounded-full z-0 group-hover:scale-110 transition-transform duration-500"></div>
                     <div class="absolute -bottom-4 -right-4 w-48 h-48 bg-brand-navy/5 rounded-full z-0"></div>
-                    <div class="relative z-10 w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                    
+                    <div class="relative z-10 w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
                         <img src="assets/doctor.jpg" alt="Dr. Vinit Chafekar" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
                     </div>
+                    
                     <div class="absolute bottom-10 -right-6 bg-brand-navy p-6 shadow-xl rounded-lg border-l-4 border-brand-gold z-20 transform group-hover:translate-x-2 transition-transform">
                         <p class="font-serif text-3xl font-bold text-brand-gold">10+</p>
                         <p class="text-xs text-brand-white uppercase tracking-wider mt-1">Years of<br>Excellence</p>
                     </div>
                 </div>
+
                 <div class="md:w-1/2" data-aos="fade-left">
                     <div class="flex items-center gap-2 mb-4">
                         <div class="h-0.5 w-10 bg-brand-gold"></div>
                         <h4 class="text-brand-gold font-bold uppercase tracking-widest text-sm">Meet the Expert</h4>
                     </div>
+                    
                     <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6">
                         Dr. Vinit Chafekar <br>
                         <span class="text-xl font-sans font-normal text-gray-500 block mt-2">MD (Physician), DGO</span>
                     </h2>
+                    
                     <p class="text-gray-600 mb-6 leading-relaxed text-lg">
                         Dr. Vinit combines advanced medical expertise with a compassionate, patient-first philosophy. Specializing in high-risk pregnancies and minimally invasive procedures, he is dedicated to ensuring the safety and well-being of both mother and child in Kalyan.
                     </p>
+                    
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                         <div class="flex items-center gap-3 p-3 bg-brand-light rounded-lg">
                             <i class="fa-solid fa-baby-carriage text-brand-gold text-xl"></i>
@@ -331,8 +341,8 @@
     <section id="tools" class="py-20 bg-brand-navy text-white relative overflow-hidden" x-data="{ lmp: '', dueDate: 'Select Date', calculate() { if(this.lmp) { let d = new Date(this.lmp); d.setDate(d.getDate() + 280); this.dueDate = d.toDateString(); } } }">
         <div class="absolute inset-0 bg-brand-gold/10 z-0"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-             <div class="flex flex-col md:flex-row items-center justify-between gap-12">
-                 <div class="md:w-1/2" data-aos="fade-right">
+             <div class="flex flex-col md:flex-row items-start justify-between gap-12">
+                 <div class="md:w-1/2 w-full" data-aos="fade-right">
                      <span class="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2 block">Intelligent Care</span>
                      <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6">Smart Pregnancy Calculator</h2>
                      <p class="text-brand-slate text-lg mb-8">Not sure when your baby is arriving? Use our intelligent medical calculator to estimate your delivery date based on your last period.</p>
@@ -348,7 +358,7 @@
                      </div>
                  </div>
                  
-                 <div class="md:w-1/2" data-aos="fade-left" id="ai-chat-container">
+                 <div class="md:w-1/2 w-full" data-aos="fade-left" id="ai-chat-container">
                      <span class="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2 block">AI Medical Librarian</span>
                      <h2 class="text-3xl font-serif font-bold mb-6">Ask about Medical Terms</h2>
                      
@@ -383,7 +393,7 @@
         </div>
     </section>
 
-    <section id="services" class="py-24 bg-brand-light relative">
+    <section id="services" class="py-16 md:py-24 bg-brand-light relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-4">Our Medical Services</h2>
@@ -451,7 +461,7 @@
         </div>
     </section>
 
-    <section id="reviews" class="py-24 bg-white relative overflow-hidden">
+    <section id="reviews" class="py-16 md:py-24 bg-white relative overflow-hidden">
         <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-navy/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
 
@@ -524,7 +534,7 @@
         </div>
     </section>
 
-    <section id="contact" class="py-24 bg-white">
+    <section id="contact" class="py-16 md:py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div data-aos="fade-right">
@@ -571,7 +581,7 @@
                     </div>
                 </div>
                 
-                <div class="h-[500px] bg-gray-100 rounded-2xl overflow-hidden shadow-2xl border-4 border-white relative" data-aos="fade-left">
+                <div class="h-[400px] md:h-[500px] bg-gray-100 rounded-2xl overflow-hidden shadow-2xl border-4 border-white relative" data-aos="fade-left">
                      <iframe 
                         width="100%" 
                         height="100%" 
@@ -586,9 +596,9 @@
         </div>
     </section>
 
-    <footer class="bg-brand-navy text-brand-slate py-16 border-t border-gray-800">
+    <footer class="bg-brand-navy text-brand-slate pt-16 pb-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
                 <div class="text-center md:text-left md:w-1/3">
                     <div class="flex items-center gap-3 justify-center md:justify-start mb-4">
                         <div class="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-navy font-bold font-serif">SV</div>
@@ -596,7 +606,6 @@
                     </div>
                     <p class="text-sm max-w-xs mx-auto md:mx-0 leading-relaxed mb-6">Premium maternity and gynecological care in Kalyan. Dedicated to the health and joy of every mother and child.</p>
                     <p class="text-xs text-gray-500">© 2025 Dr. Vinit Chafekar. All rights reserved.</p>
-                    <p class="text-xs text-brand-slate/50 mt-2">Site designed and developed by "WillPro Technologies, Mumbai"</p>
                 </div>
                 
                 <div class="flex flex-col items-center md:items-end gap-4 md:w-1/3">
@@ -616,6 +625,12 @@
                         </a>
                     </div>
                 </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                 <p class="text-xs text-brand-slate/50 font-bold uppercase tracking-widest">
+                     Site designed and developed by "WillPro Technologies, Mumbai"
+                 </p>
             </div>
         </div>
     </footer>
@@ -755,17 +770,21 @@
                 const data = await response.json();
                 
                 if (data.models) {
-                    // 2. Look for models that support 'generateContent'
-                    const validModel = data.models.find(m => 
-                        m.supportedGenerationMethods.includes("generateContent") &&
-                        (m.name.includes("flash") || m.name.includes("pro")) // Prefer fast/pro models
-                    );
-                    if (validModel) return validModel.name.replace("models/", "");
+                    // 2. Look for 'gemini-1.5-flash' first (fastest), then 'gemini-pro' (stable)
+                    let validModel = data.models.find(m => m.name.includes("gemini-1.5-flash"));
+                    if (!validModel) {
+                         validModel = data.models.find(m => m.name.includes("gemini-pro"));
+                    }
+                    
+                    if (validModel) {
+                        const cleanName = validModel.name.replace("models/", "");
+                        return cleanName;
+                    }
                 }
-                return "gemini-1.5-flash"; // Fallback
+                return "gemini-pro"; // Absolute Fallback
             } catch (e) {
                 console.error("Model discovery failed", e);
-                return "gemini-1.5-flash"; // Fallback
+                return "gemini-pro"; // Absolute Fallback
             }
         }
 
