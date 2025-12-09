@@ -1,18 +1,17 @@
-/* scripts.js — booking prefill, year, small UX (Bottle Green theme) */
+/* scripts.js — stable booking + mobile improvements */
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Set year
+  // Year
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Prefill service name on modal open (listens for Book buttons)
+  // Prefill hidden service field when Book clicked
   document.body.addEventListener('click', function (evt) {
     var btn = evt.target.closest('.btn-book');
     if (!btn) return;
     var service = btn.getAttribute('data-service') || '';
     var svcField = document.getElementById('serviceField');
     if (!svcField) {
-      // create hidden input if missing
       var form = document.querySelector('#bookModal form');
       if (form) {
         var hidden = document.createElement('input');
@@ -25,12 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       svcField.value = service;
     }
-
     // Update modal title
     var title = document.querySelector('#bookModal .modal-title');
     if (title) title.textContent = 'Book — ' + (service || 'Appointment');
 
-    // Focus first field shortly after modal opens
+    // Focus first input after modal shows
     setTimeout(function () {
       var first = document.querySelector('#bookModal input[type="text"], #bookModal input[type="tel"], #bookModal input[type="email"], #bookModal select');
       if (first) first.focus();
