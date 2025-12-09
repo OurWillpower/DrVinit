@@ -1,341 +1,458 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dr. Vinit Chafekar — Shree Varad Maternity</title>
-  <meta name="description" content="Shree Varad Maternity — Dr. Vinit Chafekar. Premium maternity, antenatal, fertility & women's healthcare in Pune. Book online." />
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Theme CSS -->
-  <link rel="stylesheet" href="styles.css">
-  <meta name="theme-color" content="#033120">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Vinit Chafekar | Shree Varad Maternity | Premium Gynaecologist</title>
+    
+    <meta name="description" content="Expert obstetrics, gynecology, and maternity care by Dr. Vinit Chafekar (MD Physician, DGO). Trusted care, modern facilities, and compassionate support at Shree Varad Maternity.">
+    <meta name="keywords" content="Gynecologist, Maternity, Pregnancy Care, Infertility, Dr. Vinit Chafekar, Shree Varad Maternity, Laparoscopic Surgery">
+    <meta name="author" content="Dr. Vinit Chafekar">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ourwillpower.github.io/DrVinit/">
+    <meta property="og:title" content="Dr. Vinit Chafekar | Shree Varad Maternity">
+    <meta property="og:description" content="Clinical excellence for mothers. Warm, evidence-led care you can trust.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Dr.+Vinit+Chafekar">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',       /* Premium Accent */
+                            navy: '#0A192F',       /* Trust/Professional */
+                            teal: '#112240',       /* Secondary Dark */
+                            slate: '#8892b0',      /* Text Muted */
+                            white: '#e6f1ff',      /* Off-white text */
+                            light: '#F8FAFC'       /* Background */
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .glass-dark {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37; 
+            border-radius: 4px;
+        }
+        
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #0A192F, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Physician",
+      "name": "Dr. Vinit Chafekar",
+      "medicalSpecialty": "Obstetrics & Gynecology",
+      "url": "https://ourwillpower.github.io/DrVinit/",
+      "telephone": "+917039196489",
+      "email": "info@shreevaradmaternity.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "India",
+        "addressCountry": "IN"
+      },
+      "priceRange": "$$"
+    }
+    </script>
 </head>
-<body>
+<body class="font-sans bg-brand-light text-gray-800 antialiased" x-data="{ 
+    mobileMenuOpen: false, 
+    searchQuery: '', 
+    bookingModalOpen: false,
+    selectedService: 'General Consultation',
+    greeting: '' 
+}" x-init="
+    const hour = new Date().getHours();
+    if (hour < 12) greeting = 'Good Morning';
+    else if (hour < 18) greeting = 'Good Afternoon';
+    else greeting = 'Good Evening';
+">
 
-  <!-- Floating WhatsApp -->
-  <a class="wa" href="https://wa.me/917039196489?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 3.5c-4.9-4.9-12.9-4.9-17.8 0-3.7 3.7-4.5 9.3-2.3 13.8L.3 24l6.1-1.5c4.6 1.9 10.2 1.4 13.9-2.3 4.9-4.9 4.9-12.9 0-17.8z" fill="#fff"/></svg>
-  </a>
+    <nav class="fixed w-full z-50 glass-dark transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center text-brand-navy font-bold font-serif text-xl">SV</div>
+                    <div class="flex flex-col">
+                        <span class="text-brand-white font-serif font-bold text-lg tracking-wide">Shree Varad</span>
+                        <span class="text-brand-gold text-xs uppercase tracking-widest">Maternity & Nursing</span>
+                    </div>
+                </div>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container d-flex align-items-center justify-content-between py-3">
-      <div class="d-flex align-items-center gap-3">
-        <div class="brand-mark" aria-hidden="true">SV</div>
-        <div>
-          <div class="brand-title">Shree Varad Maternity</div>
-          <div class="brand-sub">Dr. Vinit Chafekar, MD — Physician &amp; DGO</div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider">Home</a>
+                    <a href="#services" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider">Services</a>
+                    <a href="#about" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider">About</a>
+                    <a href="#contact" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider">Contact</a>
+                    <a href="tel:+917039196489" class="bg-brand-gold text-brand-navy px-6 py-2 rounded-full font-bold hover:bg-white transition-all shadow-lg transform hover:scale-105">
+                        <i class="fa-solid fa-phone mr-2"></i> +91 7039196489
+                    </a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-gold hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <nav class="d-none d-md-flex gap-3 align-items-center">
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#contact" class="nav-link">Contact</a>
-        <a class="phone-link" href="tel:+917039196489">📞 +91 7039196489</a>
-      </nav>
+        <div x-show="mobileMenuOpen" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-2"
+             class="md:hidden bg-brand-navy border-t border-gray-700 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" @click="mobileMenuOpen = false" class="block px-3 py-2 text-brand-white hover:text-brand-gold">Home</a>
+                <a href="#services" @click="mobileMenuOpen = false" class="block px-3 py-2 text-brand-white hover:text-brand-gold">Services</a>
+                <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-2 text-brand-white hover:text-brand-gold">About</a>
+                <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-2 text-brand-white hover:text-brand-gold">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-      <div class="d-md-none">
-        <a class="phone-link" href="tel:+917039196489">📞</a>
-      </div>
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Medical Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy/60"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left w-full">
+            <div class="md:w-2/3" data-aos="fade-up" data-aos-duration="1000">
+                <div class="inline-block px-4 py-1 mb-4 border border-brand-gold/30 rounded-full bg-brand-navy/50 backdrop-blur-sm">
+                    <span class="text-brand-gold text-sm font-semibold tracking-wider uppercase" x-text="greeting + ', Welcome to Shree Varad'"></span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+                    Clinical Excellence <br>
+                    <span class="text-brand-gold">For Mothers & Women.</span>
+                </h1>
+                <p class="text-brand-slate text-lg md:text-xl mb-8 max-w-2xl font-light">
+                    Personalised antenatal programmes, safe deliveries, fertility support and advanced gynecology — delivered with empathy and clinical rigour by <strong class="text-white">Dr. Vinit Chafekar</strong>.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <button @click="bookingModalOpen = true; selectedService = 'General Inquiry'" class="px-8 py-4 bg-brand-gold text-brand-navy font-bold rounded shadow-lg hover:shadow-brand-gold/50 transition-all transform hover:-translate-y-1">
+                        Book Appointment
+                    </button>
+                    <a href="#services" class="px-8 py-4 border border-white text-white font-semibold rounded hover:bg-white hover:text-brand-navy transition-all">
+                        Explore Services
+                    </a>
+                </div>
+                
+                <div class="mt-12 flex gap-8 items-center justify-center md:justify-start text-brand-slate text-sm">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-user-doctor text-brand-gold"></i>
+                        <span>MD Physician</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-hospital text-brand-gold"></i>
+                        <span>Modern Facility</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-heart-pulse text-brand-gold"></i>
+                        <span>Ethical Care</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 relative" data-aos="fade-right">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand-gold/20 rounded-full z-0"></div>
+                    <div class="relative z-10 w-full h-96 bg-gray-200 rounded-lg overflow-hidden shadow-2xl">
+                         <div class="w-full h-full flex items-center justify-center bg-brand-navy text-brand-gold">
+                            <div class="text-center">
+                                <i class="fa-solid fa-user-md text-6xl mb-4"></i>
+                                <p>Dr. Vinit Chafekar</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 shadow-xl rounded-lg border-l-4 border-brand-gold z-20">
+                        <p class="font-serif text-2xl font-bold text-brand-navy">10+</p>
+                        <p class="text-sm text-gray-500 uppercase tracking-wide">Years Experience</p>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <h4 class="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2">Meet the Expert</h4>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-6">Dr. Vinit Chafekar <span class="text-lg font-sans font-normal text-gray-500 block mt-1">MD (Physician), DGO</span></h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        An experienced practitioner in obstetrics and gynecology with a patient-first approach. Dr. Chafekar focuses on high-risk pregnancy management, minimally invasive surgery, and comprehensive neonatal coordination.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i class="fa-solid fa-check-circle text-brand-gold"></i> High-risk pregnancy expertise
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i class="fa-solid fa-check-circle text-brand-gold"></i> Minimally invasive & robotic support
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i class="fa-solid fa-check-circle text-brand-gold"></i> Comprehensive newborn coordination
+                        </li>
+                    </ul>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Sig_Dr._Vinit.png" alt="Signature" class="h-12 opacity-50 hidden"> </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-brand-light relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-4">Our Medical Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-8">Comprehensive spectrum of obstetrics, gynecology, newborn and wellness care.</p>
+                
+                <div class="relative max-w-md mx-auto">
+                    <input type="text" x-model="searchQuery" placeholder="Search services (e.g., Surgery, Pregnancy)..." 
+                           class="w-full px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold shadow-sm transition-all">
+                    <i class="fa-solid fa-search absolute right-5 top-3.5 text-gray-400"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="service in [
+                    { title: 'General Health Checkups', icon: 'fa-user-nurse', desc: 'Wellness screening, preventive exams and personalised plans for womens health.' },
+                    { title: 'Antenatal & Pregnancy', icon: 'fa-baby-carriage', desc: 'Routine and high-risk antenatal monitoring, nutrition guidance and birth planning.' },
+                    { title: 'Infertility Evaluation', icon: 'fa-seedling', desc: 'Compassionate fertility evaluation and support; referrals to specialists where required.' },
+                    { title: 'Laparoscopic Surgery', icon: 'fa-microscope', desc: 'Keyhole surgery for fibroids, cysts and endometriosis — faster recovery & smaller scars.' },
+                    { title: 'Robotic Surgery', icon: 'fa-robot', desc: 'Precision robotic procedures for select gynecological conditions.' },
+                    { title: 'High-Risk Pregnancy', icon: 'fa-heartbeat', desc: 'Specialised monitoring and multidisciplinary plans for complex pregnancies.' },
+                    { title: 'Preconception Counselling', icon: 'fa-comments', desc: 'Optimising health before pregnancy — tests, supplements and risk assessment.' },
+                    { title: 'Postnatal & Newborn', icon: 'fa-hands-holding-child', desc: 'Breastfeeding support, newborn checks and post-partum recovery guidance.' },
+                    { title: 'PCOS Management', icon: 'fa-venus', desc: 'Diagnosis and long-term management of irregular periods, PCOS and hormonal issues.' }
+                ].filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()) || s.desc.toLowerCase().includes(searchQuery.toLowerCase()))" :key="service.title">
+                    
+                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-8 border-t-4 border-transparent hover:border-brand-gold group cursor-pointer" 
+                         data-aos="fade-up"
+                         @click="bookingModalOpen = true; selectedService = service.title">
+                        <div class="w-14 h-14 bg-brand-light rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300">
+                            <i :class="service.icon" class="text-2xl text-brand-navy group-hover:text-brand-gold transition-colors duration-300 font-awesome"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors" x-text="service.title"></h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4" x-text="service.desc"></p>
+                        <span class="text-brand-gold text-sm font-bold flex items-center gap-2">
+                            Book Now <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </span>
+                    </div>
+                </template>
+            </div>
+            
+            <p x-show="!$el.querySelector('.grid').children.length" class="text-center text-gray-500 mt-8">No services found matching your search.</p>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand-navy relative bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+        <div class="absolute inset-0 bg-brand-navy/90"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-6">Ready to prioritize your health?</h2>
+            <p class="text-brand-slate text-lg mb-8">We are available on WhatsApp and Phone to answer your queries and confirm appointments.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/917039196489" class="bg-[#25D366] text-white px-8 py-3 rounded-full font-bold hover:bg-[#128C7E] transition-colors flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Chat on WhatsApp
+                </a>
+                <button @click="bookingModalOpen = true" class="bg-brand-gold text-brand-navy px-8 py-3 rounded-full font-bold hover:bg-white transition-colors">
+                    Request Appointment
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl font-serif font-bold text-brand-navy mb-6">Contact & Visit</h2>
+                    <p class="text-gray-600 mb-8">Visit us for a consultation. We prioritize comfort, hygiene, and timely care for all our patients.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-brand-light rounded flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy">Phone</h4>
+                                <a href="tel:+917039196489" class="text-gray-600 hover:text-brand-gold transition-colors">+91 7039196489</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-brand-light rounded flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy">Email</h4>
+                                <a href="mailto:info@shreevaradmaternity.com" class="text-gray-600 hover:text-brand-gold transition-colors">info@shreevaradmaternity.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-brand-light rounded flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-navy">Clinic Address</h4>
+                                <p class="text-gray-600">Shree Varad Maternity<br>Near Station, Dombivli East,<br>Maharashtra, India 421201</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 rounded-xl overflow-hidden shadow-inner h-80 md:h-full min-h-[300px] flex items-center justify-center" data-aos="fade-left">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.8643248386!2d73.0768!3d19.2156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDEyJzU2LjIiTiA3M8KwMDQnMzYuNSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-navy text-brand-slate py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="text-brand-white font-serif font-bold text-xl tracking-wide">Shree Varad</span>
+                <p class="text-sm mt-2">&copy; 2024 Dr. Vinit Chafekar. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-facebook text-xl"></i></a>
+                <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div x-show="bookingModalOpen" 
+         class="fixed inset-0 z-[60] overflow-y-auto" 
+         aria-labelledby="modal-title" role="dialog" aria-modal="true" style="display: none;">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div x-show="bookingModalOpen" 
+                 x-transition:enter="ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" 
+                 @click="bookingModalOpen = false"
+                 aria-hidden="true"></div>
+
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <div x-show="bookingModalOpen"
+                 x-transition:enter="ease-out duration-300"
+                 x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                 x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                 x-transition:leave="ease-in duration-200"
+                 x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                 x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                 class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
+                
+                <div class="bg-brand-navy px-4 py-3 sm:px-6 flex justify-between items-center">
+                    <h3 class="text-lg leading-6 font-medium text-white font-serif" id="modal-title">
+                        Book Appointment
+                    </h3>
+                    <button @click="bookingModalOpen = false" class="text-gray-400 hover:text-white">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <p class="text-sm text-gray-500 mb-4">
+                        Requesting appointment for: <strong class="text-brand-navy" x-text="selectedService"></strong>
+                    </p>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Your Name</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-brand-gold" id="name" type="text" placeholder="Jane Doe">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">Phone Number</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-brand-gold" id="phone" type="tel" placeholder="+91 9876543210">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Visit Type</label>
+                            <div class="flex gap-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" class="form-radio text-brand-gold" name="visitType" value="first" checked>
+                                    <span class="ml-2">First Visit</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" class="form-radio text-brand-gold" name="visitType" value="repeat">
+                                    <span class="ml-2">Follow up</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <a href="https://wa.me/917039196489" target="_blank" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-brand-gold text-base font-medium text-brand-navy hover:bg-yellow-500 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                        Send via WhatsApp
+                    </a>
+                    <button @click="bookingModalOpen = false" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <!-- Hero -->
-  <main>
-    <section class="hero">
-      <div class="hero-figure" role="img" aria-label="Premium green & gold hero"></div>
-
-      <div class="hero-overlay container">
-        <div class="hero-content">
-          <div class="hero-copy">
-            <div class="eyebrow">Trusted care · Modern facilities · Compassionate teams</div>
-            <h1 class="hero-title">Clinical excellence for mothers.<br><small>Warm, evidence-led care you can trust.</small></h1>
-            <div class="gold-underline" aria-hidden="true"></div>
-            <p class="lead">Personalised antenatal programmes, safe deliveries, fertility support and advanced gynecology — delivered with empathy and clinical rigour.</p>
-
-            <div class="hero-cta">
-              <a href="#services" class="btn btn-hero">Explore Services</a>
-              <a href="mailto:info@shreevaradmaternity.com" class="btn btn-ghost">Contact Clinic</a>
-            </div>
-
-            <ul class="hero-features">
-              <li>Minimally invasive surgery</li>
-              <li>High-risk pregnancy expertise</li>
-              <li>Neonatal coordination</li>
-            </ul>
-          </div>
-
-          <!-- HERO CARD (flows below on narrow screens) -->
-          <aside class="hero-card" aria-hidden="true">
-            <div class="portrait-ring">
-              <div class="portrait-initials">VC</div>
-            </div>
-            <div class="hero-meta">
-              <div class="meta-name">Dr. Vinit Chafekar</div>
-              <div class="meta-role">MD (Physician), DGO</div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services (12 restored) -->
-    <section id="services" class="section container">
-      <div class="d-flex align-items-start justify-content-between mb-3">
-        <div>
-          <h2 class="section-title">Our Services</h2>
-          <p class="section-desc">A comprehensive spectrum of obstetrics, gynecology, newborn and wellness care. Click Book to request an appointment.</p>
-        </div>
-      </div>
-
-      <div class="services-grid">
-        <!-- 01 -->
-        <article class="svc-card" id="svc01">
-          <div class="svc-visual" role="img" aria-label="General Health placeholder"></div>
-          <div class="svc-body">
-            <h3>General Health Checkups</h3>
-            <p class="muted">Wellness screening, preventive exams and personalised plans for women's health.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="General Health Checkups" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Wellness</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 02 -->
-        <article class="svc-card" id="svc02">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Antenatal &amp; Pregnancy Care</h3>
-            <p class="muted">Routine and high-risk antenatal monitoring, nutrition guidance and personalised birth planning.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Antenatal & Pregnancy Care" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Pregnancy</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 03 -->
-        <article class="svc-card" id="svc03">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Infertility Evaluation &amp; Support</h3>
-            <p class="muted">Compassionate fertility evaluation and support; referrals to specialists where required.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Infertility Evaluation & Support" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Fertility</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 04 -->
-        <article class="svc-card" id="svc04">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Minimal Invasive (Laparoscopic) Surgery</h3>
-            <p class="muted">Keyhole surgery for fibroids, cysts and endometriosis — faster recovery &amp; smaller scars.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Minimal Invasive (Laparoscopic) Surgery" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Surgery</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 05 -->
-        <article class="svc-card" id="svc05">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Robotic &amp; Advanced Surgical Care</h3>
-            <p class="muted">Precision robotic procedures for select gynecological conditions.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Robotic & Advanced Surgical Care" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Advanced</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 06 -->
-        <article class="svc-card" id="svc06">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>High-Risk Pregnancy Management</h3>
-            <p class="muted">Specialised monitoring and multidisciplinary plans for complex pregnancies.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="High-Risk Pregnancy Management" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">High-risk</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 07 -->
-        <article class="svc-card" id="svc07">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Preconception Counselling</h3>
-            <p class="muted">Optimising health before pregnancy — tests, supplements and risk assessment.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Preconception Counselling" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Counselling</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 08 -->
-        <article class="svc-card" id="svc08">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Postnatal & Newborn Care</h3>
-            <p class="muted">Breastfeeding support, newborn checks and post-partum recovery guidance.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Postnatal & Newborn Care" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Newborn</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 09 -->
-        <article class="svc-card" id="svc09">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Menstrual & PCOS Management</h3>
-            <p class="muted">Diagnosis and long-term management of irregular periods, PCOS and hormonal issues.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Menstrual & PCOS Management" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Hormone</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 10 -->
-        <article class="svc-card" id="svc10">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Fibroid & Uterine Health</h3>
-            <p class="muted">Investigation and treatment options for fibroids, heavy bleeding and uterine pathology.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Fibroid & Uterine Health" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Uterus</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 11 -->
-        <article class="svc-card" id="svc11">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Contraception & Family Planning</h3>
-            <p class="muted">Counselling on modern contraception options, IUDs and planning pregnancy spacing.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Contraception & Family Planning" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Family</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 12 -->
-        <article class="svc-card" id="svc12">
-          <div class="svc-visual"></div>
-          <div class="svc-body">
-            <h3>Menopause & Midlife Care</h3>
-            <p class="muted">Holistic midlife care, symptom management and preventive health screening.</p>
-            <div class="svc-foot">
-              <button class="btn-book" data-service="Menopause & Midlife Care" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
-              <div class="tag">Midlife</div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section container">
-      <div class="about-grid">
-        <div>
-          <h2 class="section-title">About Dr. Vinit Chafekar</h2>
-          <p class="section-desc muted">MD (Physician), DGO — experienced in obstetrics and gynecology with a patient-first approach. Focus: high-risk pregnancy, minimally invasive surgery and neonatal coordination.</p>
-          <ul class="muted">
-            <li>High-risk pregnancy expertise</li>
-            <li>Minimally invasive &amp; robotic support</li>
-            <li>Comprehensive newborn coordination</li>
-          </ul>
-        </div>
-
-        <aside class="profile-card">
-          <div class="profile-photo"><span>VC</span></div>
-          <div class="profile-meta">
-            <div class="profile-name">Dr. Vinit Chafekar</div>
-            <div class="profile-role muted">MD (Physician), DGO</div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section container">
-      <h2 class="section-title">Contact &amp; Book</h2>
-      <p class="section-desc muted">Use the Book button on any service to request an appointment. We will contact you on WhatsApp/phone to confirm.</p>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <p><strong>Phone:</strong> <a href="tel:+917039196489">+91 7039196489</a></p>
-          <p><strong>Email:</strong> <a href="mailto:info@shreevaradmaternity.com">info@shreevaradmaternity.com</a></p>
-        </div>
-
-        <div class="map-card">
-          <div class="map-placeholder muted">Clinic address &amp; map (embed later)</div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container d-flex justify-content-between align-items-center py-3">
-      <div>Shree Varad Maternity — Dr. Vinit Chafekar</div>
-      <div class="muted">© <span id="year"></span></div>
-    </div>
-  </footer>
-
-  <!-- Booking Modal (Google Form) -->
-  <div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <form id="bookForm" class="modal-content" action="https://docs.google.com/forms/d/e/1FAIpQLSeeST1jrxlWgftoUHKq8KtmyXjBPj-F8-bzg5EXlj2lrkSorA/formResponse" method="GET" target="_blank">
-        <div class="modal-header">
-          <h5 class="modal-title">Book Appointment</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <label class="form-label">Your name</label>
-          <input name="entry.111111111" type="text" class="form-control mb-2" placeholder="Name" required>
-
-          <label class="form-label">Phone</label>
-          <input name="entry.222222222" type="tel" class="form-control mb-2" placeholder="+91 9XXXXXXXXX" required>
-
-          <label class="form-label">Email (optional)</label>
-          <input name="entry.333333333" type="email" class="form-control mb-2" placeholder="you@example.com">
-
-          <label class="form-label">First time or Repeat visit?</label>
-          <select name="entry.444444444" class="form-select mb-2" required>
-            <option>First time visit</option>
-            <option>Repeat visit</option>
-          </select>
-
-          <input type="hidden" name="entry.555555555" id="serviceField" value="">
-          <div class="form-text muted">We will contact you on WhatsApp or phone to confirm the appointment.</div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Send request</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Theme JS -->
-  <script src="scripts.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+    </script>
 </body>
 </html>
