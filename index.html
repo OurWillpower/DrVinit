@@ -6,7 +6,7 @@
     <title>Dr. Vinit Chafekar | Shree Varad Maternity | Premium Gynaecologist Kalyan</title>
     
     <meta name="description" content="Expert obstetrics, gynecology, and maternity care by Dr. Vinit Chafekar (MD Physician, DGO). Trusted care at Shree Varad Maternity, Kalyan.">
-    <meta name="keywords" content="Gynecologist Kalyan, Maternity Hospital Kalyan, High Risk Pregnancy, Laparoscopic Surgery, Due Date Calculator, Dr. Vinit Chafekar">
+    <meta name="keywords" content="Gynecologist Kalyan, Maternity Hospital Kalyan, High Risk Pregnancy, Laparoscopic Surgery, Infertility Treatment, Dr. Vinit Chafekar">
     <meta name="author" content="Dr. Vinit Chafekar">
     
     <meta property="og:type" content="website">
@@ -48,6 +48,7 @@
                     },
                     boxShadow: {
                         'gold': '0 10px 40px -10px rgba(212, 175, 55, 0.3)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
                     }
                 }
             }
@@ -64,6 +65,13 @@
         
         .hero-overlay {
             background: linear-gradient(to right, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.7) 50%, rgba(10, 25, 47, 0.4) 100%);
+        }
+
+        /* Glass Card Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
         /* Custom Scrollbar */
@@ -255,17 +263,6 @@
                         View Specialties
                     </a>
                 </div>
-                
-                <div class="mt-14 flex flex-wrap gap-8 items-center justify-center md:justify-start text-brand-slate text-sm">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-teal flex items-center justify-center text-brand-gold"><i class="fa-solid fa-user-doctor"></i></div>
-                        <span>MD Physician</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-teal flex items-center justify-center text-brand-gold"><i class="fa-solid fa-hospital"></i></div>
-                        <span>Kalyan's Trusted</span>
-                    </div>
-                </div>
             </div>
         </div>
         
@@ -319,14 +316,6 @@
                             <i class="fa-solid fa-microscope text-brand-gold text-xl"></i>
                             <span class="text-brand-navy font-semibold">Laparoscopic Surgery</span>
                         </div>
-                        <div class="flex items-center gap-3 p-3 bg-brand-light rounded-lg">
-                            <i class="fa-solid fa-hands-holding-child text-brand-gold text-xl"></i>
-                            <span class="text-brand-navy font-semibold">Newborn Care</span>
-                        </div>
-                        <div class="flex items-center gap-3 p-3 bg-brand-light rounded-lg">
-                            <i class="fa-solid fa-user-check text-brand-gold text-xl"></i>
-                            <span class="text-brand-navy font-semibold">Fertility Solutions</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -357,9 +346,6 @@
                          <div class="w-72 h-72 bg-brand-navy rounded-full flex items-center justify-center">
                              <i class="fa-solid fa-baby text-9xl text-white"></i>
                          </div>
-                         <div class="absolute -top-4 -right-10 bg-white text-brand-navy px-6 py-3 rounded-lg shadow-xl font-bold">
-                             <i class="fa-solid fa-check-circle text-green-500 mr-2"></i> Clinical Accuracy
-                         </div>
                      </div>
                  </div>
              </div>
@@ -370,8 +356,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-4">Our Medical Services</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">Comprehensive spectrum of 16 specialised medical services for women and children.</p>
                 
+                <div class="flex flex-wrap justify-center gap-3 mb-8">
+                    <button @click="searchQuery = ''" class="px-4 py-2 rounded-full text-sm font-bold border border-brand-navy transition-colors hover:bg-brand-navy hover:text-white" :class="searchQuery === '' ? 'bg-brand-navy text-white' : 'text-brand-navy'">All</button>
+                    <button @click="searchQuery = 'Pregnancy'" class="px-4 py-2 rounded-full text-sm font-bold border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors">Pregnancy</button>
+                    <button @click="searchQuery = 'Surgery'" class="px-4 py-2 rounded-full text-sm font-bold border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors">Surgery</button>
+                    <button @click="searchQuery = 'Wellness'" class="px-4 py-2 rounded-full text-sm font-bold border border-brand-navy text-brand-navy hover:bg-brand-navy hover:text-white transition-colors">Wellness</button>
+                </div>
+
                 <div class="relative max-w-lg mx-auto group">
                     <input type="text" x-model="searchQuery" placeholder="Search services..." 
                            class="w-full px-8 py-4 rounded-full border-2 border-gray-200 focus:outline-none focus:border-brand-gold focus:ring-0 shadow-sm transition-all text-lg group-hover:shadow-md">
@@ -383,45 +375,46 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <template x-for="service in [
-                    { title: 'General Checkups', icon: 'fa-user-nurse', bg: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&w=500&q=60', desc: 'Wellness screening & preventive exams.' },
-                    { title: 'Antenatal Care', icon: 'fa-baby-carriage', bg: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-1.2.1&w=500&q=60', desc: 'Routine & high-risk pregnancy monitoring.' },
-                    { title: 'Infertility Support', icon: 'fa-seedling', bg: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-1.2.1&w=500&q=60', desc: 'Compassionate fertility evaluation & care.' },
-                    { title: 'Laparoscopy', icon: 'fa-microscope', bg: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-1.2.1&w=500&q=60', desc: 'Keyhole surgery for faster recovery.' },
-                    { title: 'Robotic Surgery', icon: 'fa-robot', bg: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-1.2.1&w=500&q=60', desc: 'Precision procedures for complex cases.' },
-                    { title: 'High-Risk Pregnancy', icon: 'fa-heartbeat', bg: 'https://images.unsplash.com/photo-1537673156864-5d2572d09adf?ixlib=rb-1.2.1&w=500&q=60', desc: 'Specialised monitoring for mother & baby.' },
-                    { title: 'Pre-Conception', icon: 'fa-comments', bg: 'https://images.unsplash.com/photo-1590611936760-eeb9f5922d19?ixlib=rb-1.2.1&w=500&q=60', desc: 'Optimising health before pregnancy starts.' },
-                    { title: 'Postnatal Care', icon: 'fa-hands-holding-child', bg: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-1.2.1&w=500&q=60', desc: 'Breastfeeding & recovery support.' },
-                    { title: 'PCOS Management', icon: 'fa-venus', bg: 'https://images.unsplash.com/photo-1606165592048-9f37c68832a8?ixlib=rb-1.2.1&w=500&q=60', desc: 'Hormonal balance & long-term care.' },
-                    { title: 'Menopause Clinic', icon: 'fa-fan', bg: 'https://images.unsplash.com/photo-1544367563-12123d8975bd?ixlib=rb-1.2.1&w=500&q=60', desc: 'Expert care for midlife transitions.' },
-                    { title: 'Cancer Screening', icon: 'fa-ribbon', bg: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&w=500&q=60', desc: 'Pap smears & preventive oncology.' },
-                    { title: 'Adolescent Health', icon: 'fa-child-reaching', bg: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&w=500&q=60', desc: 'Puberty, periods & teen hygiene guidance.' },
-                    { title: 'Family Planning', icon: 'fa-people-roof', bg: 'https://images.unsplash.com/photo-1476703993599-0035a21b17a9?ixlib=rb-1.2.1&w=500&q=60', desc: 'Contraception counselling & IUD insertion.' },
-                    { title: 'Ultrasound Scan', icon: 'fa-wifi', bg: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&w=500&q=60', desc: 'Advanced fetal & pelvic imaging.' },
-                    { title: 'Breast Health', icon: 'fa-hand-holding-heart', bg: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&w=500&q=60', desc: 'Examination for lumps & mastitis care.' },
-                    { title: 'Nutrition & Yoga', icon: 'fa-apple-whole', bg: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&w=500&q=60', desc: 'Holistic wellness for maternity & health.' }
-                ].filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()) || s.desc.toLowerCase().includes(searchQuery.toLowerCase()))" :key="service.title">
+                    { title: 'General Checkups', icon: 'fa-user-nurse', bg: 'https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=600&q=80', desc: 'Wellness screening & preventive exams.', tags: 'Wellness' },
+                    { title: 'Antenatal Care', icon: 'fa-baby-carriage', bg: 'https://images.unsplash.com/photo-1537673156864-5d2572d09adf?auto=format&fit=crop&w=600&q=80', desc: 'Routine & high-risk pregnancy monitoring.', tags: 'Pregnancy' },
+                    { title: 'Infertility Support', icon: 'fa-seedling', bg: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=600&q=80', desc: 'Compassionate fertility evaluation & care.', tags: 'Wellness' },
+                    { title: 'Laparoscopy', icon: 'fa-microscope', bg: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=600&q=80', desc: 'Keyhole surgery for faster recovery.', tags: 'Surgery' },
+                    { title: 'Robotic Surgery', icon: 'fa-robot', bg: 'https://images.unsplash.com/photo-1516574187841-693083f69802?auto=format&fit=crop&w=600&q=80', desc: 'Precision procedures for complex cases.', tags: 'Surgery' },
+                    { title: 'High-Risk Pregnancy', icon: 'fa-heartbeat', bg: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=600&q=80', desc: 'Specialised monitoring for mother & baby.', tags: 'Pregnancy' },
+                    { title: 'Pre-Conception', icon: 'fa-comments', bg: 'https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=600&q=80', desc: 'Optimising health before pregnancy starts.', tags: 'Pregnancy' },
+                    { title: 'Postnatal Care', icon: 'fa-hands-holding-child', bg: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=600&q=80', desc: 'Breastfeeding & recovery support.', tags: 'Pregnancy' },
+                    { title: 'PCOS Management', icon: 'fa-venus', bg: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&q=80', desc: 'Hormonal balance & long-term care.', tags: 'Wellness' },
+                    { title: 'Menopause Clinic', icon: 'fa-fan', bg: 'https://images.unsplash.com/photo-1544367563-12123d8975bd?auto=format&fit=crop&w=600&q=80', desc: 'Expert care for midlife transitions.', tags: 'Wellness' },
+                    { title: 'Cancer Screening', icon: 'fa-ribbon', bg: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=80', desc: 'Pap smears & preventive oncology.', tags: 'Wellness' },
+                    { title: 'Adolescent Health', icon: 'fa-child-reaching', bg: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80', desc: 'Puberty, periods & teen hygiene guidance.', tags: 'Wellness' },
+                    { title: 'Family Planning', icon: 'fa-people-roof', bg: 'https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?auto=format&fit=crop&w=600&q=80', desc: 'Contraception counselling & IUD insertion.', tags: 'Wellness' },
+                    { title: 'Ultrasound Scan', icon: 'fa-wifi', bg: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=600&q=80', desc: 'Advanced fetal & pelvic imaging.', tags: 'Pregnancy' },
+                    { title: 'Breast Health', icon: 'fa-hand-holding-heart', bg: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80', desc: 'Examination for lumps & mastitis care.', tags: 'Wellness' },
+                    { title: 'Nutrition & Yoga', icon: 'fa-apple-whole', bg: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80', desc: 'Holistic wellness for maternity & health.', tags: 'Wellness' }
+                ].filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()) || s.desc.toLowerCase().includes(searchQuery.toLowerCase()) || s.tags.toLowerCase().includes(searchQuery.toLowerCase()))" :key="service.title">
                     
-                    <div class="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-gold hover:border-brand-gold/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col"
+                    <div class="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-gold transition-all duration-500 hover:-translate-y-2 cursor-pointer h-64"
                          data-aos="fade-up"
                          @click="bookingModalOpen = true; selectedService = service.title">
                         
-                        <div class="absolute inset-0 opacity-15 group-hover:opacity-25 transition-opacity duration-700 z-0 bg-brand-navy mix-blend-overlay"></div>
-                        <div class="absolute inset-0 opacity-15 group-hover:opacity-25 transition-opacity duration-700 z-0">
-                            <img :src="service.bg" class="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[2000ms] filter grayscale hover:grayscale-0">
+                        <div class="absolute inset-0 z-0">
+                            <img :src="service.bg" class="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/60 to-transparent opacity-80 group-hover:opacity-70 transition-opacity"></div>
                         </div>
 
-                        <div class="relative z-10 flex flex-col h-full text-center items-center">
-                            <div class="w-14 h-14 bg-brand-light/90 backdrop-blur rounded-2xl flex items-center justify-center mb-4 text-brand-navy text-2xl group-hover:bg-brand-navy group-hover:text-brand-gold transition-colors duration-300 shadow-sm group-hover:scale-110 transform">
-                                <i :class="service.icon" class="fa-solid"></i>
+                        <div class="relative z-10 flex flex-col h-full p-6 text-white justify-end">
+                            <div class="mb-auto transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                <div class="w-12 h-12 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center mb-3 text-brand-gold text-xl">
+                                    <i :class="service.icon" class="fa-solid"></i>
+                                </div>
                             </div>
                             
-                            <h3 class="text-lg font-serif font-bold text-brand-navy mb-2 group-hover:text-brand-gold transition-colors" x-text="service.title"></h3>
-                            <p class="text-gray-600 text-xs leading-relaxed mb-6 flex-grow font-medium" x-text="service.desc"></p>
+                            <h3 class="text-xl font-serif font-bold text-white mb-1 group-hover:text-brand-gold transition-colors" x-text="service.title"></h3>
+                            <p class="text-gray-200 text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 h-0 group-hover:h-auto" x-text="service.desc"></p>
                             
-                            <div class="mt-auto w-full">
-                                <button class="w-full py-2 rounded-lg border border-brand-navy/20 font-bold text-[10px] uppercase tracking-widest text-brand-navy group-hover:bg-brand-navy group-hover:text-brand-gold group-hover:border-brand-navy transition-all duration-300 flex items-center justify-center gap-2 bg-white/50 backdrop-blur-sm">
-                                    Book <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all"></i>
-                                </button>
+                            <div class="mt-3 flex items-center text-brand-gold text-xs font-bold uppercase tracking-widest gap-2 opacity-80 group-hover:opacity-100">
+                                <span>Book Now</span>
+                                <i class="fa-solid fa-arrow-right"></i>
                             </div>
                         </div>
                     </div>
