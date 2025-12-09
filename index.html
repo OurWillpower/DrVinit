@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://ourwillpower.github.io/DrVinit/">
     <meta property="og:title" content="Dr. Vinit Chafekar | Shree Varad Maternity">
     <meta property="og:description" content="Clinical excellence for mothers. Warm, evidence-led care you can trust.">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Dr.+Vinit+Chafekar">
+    <meta property="og:image" content="https://ourwillpower.github.io/DrVinit/assets/doctor.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,8 @@
                             teal: '#112240',       /* Secondary Dark */
                             slate: '#8892b0',      /* Text Muted */
                             white: '#e6f1ff',      /* Off-white text */
-                            light: '#F8FAFC'       /* Background */
+                            light: '#F8FAFC',      /* Background */
+                            red: '#881337'         /* Burgundy accent for shirt match */
                         }
                     },
                     fontFamily: {
@@ -76,12 +77,9 @@
             border-radius: 4px;
         }
         
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(to right, #0A192F, #D4AF37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        /* Animation delays */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
     </style>
 
     <script type="application/ld+json">
@@ -91,11 +89,14 @@
       "name": "Dr. Vinit Chafekar",
       "medicalSpecialty": "Obstetrics & Gynecology",
       "url": "https://ourwillpower.github.io/DrVinit/",
+      "image": "https://ourwillpower.github.io/DrVinit/assets/doctor.jpg",
       "telephone": "+917039196489",
       "email": "info@shreevaradmaternity.com",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "India",
+        "addressLocality": "Dombivli East",
+        "addressRegion": "Maharashtra",
+        "postalCode": "421201",
         "addressCountry": "IN"
       },
       "priceRange": "$$"
@@ -119,25 +120,25 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center text-brand-navy font-bold font-serif text-xl">SV</div>
+                    <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center text-brand-navy font-bold font-serif text-xl shadow-lg">SV</div>
                     <div class="flex flex-col">
                         <span class="text-brand-white font-serif font-bold text-lg tracking-wide">Shree Varad</span>
-                        <span class="text-brand-gold text-xs uppercase tracking-widest">Maternity & Nursing</span>
+                        <span class="text-brand-gold text-[10px] uppercase tracking-widest">Maternity & Nursing</span>
                     </div>
                 </div>
 
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider">Home</a>
-                    <a href="#services" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider">Services</a>
-                    <a href="#about" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider">About</a>
-                    <a href="#contact" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider">Contact</a>
-                    <a href="tel:+917039196489" class="bg-brand-gold text-brand-navy px-6 py-2 rounded-full font-bold hover:bg-white transition-all shadow-lg transform hover:scale-105">
+                    <a href="#home" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">Home</a>
+                    <a href="#services" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">Services</a>
+                    <a href="#about" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">About</a>
+                    <a href="#contact" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">Contact</a>
+                    <a href="tel:+917039196489" class="bg-brand-gold text-brand-navy px-6 py-2 rounded-full font-bold hover:bg-white hover:text-brand-red transition-all shadow-lg transform hover:scale-105 border border-transparent hover:border-brand-gold">
                         <i class="fa-solid fa-phone mr-2"></i> +91 7039196489
                     </a>
                 </div>
 
                 <div class="md:hidden flex items-center">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-gold hover:text-white focus:outline-none">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-gold hover:text-white focus:outline-none p-2">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -151,54 +152,56 @@
              x-transition:leave="transition ease-in duration-150"
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-2"
-             class="md:hidden bg-brand-navy border-t border-gray-700 absolute w-full">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" @click="mobileMenuOpen = false" class="block px-3 py-2 text-brand-white hover:text-brand-gold">Home</a>
-                <a href="#services" @click="mobileMenuOpen = false" class="block px-3 py-2 text-brand-white hover:text-brand-gold">Services</a>
-                <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-2 text-brand-white hover:text-brand-gold">About</a>
-                <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-2 text-brand-white hover:text-brand-gold">Contact</a>
+             class="md:hidden bg-brand-navy border-t border-gray-700 absolute w-full shadow-xl">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#home" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Home</a>
+                <a href="#services" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Services</a>
+                <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">About</a>
+                <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Contact</a>
             </div>
         </div>
     </nav>
 
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Medical Background" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy/60"></div>
+            <img src="https://images.unsplash.com/photo-1631217868264-e5b9099a5804?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Medical Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/90 to-brand-navy/70"></div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left w-full">
-            <div class="md:w-2/3" data-aos="fade-up" data-aos-duration="1000">
-                <div class="inline-block px-4 py-1 mb-4 border border-brand-gold/30 rounded-full bg-brand-navy/50 backdrop-blur-sm">
-                    <span class="text-brand-gold text-sm font-semibold tracking-wider uppercase" x-text="greeting + ', Welcome to Shree Varad'"></span>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left w-full pt-16">
+            <div class="md:w-3/4 lg:w-2/3" data-aos="fade-up" data-aos-duration="1000">
+                <div class="inline-block px-5 py-2 mb-6 border border-brand-gold/30 rounded-full bg-brand-navy/60 backdrop-blur-md shadow-lg">
+                    <span class="text-brand-gold text-sm font-semibold tracking-wider uppercase flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i> <span x-text="greeting + ', Welcome to Shree Varad'"></span>
+                    </span>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg">
                     Clinical Excellence <br>
-                    <span class="text-brand-gold">For Mothers & Women.</span>
+                    <span class="text-brand-gold">For Every Woman.</span>
                 </h1>
-                <p class="text-brand-slate text-lg md:text-xl mb-8 max-w-2xl font-light">
+                <p class="text-brand-slate text-lg md:text-xl mb-10 max-w-2xl font-light leading-relaxed">
                     Personalised antenatal programmes, safe deliveries, fertility support and advanced gynecology — delivered with empathy and clinical rigour by <strong class="text-white">Dr. Vinit Chafekar</strong>.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <button @click="bookingModalOpen = true; selectedService = 'General Inquiry'" class="px-8 py-4 bg-brand-gold text-brand-navy font-bold rounded shadow-lg hover:shadow-brand-gold/50 transition-all transform hover:-translate-y-1">
+                <div class="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
+                    <button @click="bookingModalOpen = true; selectedService = 'General Inquiry'" class="px-10 py-4 bg-brand-gold text-brand-navy font-bold rounded-lg shadow-lg shadow-brand-gold/20 hover:bg-white hover:text-brand-red transition-all transform hover:-translate-y-1">
                         Book Appointment
                     </button>
-                    <a href="#services" class="px-8 py-4 border border-white text-white font-semibold rounded hover:bg-white hover:text-brand-navy transition-all">
+                    <a href="#services" class="px-10 py-4 border border-brand-slate text-brand-white font-semibold rounded-lg hover:bg-white hover:text-brand-navy hover:border-white transition-all">
                         Explore Services
                     </a>
                 </div>
                 
-                <div class="mt-12 flex gap-8 items-center justify-center md:justify-start text-brand-slate text-sm">
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-user-doctor text-brand-gold"></i>
+                <div class="mt-14 flex flex-wrap gap-8 items-center justify-center md:justify-start text-brand-slate text-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-teal flex items-center justify-center text-brand-gold"><i class="fa-solid fa-user-doctor"></i></div>
                         <span>MD Physician</span>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-hospital text-brand-gold"></i>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-teal flex items-center justify-center text-brand-gold"><i class="fa-solid fa-hospital"></i></div>
                         <span>Modern Facility</span>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-heart-pulse text-brand-gold"></i>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-teal flex items-center justify-center text-brand-gold"><i class="fa-solid fa-hand-holding-heart"></i></div>
                         <span>Ethical Care</span>
                     </div>
                 </div>
@@ -206,56 +209,81 @@
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2 relative" data-aos="fade-right">
-                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand-gold/20 rounded-full z-0"></div>
-                    <img src="doctor.jpg" alt="Dr. Vinit Chafekar" class="relative z-10 w-full h-96 object-cover rounded-lg shadow-2xl">
-                         <div class="w-full h-full flex items-center justify-center bg-brand-navy text-brand-gold">
-                            <div class="text-center">
-                                <i class="fa-solid fa-user-md text-6xl mb-4"></i>
-                                <p>Dr. Vinit Chafekar</p>
-                            </div>
-                        </div>
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2 relative group" data-aos="fade-right">
+                    <div class="absolute -top-4 -left-4 w-32 h-32 bg-brand-gold/10 rounded-full z-0 group-hover:scale-110 transition-transform duration-500"></div>
+                    <div class="absolute -bottom-4 -right-4 w-48 h-48 bg-brand-navy/5 rounded-full z-0"></div>
+                    
+                    <div class="relative z-10 w-full h-[500px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="assets/doctor.jpg" alt="Dr. Vinit Chafekar" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
                     </div>
-                    <div class="absolute -bottom-6 -right-6 bg-white p-6 shadow-xl rounded-lg border-l-4 border-brand-gold z-20">
-                        <p class="font-serif text-2xl font-bold text-brand-navy">10+</p>
-                        <p class="text-sm text-gray-500 uppercase tracking-wide">Years Experience</p>
+                    
+                    <div class="absolute bottom-10 -right-6 bg-brand-navy p-6 shadow-xl rounded-lg border-l-4 border-brand-gold z-20 transform group-hover:translate-x-2 transition-transform">
+                        <p class="font-serif text-3xl font-bold text-brand-gold">10+</p>
+                        <p class="text-xs text-brand-white uppercase tracking-wider mt-1">Years of<br>Excellence</p>
                     </div>
                 </div>
+
                 <div class="md:w-1/2" data-aos="fade-left">
-                    <h4 class="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2">Meet the Expert</h4>
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-6">Dr. Vinit Chafekar <span class="text-lg font-sans font-normal text-gray-500 block mt-1">MD (Physician), DGO</span></h2>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        An experienced practitioner in obstetrics and gynecology with a patient-first approach. Dr. Chafekar focuses on high-risk pregnancy management, minimally invasive surgery, and comprehensive neonatal coordination.
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="h-0.5 w-10 bg-brand-gold"></div>
+                        <h4 class="text-brand-gold font-bold uppercase tracking-widest text-sm">Meet the Expert</h4>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6">
+                        Dr. Vinit Chafekar <br>
+                        <span class="text-xl font-sans font-normal text-gray-500 block mt-2">MD (Physician), DGO</span>
+                    </h2>
+                    
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                        Dr. Vinit combines advanced medical expertise with a compassionate, patient-first philosophy. Specializing in high-risk pregnancies and minimally invasive procedures, he is dedicated to ensuring the safety and well-being of both mother and child.
                     </p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i class="fa-solid fa-check-circle text-brand-gold"></i> High-risk pregnancy expertise
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i class="fa-solid fa-check-circle text-brand-gold"></i> Minimally invasive & robotic support
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i class="fa-solid fa-check-circle text-brand-gold"></i> Comprehensive newborn coordination
-                        </li>
-                    </ul>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Sig_Dr._Vinit.png" alt="Signature" class="h-12 opacity-50 hidden"> </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3 p-3 bg-brand-light rounded-lg">
+                            <i class="fa-solid fa-baby-carriage text-brand-gold text-xl"></i>
+                            <span class="text-brand-navy font-semibold">High-Risk Pregnancy</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-brand-light rounded-lg">
+                            <i class="fa-solid fa-microscope text-brand-gold text-xl"></i>
+                            <span class="text-brand-navy font-semibold">Laparoscopic Surgery</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-brand-light rounded-lg">
+                            <i class="fa-solid fa-hands-holding-child text-brand-gold text-xl"></i>
+                            <span class="text-brand-navy font-semibold">Newborn Care</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-brand-light rounded-lg">
+                            <i class="fa-solid fa-user-check text-brand-gold text-xl"></i>
+                            <span class="text-brand-navy font-semibold">Fertility Solutions</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="text-brand-navy font-bold border-b-2 border-brand-gold hover:text-brand-gold transition-colors pb-1 inline-block">
+                        Read Patient Stories <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-20 bg-brand-light relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12" data-aos="fade-up">
+    <section id="services" class="py-24 bg-brand-light relative">
+        <div class="absolute top-0 right-0 opacity-5 pointer-events-none">
+            <i class="fa-solid fa-staff-snake text-[400px]"></i>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-4">Our Medical Services</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-8">Comprehensive spectrum of obstetrics, gynecology, newborn and wellness care.</p>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">Comprehensive spectrum of obstetrics, gynecology, newborn and wellness care.</p>
                 
-                <div class="relative max-w-md mx-auto">
-                    <input type="text" x-model="searchQuery" placeholder="Search services (e.g., Surgery, Pregnancy)..." 
-                           class="w-full px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold shadow-sm transition-all">
-                    <i class="fa-solid fa-search absolute right-5 top-3.5 text-gray-400"></i>
+                <div class="relative max-w-lg mx-auto group">
+                    <input type="text" x-model="searchQuery" placeholder="What are you looking for? (e.g. Surgery, Scan)..." 
+                           class="w-full px-8 py-4 rounded-full border-2 border-gray-200 focus:outline-none focus:border-brand-gold focus:ring-0 shadow-sm transition-all text-lg group-hover:shadow-md">
+                    <div class="absolute right-2 top-2 bg-brand-gold w-10 h-10 rounded-full flex items-center justify-center text-white">
+                        <i class="fa-solid fa-search"></i>
+                    </div>
                 </div>
             </div>
 
@@ -272,99 +300,131 @@
                     { title: 'PCOS Management', icon: 'fa-venus', desc: 'Diagnosis and long-term management of irregular periods, PCOS and hormonal issues.' }
                 ].filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()) || s.desc.toLowerCase().includes(searchQuery.toLowerCase()))" :key="service.title">
                     
-                    <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-8 border-t-4 border-transparent hover:border-brand-gold group cursor-pointer" 
+                    <div class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 border-t-4 border-transparent hover:border-brand-gold group cursor-pointer flex flex-col h-full" 
                          data-aos="fade-up"
                          @click="bookingModalOpen = true; selectedService = service.title">
-                        <div class="w-14 h-14 bg-brand-light rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300">
-                            <i :class="service.icon" class="text-2xl text-brand-navy group-hover:text-brand-gold transition-colors duration-300 font-awesome"></i>
+                        
+                        <div class="w-16 h-16 bg-brand-light rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand-navy transition-colors duration-300 shadow-sm group-hover:scale-110 transform">
+                            <i :class="service.icon" class="text-3xl text-brand-navy group-hover:text-brand-gold transition-colors duration-300 font-awesome"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors" x-text="service.title"></h3>
-                        <p class="text-gray-600 text-sm leading-relaxed mb-4" x-text="service.desc"></p>
-                        <span class="text-brand-gold text-sm font-bold flex items-center gap-2">
-                            Book Now <i class="fa-solid fa-arrow-right text-xs"></i>
-                        </span>
+                        
+                        <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors font-serif" x-text="service.title"></h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6 flex-grow" x-text="service.desc"></p>
+                        
+                        <div class="pt-4 border-t border-gray-100 flex justify-between items-center">
+                            <span class="text-brand-gold text-sm font-bold uppercase tracking-wider">Book Now</span>
+                            <div class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-brand-gold group-hover:border-brand-gold transition-colors">
+                                <i class="fa-solid fa-arrow-right text-xs text-gray-400 group-hover:text-brand-navy"></i>
+                            </div>
+                        </div>
                     </div>
                 </template>
             </div>
             
-            <p x-show="!$el.querySelector('.grid').children.length" class="text-center text-gray-500 mt-8">No services found matching your search.</p>
+            <div x-show="!$el.querySelector('.grid').children.length" class="text-center py-12">
+                <i class="fa-regular fa-face-sad-tear text-4xl text-gray-300 mb-4"></i>
+                <p class="text-gray-500">No services found. Try searching for 'Baby' or 'Surgery'.</p>
+            </div>
         </div>
     </section>
 
-    <section class="py-20 bg-brand-navy relative bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+    <section class="py-24 bg-brand-navy relative bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
         <div class="absolute inset-0 bg-brand-navy/90"></div>
         <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-6">Ready to prioritize your health?</h2>
-            <p class="text-brand-slate text-lg mb-8">We are available on WhatsApp and Phone to answer your queries and confirm appointments.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://wa.me/917039196489" class="bg-[#25D366] text-white px-8 py-3 rounded-full font-bold hover:bg-[#128C7E] transition-colors flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> Chat on WhatsApp
+            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-6">Ready to prioritize your health?</h2>
+            <p class="text-brand-slate text-lg mb-10 max-w-2xl mx-auto">We are available on WhatsApp and Phone to answer your queries and confirm appointments immediately.</p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                <a href="https://wa.me/917039196489" class="bg-[#25D366] text-white px-8 py-4 rounded-full font-bold hover:bg-[#128C7E] transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-[#25d366]/40 transform hover:-translate-y-1">
+                    <i class="fa-brands fa-whatsapp text-2xl"></i> Chat on WhatsApp
                 </a>
-                <button @click="bookingModalOpen = true" class="bg-brand-gold text-brand-navy px-8 py-3 rounded-full font-bold hover:bg-white transition-colors">
+                <button @click="bookingModalOpen = true" class="bg-brand-gold text-brand-navy px-8 py-4 rounded-full font-bold hover:bg-white transition-all shadow-lg hover:shadow-brand-gold/40 transform hover:-translate-y-1">
                     Request Appointment
                 </button>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl font-serif font-bold text-brand-navy mb-6">Contact & Visit</h2>
-                    <p class="text-gray-600 mb-8">Visit us for a consultation. We prioritize comfort, hygiene, and timely care for all our patients.</p>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="h-0.5 w-10 bg-brand-gold"></div>
+                        <h4 class="text-brand-gold font-bold uppercase tracking-widest text-sm">Get in Touch</h4>
+                    </div>
+                    <h2 class="text-4xl font-serif font-bold text-brand-navy mb-8">Contact & Visit Us</h2>
+                    <p class="text-gray-600 mb-10 text-lg">Visit us for a consultation. We prioritize comfort, hygiene, and timely care for all our patients.</p>
                     
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-brand-light rounded flex items-center justify-center text-brand-gold flex-shrink-0">
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-6 group">
+                            <div class="w-14 h-14 bg-brand-light rounded-xl flex items-center justify-center text-brand-gold text-2xl flex-shrink-0 group-hover:bg-brand-navy group-hover:scale-110 transition-all duration-300">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-brand-navy">Phone</h4>
-                                <a href="tel:+917039196489" class="text-gray-600 hover:text-brand-gold transition-colors">+91 7039196489</a>
+                                <h4 class="font-bold text-brand-navy text-lg">Phone</h4>
+                                <a href="tel:+917039196489" class="text-gray-600 hover:text-brand-gold transition-colors text-lg">+91 7039196489</a>
+                                <p class="text-sm text-gray-400 mt-1">Mon-Sat 10am - 8pm</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-brand-light rounded flex items-center justify-center text-brand-gold flex-shrink-0">
+                        <div class="flex items-start gap-6 group">
+                            <div class="w-14 h-14 bg-brand-light rounded-xl flex items-center justify-center text-brand-gold text-2xl flex-shrink-0 group-hover:bg-brand-navy group-hover:scale-110 transition-all duration-300">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-brand-navy">Email</h4>
-                                <a href="mailto:info@shreevaradmaternity.com" class="text-gray-600 hover:text-brand-gold transition-colors">info@shreevaradmaternity.com</a>
+                                <h4 class="font-bold text-brand-navy text-lg">Email</h4>
+                                <a href="mailto:info@shreevaradmaternity.com" class="text-gray-600 hover:text-brand-gold transition-colors text-lg">info@shreevaradmaternity.com</a>
+                                <p class="text-sm text-gray-400 mt-1">Online support</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 bg-brand-light rounded flex items-center justify-center text-brand-gold flex-shrink-0">
+                        <div class="flex items-start gap-6 group">
+                            <div class="w-14 h-14 bg-brand-light rounded-xl flex items-center justify-center text-brand-gold text-2xl flex-shrink-0 group-hover:bg-brand-navy group-hover:scale-110 transition-all duration-300">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-brand-navy">Clinic Address</h4>
-                                <p class="text-gray-600">Shree Varad Maternity<br>Near Station, Dombivli East,<br>Maharashtra, India 421201</p>
+                                <h4 class="font-bold text-brand-navy text-lg">Clinic Address</h4>
+                                <p class="text-gray-600 text-lg leading-relaxed">Shree Varad Maternity<br>Near Station, Dombivli East,<br>Maharashtra, India 421201</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-gray-100 rounded-xl overflow-hidden shadow-inner h-80 md:h-full min-h-[300px] flex items-center justify-center" data-aos="fade-left">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.8643248386!2d73.0768!3d19.2156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDEyJzU2LjIiTiA3M8KwMDQnMzYuNSJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+                <div class="h-[450px] bg-gray-100 rounded-2xl overflow-hidden shadow-2xl border-4 border-white relative" data-aos="fade-left">
+                     <iframe 
+                        src="https://maps.app.goo.gl/1N5fMoyncueHSXq39" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
+                    <a href="https://maps.app.goo.gl/1N5fMoyncueHSXq39" target="_blank" class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur text-brand-navy text-center py-3 rounded-lg font-bold shadow-lg hover:bg-brand-gold hover:text-white transition-colors text-sm">
+                        <i class="fa-solid fa-map-location-dot mr-2"></i> Open in Google Maps App
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-brand-navy text-brand-slate py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <span class="text-brand-white font-serif font-bold text-xl tracking-wide">Shree Varad</span>
-                <p class="text-sm mt-2">&copy; 2024 Dr. Vinit Chafekar. All rights reserved.</p>
-            </div>
-            <div class="flex space-x-6">
-                <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-facebook text-xl"></i></a>
-                <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
-                <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+    <footer class="bg-brand-navy text-brand-slate py-16 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-left">
+                    <div class="flex items-center gap-3 justify-center md:justify-start mb-4">
+                        <div class="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-navy font-bold font-serif">SV</div>
+                        <span class="text-brand-white font-serif font-bold text-2xl tracking-wide">Shree Varad</span>
+                    </div>
+                    <p class="text-sm max-w-xs mx-auto md:mx-0 leading-relaxed">Premium maternity and gynecological care delivered with compassion and excellence.</p>
+                </div>
+                
+                <div class="flex flex-col items-center md:items-end gap-4">
+                    <div class="flex space-x-6">
+                        <a href="#" class="bg-brand-teal w-10 h-10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="bg-brand-teal w-10 h-10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all duration-300"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="bg-brand-teal w-10 h-10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-navy transition-all duration-300"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                    <p class="text-xs text-gray-500">© 2024 Dr. Vinit Chafekar. All rights reserved.</p>
+                </div>
             </div>
         </div>
     </footer>
@@ -380,11 +440,11 @@
                  x-transition:leave="ease-in duration-200"
                  x-transition:leave-start="opacity-100"
                  x-transition:leave-end="opacity-0"
-                 class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" 
+                 class="fixed inset-0 bg-brand-navy bg-opacity-90 transition-opacity backdrop-blur-sm" 
                  @click="bookingModalOpen = false"
                  aria-hidden="true"></div>
 
-            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">​</span>
 
             <div x-show="bookingModalOpen"
                  x-transition:enter="ease-out duration-300"
@@ -393,51 +453,59 @@
                  x-transition:leave="ease-in duration-200"
                  x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
                  x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                 class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
+                 class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full border border-gray-100">
                 
-                <div class="bg-brand-navy px-4 py-3 sm:px-6 flex justify-between items-center">
-                    <h3 class="text-lg leading-6 font-medium text-white font-serif" id="modal-title">
+                <div class="bg-brand-navy px-6 py-4 flex justify-between items-center border-b border-gray-700">
+                    <h3 class="text-xl leading-6 font-bold text-white font-serif" id="modal-title">
                         Book Appointment
                     </h3>
-                    <button @click="bookingModalOpen = false" class="text-gray-400 hover:text-white">
-                        <i class="fa-solid fa-times"></i>
+                    <button @click="bookingModalOpen = false" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fa-solid fa-times text-xl"></i>
                     </button>
                 </div>
                 
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <p class="text-sm text-gray-500 mb-4">
-                        Requesting appointment for: <strong class="text-brand-navy" x-text="selectedService"></strong>
-                    </p>
+                <div class="px-6 py-6">
+                    <div class="mb-6 bg-brand-light p-4 rounded-lg border-l-4 border-brand-gold">
+                        <p class="text-sm text-gray-600">
+                            Requesting appointment for: <br>
+                            <strong class="text-brand-navy text-lg font-serif" x-text="selectedService"></strong>
+                        </p>
+                    </div>
+                    
                     <form class="space-y-4">
                         <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Your Name</label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-brand-gold" id="name" type="text" placeholder="Jane Doe">
+                            <label class="block text-brand-navy text-sm font-bold mb-2" for="name">Your Name</label>
+                            <input class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all" id="name" type="text" placeholder="Enter your full name">
                         </div>
                         <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">Phone Number</label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-brand-gold" id="phone" type="tel" placeholder="+91 9876543210">
+                            <label class="block text-brand-navy text-sm font-bold mb-2" for="phone">Phone Number</label>
+                            <input class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-transparent transition-all" id="phone" type="tel" placeholder="+91 9876543210">
                         </div>
                         <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Visit Type</label>
+                            <label class="block text-brand-navy text-sm font-bold mb-3">Visit Type</label>
                             <div class="flex gap-4">
-                                <label class="inline-flex items-center">
-                                    <input type="radio" class="form-radio text-brand-gold" name="visitType" value="first" checked>
-                                    <span class="ml-2">First Visit</span>
+                                <label class="flex-1 cursor-pointer">
+                                    <input type="radio" class="peer sr-only" name="visitType" value="first" checked>
+                                    <div class="text-center py-2 rounded-lg border border-gray-200 peer-checked:bg-brand-navy peer-checked:text-white peer-checked:border-brand-navy transition-all">
+                                        First Visit
+                                    </div>
                                 </label>
-                                <label class="inline-flex items-center">
-                                    <input type="radio" class="form-radio text-brand-gold" name="visitType" value="repeat">
-                                    <span class="ml-2">Follow up</span>
+                                <label class="flex-1 cursor-pointer">
+                                    <input type="radio" class="peer sr-only" name="visitType" value="repeat">
+                                    <div class="text-center py-2 rounded-lg border border-gray-200 peer-checked:bg-brand-navy peer-checked:text-white peer-checked:border-brand-navy transition-all">
+                                        Follow up
+                                    </div>
                                 </label>
                             </div>
                         </div>
                     </form>
                 </div>
                 
-                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <a href="https://wa.me/917039196489" target="_blank" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-brand-gold text-base font-medium text-brand-navy hover:bg-yellow-500 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
-                        Send via WhatsApp
+                <div class="bg-gray-50 px-6 py-4 sm:flex sm:flex-row-reverse gap-3">
+                    <a href="https://wa.me/917039196489" target="_blank" class="w-full inline-flex justify-center items-center rounded-lg border border-transparent shadow-md px-4 py-3 bg-brand-gold text-base font-bold text-brand-navy hover:bg-yellow-500 focus:outline-none sm:w-auto sm:text-sm">
+                        <i class="fa-brands fa-whatsapp mr-2"></i> Confirm on WhatsApp
                     </a>
-                    <button @click="bookingModalOpen = false" type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    <button @click="bookingModalOpen = false" type="button" class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-3 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm">
                         Cancel
                     </button>
                 </div>
@@ -445,11 +513,17 @@
         </div>
     </div>
 
+    <a href="https://wa.me/917039196489?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment." 
+       target="_blank"
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#20ba5a] transition-all transform hover:scale-110 hover:-translate-y-1 animate-bounce">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
             once: true,
-            offset: 100,
+            offset: 50,
             duration: 800,
             easing: 'ease-out-cubic',
         });
