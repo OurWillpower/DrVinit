@@ -132,7 +132,7 @@
           startSlider() {
               setInterval(() => {
                   this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-              }, 5000); /* CHANGED TO 5 SECONDS */
+              }, 5000); 
           }
       }" 
       x-init="
@@ -314,7 +314,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-4">Our Medical Services</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">Comprehensive spectrum of obstetrics, gynecology, newborn and wellness care.</p>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">Comprehensive spectrum of 16 specialised medical services for women and children.</p>
                 
                 <div class="relative max-w-lg mx-auto group">
                     <input type="text" x-model="searchQuery" placeholder="Search services..." 
@@ -325,38 +325,45 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <template x-for="service in [
-                    { title: 'General Health Checkups', icon: 'fa-user-nurse', bg: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', desc: 'Wellness screening, preventive exams and personalised plans for womens health.' },
-                    { title: 'Antenatal & Pregnancy', icon: 'fa-baby-carriage', bg: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', desc: 'Routine and high-risk antenatal monitoring, nutrition guidance and birth planning.' },
-                    { title: 'Infertility Evaluation', icon: 'fa-seedling', bg: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', desc: 'Compassionate fertility evaluation and support; referrals to specialists where required.' },
-                    { title: 'Laparoscopic Surgery', icon: 'fa-microscope', bg: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', desc: 'Keyhole surgery for fibroids, cysts and endometriosis — faster recovery & smaller scars.' },
-                    { title: 'Robotic Surgery', icon: 'fa-robot', bg: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', desc: 'Precision robotic procedures for select gynecological conditions.' },
-                    { title: 'High-Risk Pregnancy', icon: 'fa-heartbeat', bg: 'https://images.unsplash.com/photo-1537673156864-5d2572d09adf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', desc: 'Specialised monitoring and multidisciplinary plans for complex pregnancies.' },
-                    { title: 'Preconception Counselling', icon: 'fa-comments', bg: 'https://images.unsplash.com/photo-1590611936760-eeb9f5922d19?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', desc: 'Optimising health before pregnancy — tests, supplements and risk assessment.' },
-                    { title: 'Postnatal & Newborn', icon: 'fa-hands-holding-child', bg: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', desc: 'Breastfeeding support, newborn checks and post-partum recovery guidance.' },
-                    { title: 'PCOS Management', icon: 'fa-venus', bg: 'https://images.unsplash.com/photo-1606165592048-9f37c68832a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60', desc: 'Diagnosis and long-term management of irregular periods, PCOS and hormonal issues.' }
+                    { title: 'General Checkups', icon: 'fa-user-nurse', bg: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&w=500&q=60', desc: 'Wellness screening & preventive exams.' },
+                    { title: 'Antenatal Care', icon: 'fa-baby-carriage', bg: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-1.2.1&w=500&q=60', desc: 'Routine & high-risk pregnancy monitoring.' },
+                    { title: 'Infertility Support', icon: 'fa-seedling', bg: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-1.2.1&w=500&q=60', desc: 'Compassionate fertility evaluation & care.' },
+                    { title: 'Laparoscopy', icon: 'fa-microscope', bg: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-1.2.1&w=500&q=60', desc: 'Keyhole surgery for faster recovery.' },
+                    { title: 'Robotic Surgery', icon: 'fa-robot', bg: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-1.2.1&w=500&q=60', desc: 'Precision procedures for complex cases.' },
+                    { title: 'High-Risk Pregnancy', icon: 'fa-heartbeat', bg: 'https://images.unsplash.com/photo-1537673156864-5d2572d09adf?ixlib=rb-1.2.1&w=500&q=60', desc: 'Specialised monitoring for mother & baby.' },
+                    { title: 'Pre-Conception', icon: 'fa-comments', bg: 'https://images.unsplash.com/photo-1590611936760-eeb9f5922d19?ixlib=rb-1.2.1&w=500&q=60', desc: 'Optimising health before pregnancy starts.' },
+                    { title: 'Postnatal Care', icon: 'fa-hands-holding-child', bg: 'https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-1.2.1&w=500&q=60', desc: 'Breastfeeding & recovery support.' },
+                    { title: 'PCOS Management', icon: 'fa-venus', bg: 'https://images.unsplash.com/photo-1606165592048-9f37c68832a8?ixlib=rb-1.2.1&w=500&q=60', desc: 'Hormonal balance & long-term care.' },
+                    { title: 'Menopause Clinic', icon: 'fa-fan', bg: 'https://images.unsplash.com/photo-1544367563-12123d8975bd?ixlib=rb-1.2.1&w=500&q=60', desc: 'Expert care for midlife transitions.' },
+                    { title: 'Cancer Screening', icon: 'fa-ribbon', bg: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&w=500&q=60', desc: 'Pap smears & preventive oncology.' },
+                    { title: 'Adolescent Health', icon: 'fa-child-reaching', bg: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&w=500&q=60', desc: 'Puberty, periods & teen hygiene guidance.' },
+                    { title: 'Family Planning', icon: 'fa-people-roof', bg: 'https://images.unsplash.com/photo-1476703993599-0035a21b17a9?ixlib=rb-1.2.1&w=500&q=60', desc: 'Contraception counselling & IUD insertion.' },
+                    { title: 'Ultrasound Scan', icon: 'fa-wifi', bg: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&w=500&q=60', desc: 'Advanced fetal & pelvic imaging.' },
+                    { title: 'Breast Health', icon: 'fa-hand-holding-heart', bg: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&w=500&q=60', desc: 'Examination for lumps & mastitis care.' },
+                    { title: 'Nutrition & Yoga', icon: 'fa-apple-whole', bg: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&w=500&q=60', desc: 'Holistic wellness for maternity & health.' }
                 ].filter(s => s.title.toLowerCase().includes(searchQuery.toLowerCase()) || s.desc.toLowerCase().includes(searchQuery.toLowerCase()))" :key="service.title">
                     
-                    <div class="group relative bg-white rounded-2xl p-8 border border-gray-100 shadow-lg hover:shadow-gold hover:border-brand-gold/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col"
+                    <div class="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-gold hover:border-brand-gold/30 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col"
                          data-aos="fade-up"
                          @click="bookingModalOpen = true; selectedService = service.title">
                         
-                        <div class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 z-0">
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-700 z-0">
                             <img :src="service.bg" class="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[2000ms]">
                         </div>
 
-                        <div class="relative z-10 flex flex-col h-full">
-                            <div class="w-16 h-16 bg-brand-light rounded-2xl flex items-center justify-center mb-6 text-brand-navy text-3xl group-hover:bg-brand-navy group-hover:text-brand-gold transition-colors duration-300 shadow-sm group-hover:scale-110 transform">
+                        <div class="relative z-10 flex flex-col h-full text-center items-center">
+                            <div class="w-14 h-14 bg-brand-light rounded-2xl flex items-center justify-center mb-4 text-brand-navy text-2xl group-hover:bg-brand-navy group-hover:text-brand-gold transition-colors duration-300 shadow-sm group-hover:scale-110 transform">
                                 <i :class="service.icon" class="fa-solid"></i>
                             </div>
                             
-                            <h3 class="text-xl font-serif font-bold text-brand-navy mb-3 group-hover:text-brand-gold transition-colors" x-text="service.title"></h3>
-                            <p class="text-gray-600 text-sm leading-relaxed mb-8 flex-grow" x-text="service.desc"></p>
+                            <h3 class="text-lg font-serif font-bold text-brand-navy mb-2 group-hover:text-brand-gold transition-colors" x-text="service.title"></h3>
+                            <p class="text-gray-600 text-xs leading-relaxed mb-6 flex-grow" x-text="service.desc"></p>
                             
-                            <div class="mt-auto">
-                                <button class="w-full py-3 rounded-lg border border-brand-light font-bold text-xs uppercase tracking-widest text-brand-navy group-hover:bg-brand-navy group-hover:text-brand-gold group-hover:border-brand-navy transition-all duration-300 flex items-center justify-center gap-2">
-                                    Book Now <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"></i>
+                            <div class="mt-auto w-full">
+                                <button class="w-full py-2 rounded-lg border border-brand-light font-bold text-[10px] uppercase tracking-widest text-brand-navy group-hover:bg-brand-navy group-hover:text-brand-gold group-hover:border-brand-navy transition-all duration-300 flex items-center justify-center gap-2">
+                                    Book <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all"></i>
                                 </button>
                             </div>
                         </div>
