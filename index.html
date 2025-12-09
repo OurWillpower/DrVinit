@@ -29,10 +29,10 @@
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <div class="brand">
-        <div class="logo-mark">SV</div>
+        <div class="logo-mark" aria-hidden="true">SV</div>
         <div class="brand-text">
           <div class="brand-title">Shree Varad Maternity</div>
-          <div class="brand-sub">Dr. Vinit Chafekar, MD — Physician & DGO</div>
+          <div class="brand-sub">Dr. Vinit Chafekar, MD — Physician &amp; DGO</div>
         </div>
       </div>
 
@@ -48,7 +48,7 @@
     </div>
   </header>
 
-  <!-- Hero (mobile-first, high-impact) -->
+  <!-- Hero (mobile-first, no overflow) -->
   <main>
     <section class="hero-compact">
       <div class="hero-inner container">
@@ -73,7 +73,7 @@
         </div>
 
         <div class="hero-right">
-          <!-- hero-bg.jpg optional — if missing it shows a tasteful blue gradient -->
+          <!-- hero-bg.jpg optional; container will never overflow -->
           <div class="hero-bg" style="background-image:url('assets/hero-bg.jpg')">
             <div class="doctor-overlay">
               <img src="assets/dr-vinit-small.jpg" alt="Dr. Vinit Chafekar">
@@ -89,7 +89,7 @@
       <p class="section-lead muted">Tap a service to request an appointment — every card has a Book button.</p>
 
       <div class="services-grid" aria-live="polite">
-        <!-- SERVICE CARD EXAMPLE (repeat for all 15) -->
+        <!-- Card 1 -->
         <article class="service-card" id="svc01">
           <div class="service-media" style="background-image:url('assets/services/general-health.jpg')" role="img" aria-label="General Health Checkups">
             <svg class="service-placeholder" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.8 0 5 .9 6.6 2.4C20.1 6 21 8.2 21 11v2c0 2.8-.9 5-2.4 6.6C17 21.1 14.8 22 12 22s-5-.9-6.6-2.4C3.9 18 3 15.8 3 13v-2c0-2.8.9-5 2.4-6.6C7 2.9 9.2 2 12 2z" fill="rgba(255,255,255,0.06)"/></svg>
@@ -104,6 +104,7 @@
           </div>
         </article>
 
+        <!-- Card 2 -->
         <article class="service-card" id="svc02">
           <div class="service-media" style="background-image:url('assets/services/antenatal.jpg')" role="img" aria-label="Antenatal & Pregnancy Care"></div>
           <div class="service-body">
@@ -116,6 +117,7 @@
           </div>
         </article>
 
+        <!-- Card 3 -->
         <article class="service-card" id="svc03">
           <div class="service-media" style="background-image:url('assets/services/infertility.jpg')" role="img" aria-label="Infertility Evaluation & Support"></div>
           <div class="service-body">
@@ -128,8 +130,9 @@
           </div>
         </article>
 
+        <!-- Card 4 -->
         <article class="service-card" id="svc04">
-          <div class="service-media" style="background-image:url('assets/services/laparoscopy.jpg')" role="img" aria-label="Laparoscopic Surgery"></div>
+          <div class="service-media" style="background-image:url('assets/services/laparoscopy.jpg')" role="img" aria-label="Minimal Invasive (Laparoscopic) Surgery"></div>
           <div class="service-body">
             <h3>Minimal Invasive (Laparoscopic) Surgery</h3>
             <p class="muted">Keyhole surgery for fibroids, cysts and endometriosis — faster recovery and smaller scars.</p>
@@ -140,8 +143,8 @@
           </div>
         </article>
 
-        <!-- remaining cards (svc05..svc15) should follow the same structure -->
-        <!-- Paste your other cards here — I left the first four for preview; add the rest in your index.html or copy from earlier file -->
+        <!-- (Add remaining svc05...svc15 following same pattern) -->
+
       </div>
     </section>
 
@@ -152,17 +155,19 @@
         <div class="about-text">
           <p class="muted">Dr. Vinit brings medical expertise and sensitive care to every patient. Shree Varad Maternity prioritises safety, evidence-based decisions and respectful communication.</p>
           <ul class="about-list">
-            <li>MD (Physician), DGO — Obstetrics & Gynecology</li>
+            <li>MD (Physician), DGO — Obstetrics &amp; Gynecology</li>
             <li>High-risk pregnancy expertise</li>
             <li>Minimally invasive surgery</li>
             <li>Neonatal coordination</li>
           </ul>
         </div>
-        <aside class="about-card">
-          <img src="assets/dr-vinit.jpg" alt="Dr Vinit Chafekar" class="about-photo">
-          <div class="about-meta">
-            <div class="name">Dr. Vinit Chafekar</div>
-            <div class="role">MD (Physician), DGO</div>
+        <aside class="about-right">
+          <div class="staff-card">
+            <img src="assets/dr-vinit.jpg" alt="Dr Vinit Chafekar" class="staff-photo">
+            <div class="staff-meta">
+              <div class="staff-name">Dr. Vinit Chafekar</div>
+              <div class="staff-role">MD (Physician), DGO</div>
+            </div>
           </div>
         </aside>
       </div>
