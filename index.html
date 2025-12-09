@@ -7,147 +7,14 @@
   <meta name="description" content="Shree Varad Maternity — Dr. Vinit Chafekar. Premium maternity, antenatal, fertility & women's health care in Pune. Book online." />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <!-- Bootstrap -->
+
+  <!-- Bootstrap CSS (keeps layout robust across devices) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-    /* Editorial premium theme (single file) */
-    :root{
-      --deep:#072b66;
-      --sky:#3fa8ff;
-      --gold:#d9b44a;
-      --muted:#596067;
-      --bg:#fbfcfe;
-      --card:#ffffff;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-      color:var(--deep);
-      background:var(--bg);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.6;
-    }
+  <!-- Your styles -->
+  <link rel="stylesheet" href="styles.css">
 
-    /* header */
-    .site-header{background:transparent;padding:18px 0;border-bottom:1px solid rgba(7,43,102,0.04);position:sticky;top:0;z-index:40}
-    .brand-mark{width:60px;height:60px;border-radius:14px;background:linear-gradient(180deg,#edf6ff,#e9f4ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--deep)}
-    .brand-text .title{font-weight:700}
-    .brand-text .sub{font-size:13px;color:var(--muted)}
-
-    /* hero - editorial */
-    .hero {
-      position:relative;
-      margin:28px 0 46px;
-    }
-    .hero-figure{
-      width:100%;
-      height:360px;
-      border-radius:16px;
-      overflow:hidden;
-      display:block;
-      background-size:cover;
-      background-position:center;
-      box-shadow:0 30px 80px rgba(7,43,102,0.08);
-      background-image:linear-gradient(135deg, rgba(63,168,255,0.10), rgba(7,43,102,0.02));
-    }
-    /* overlay container */
-    .hero-overlay{
-      position:absolute;left:0;right:0;top:0;bottom:0;display:flex;align-items:center;justify-content:center;
-      pointer-events:none;
-    }
-
-    .hero-inner{
-      max-width:1180px;margin:0 auto;padding:28px;display:flex;gap:28px;align-items:center;justify-content:space-between;
-      position:relative;
-    }
-
-    .hero-copy{
-      flex:1 1 58%;
-      pointer-events:auto;
-      max-width:720px;
-    }
-
-    .hero-copy h1{
-      font-family:"Playfair Display",serif;
-      font-weight:700;
-      font-size:36px;
-      margin:0 0 12px;
-      color:var(--deep);
-      line-height:1.02;
-      letter-spacing:-0.4px;
-    }
-    .hero-copy h1 small{display:block;font-weight:600;color:var(--deep);font-size:20px;margin-top:6px}
-
-    .gold-divider{height:8px;width:140px;border-radius:6px;background:linear-gradient(90deg,var(--gold),#e8c86d);margin:18px 0;box-shadow:0 12px 36px rgba(217,180,74,0.09)}
-
-    .hero-copy p.lead{
-      color:var(--muted);
-      font-size:17px;
-      max-width:60ch;
-      margin-bottom:18px;
-    }
-
-    .hero-cta{display:flex;gap:12px;align-items:center}
-    .btn-primary-hero{background:linear-gradient(90deg,var(--deep),#0a54b8);color:#fff;padding:12px 18px;border-radius:12px;border:0;font-weight:800;box-shadow:0 18px 48px rgba(7,43,102,0.12)}
-
-    /* doctor portrait (inside hero) */
-    .doctor-wrap{flex:0 0 300px;display:flex;justify-content:center;align-items:flex-end;position:relative}
-    .doctor-card{width:260px;height:260px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 30px 80px rgba(7,43,102,0.08);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-    .doctor-circle{position:absolute;right:18px;bottom:-40px;width:120px;height:120px;border-radius:999px;padding:6px;background:#fff;border:3px solid rgba(217,180,74,0.12);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px rgba(7,43,102,0.08)}
-    .doctor-circle img{width:100%;height:100%;object-fit:cover;border-radius:999px}
-
-    /* services */
-    .section {padding:28px 0}
-    .section-title{font-family:"Playfair Display",serif;font-size:24px;color:var(--deep);margin-bottom:8px}
-    .section-desc{color:var(--muted);margin-bottom:18px}
-
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-
-    .svc-card{background:var(--card);border-radius:12px;overflow:hidden;border:1px solid rgba(7,43,102,0.03);box-shadow:0 18px 50px rgba(7,43,102,0.04);display:flex;flex-direction:column}
-    .svc-media{height:200px;background-size:cover;background-position:center}
-    .svc-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:12px}
-    .svc-body h4{margin:0;font-size:16px;color:var(--deep)}
-    .svc-body p{margin:0;color:var(--muted);font-size:14px}
-    .svc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
-    .btn-book{background:linear-gradient(90deg,var(--deep),#114bbf);color:#fff;padding:9px 12px;border-radius:10px;border:0;font-weight:800}
-    .tag{padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(217,180,74,0.08), rgba(63,168,255,0.03));color:var(--gold);font-weight:700}
-
-    /* about & contact */
-    .about-grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
-    .profile-photo{width:140px;height:140px;border-radius:12px;object-fit:cover;box-shadow:0 18px 50px rgba(7,43,102,0.06)}
-
-    /* footer */
-    footer{padding:28px 0;border-top:1px solid rgba(7,43,102,0.04);color:var(--muted)}
-
-    /* WhatsApp floater */
-    .wa{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,#25D366,#1ebe57);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 44px rgba(2,6,23,0.18);z-index:2000}
-
-    /* responsive */
-    @media (max-width:991px){
-      .hero-figure{height:320px}
-      .hero-inner{flex-direction:column-reverse;padding:16px;gap:18px}
-      .doctor-wrap{width:100%;display:flex;justify-content:center}
-      .doctor-card{width:100%;height:200px}
-      .doctor-circle{right:16px;bottom:-36px;width:100px;height:100px}
-      .services-grid{grid-template-columns:repeat(2,1fr)}
-      .hero-copy h1{font-size:26px}
-    }
-    @media (max-width:575px){
-      .hero-figure{height:260px}
-      .services-grid{grid-template-columns:1fr}
-      .doctor-card{height:160px}
-      .doctor-circle{width:86px;height:86px;bottom:-34px}
-      .hero-copy h1{font-size:22px}
-      .hero-copy p.lead{font-size:15px}
-    }
-
-    /* focus outlines */
-    a:focus, button:focus{outline:3px solid rgba(63,168,255,0.14);outline-offset:3px}
-  </style>
+  <meta name="theme-color" content="#0a3a82">
 </head>
 <body>
 
@@ -165,15 +32,15 @@
 
         <div class="d-none d-md-flex align-items-center gap-4">
           <nav class="d-flex gap-3">
-            <a href="#services" style="color:var(--muted);text-decoration:none">Services</a>
-            <a href="#about" style="color:var(--muted);text-decoration:none">About</a>
-            <a href="#contact" style="color:var(--muted);text-decoration:none">Contact</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
           </nav>
-          <a href="tel:+917039196489" style="color:var(--deep);font-weight:700;text-decoration:none">📞 +91 7039196489</a>
+          <a href="tel:+917039196489" class="tel">📞 +91 7039196489</a>
         </div>
 
         <div class="d-md-none">
-          <a href="tel:+917039196489" style="color:var(--deep);font-weight:700;text-decoration:none">📞</a>
+          <a href="tel:+917039196489" class="tel">📞</a>
         </div>
       </div>
     </div>
@@ -187,7 +54,7 @@
       <div class="hero-overlay">
         <div class="hero-inner container">
           <div class="hero-copy">
-            <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Trusted care · Modern facilities · Compassionate teams</div>
+            <div class="eyebrow">Trusted care · Modern facilities · Compassionate teams</div>
             <h1>Clinical excellence for mothers.<br><small>Warm, evidence-led care you can trust.</small></h1>
             <div class="gold-divider" aria-hidden="true"></div>
             <p class="lead">Personalised antenatal programs, safe deliveries, fertility support and advanced gynecology — delivered with empathy and clinical rigor.</p>
@@ -199,8 +66,6 @@
 
           <div class="doctor-wrap">
             <div class="doctor-card" aria-hidden="false">
-              <!-- optional small decoration or pattern -->
-              <img src="assets/hero-small-pattern.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.06;position:absolute;inset:0;">
               <div style="padding:18px;text-align:left;z-index:2">
                 <div style="font-weight:700;font-size:16px">Dr. Vinit Chafekar</div>
                 <div style="color:var(--muted);font-size:13px;margin-top:6px">MD (Physician), DGO</div>
@@ -218,15 +83,15 @@
     <!-- services -->
     <section id="services" class="section">
       <div class="container">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:20px">
+        <div class="d-flex align-items-center justify-content-between mb-3">
           <div>
             <div class="section-title">Our Services</div>
             <div class="section-desc">A comprehensive spectrum of obstetrics, gynecology, newborn and wellness care. Click Book to request an appointment.</div>
           </div>
         </div>
 
-        <div class="services-grid" style="margin-top:18px">
-          <!-- card 1 -->
+        <div class="services-grid">
+          <!-- Card 1 -->
           <article class="svc-card" id="svc01">
             <div class="svc-media" style="background-image:url('assets/services/general-health.jpg')"></div>
             <div class="svc-body">
@@ -239,7 +104,7 @@
             </div>
           </article>
 
-          <!-- card 2 -->
+          <!-- Card 2 -->
           <article class="svc-card" id="svc02">
             <div class="svc-media" style="background-image:url('assets/services/antenatal.jpg')"></div>
             <div class="svc-body">
@@ -252,7 +117,7 @@
             </div>
           </article>
 
-          <!-- card 3 -->
+          <!-- Card 3 -->
           <article class="svc-card" id="svc03">
             <div class="svc-media" style="background-image:url('assets/services/infertility.jpg')"></div>
             <div class="svc-body">
@@ -265,7 +130,7 @@
             </div>
           </article>
 
-          <!-- card 4 -->
+          <!-- Card 4 -->
           <article class="svc-card" id="svc04">
             <div class="svc-media" style="background-image:url('assets/services/laparoscopy.jpg')"></div>
             <div class="svc-body">
@@ -278,7 +143,7 @@
             </div>
           </article>
 
-          <!-- card 5 -->
+          <!-- Card 5 -->
           <article class="svc-card" id="svc05">
             <div class="svc-media" style="background-image:url('assets/services/robotic.jpg')"></div>
             <div class="svc-body">
@@ -291,7 +156,7 @@
             </div>
           </article>
 
-          <!-- card 6 -->
+          <!-- Card 6 -->
           <article class="svc-card" id="svc06">
             <div class="svc-media" style="background-image:url('assets/services/high-risk.jpg')"></div>
             <div class="svc-body">
@@ -304,7 +169,7 @@
             </div>
           </article>
 
-          <!-- add remaining cards (svc07..svc15) using same structure -->
+          <!-- Add additional svc07..svc15 cards here with same structure -->
         </div>
       </div>
     </section>
@@ -340,14 +205,14 @@
 
         <div class="row">
           <div class="col-md-8">
-            <div style="border-radius:12px;padding:16px;background:var(--card);box-shadow:0 12px 36px rgba(7,43,102,0.04)">
+            <div class="contact-card">
               <p><strong>Phone:</strong> <a href="tel:+917039196489">+91 7039196489</a></p>
               <p><strong>Email:</strong> <a href="mailto:info@shreevaradmaternity.com">info@shreevaradmaternity.com</a></p>
             </div>
           </div>
 
           <div class="col-md-4">
-            <div style="border-radius:12px;overflow:hidden;box-shadow:0 12px 36px rgba(7,43,102,0.04)">
+            <div class="map-card">
               <iframe title="map" src="https://www.google.com/maps/embed?pb=PLACEHOLDER" style="border:0;width:100%;height:220px" loading="lazy"></iframe>
             </div>
           </div>
@@ -370,7 +235,7 @@
     <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 3.5c-4.9-4.9-12.9-4.9-17.8 0-3.7 3.7-4.5 9.3-2.3 13.8L.3 24l6.1-1.5c4.6 1.9 10.2 1.4 13.9-2.3 4.9-4.9 4.9-12.9 0-17.8z" fill="#25D366"/></svg>
   </a>
 
-  <!-- Booking modal (bootstrap) -->
+  <!-- Booking modal -->
   <div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <form class="modal-content" id="bookForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeeST1jrxlWgftoUHKq8KtmyXjBPj-F8-bzg5EXlj2lrkSorA/formResponse" method="GET" target="_blank">
@@ -410,19 +275,10 @@
     </div>
   </div>
 
-  <!-- bootstrap + script -->
+  <!-- Bootstrap JS (bundle) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Prefill service when opening modal
-    document.addEventListener('click', function(e){
-      const btn = e.target.closest('[data-bs-toggle="modal"][data-bs-target="#bookModal"]');
-      if(!btn) return;
-      const service = btn.dataset.service || '';
-      document.getElementById('serviceField').value = service;
-      const title = document.querySelector('#bookModal .modal-title');
-      if(title) title.textContent = 'Book — ' + (service || 'Appointment');
-    });
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+
+  <!-- Your script -->
+  <script src="scripts.js"></script>
 </body>
 </html>
