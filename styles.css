@@ -1,4 +1,4 @@
-/* styles.css — Mobile-first Blue + Gold premium (full replacement) */
+/* styles.css — mobile-first Blue + Gold premium (overflow fixed) */
 
 /* Palette tokens */
 :root{
@@ -28,6 +28,7 @@ body{
   -moz-osx-font-smoothing:grayscale;
   line-height:1.55;
   font-size:16px;
+  overflow-x:hidden; /* prevent accidental overflow */
 }
 
 /* container */
@@ -39,10 +40,10 @@ body{
 .brand{display:flex;align-items:center;gap:12px}
 .logo-mark{width:56px;height:56px;border-radius:12px;background:linear-gradient(180deg,#eaf3ff,#e6f6ff);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--deep);font-size:18px}
 .brand-title{font-weight:700}
-.brand-sub{font-size:12px;color:var(--muted)}
+.brand-sub{font-size:12px;color:var(--muted);max-width:160px}
 
 /* Nav */
-.main-nav{display:flex;gap:12px}
+.main-nav{display:flex;gap:12px;align-items:center}
 .main-nav a{color:var(--muted);text-decoration:none;padding:8px;border-radius:10px;font-weight:600}
 .main-nav a:hover{color:var(--deep)}
 
@@ -56,8 +57,8 @@ body{
 .whatsapp-float svg{width:30px;height:30px;fill:#fff}
 
 /* Hero compact (mobile-first) */
-.hero-compact{padding:28px 0 18px;background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%)}
-.hero-inner{display:flex;flex-direction:column-reverse;gap:18px;align-items:stretch}
+.hero-compact{padding:18px 0 12px;background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%)}
+.hero-inner{display:flex;flex-direction:column-reverse;gap:18px;align-items:stretch;position:relative}
 .hero-left{order:2}
 .eyebrow{font-size:12px;color:var(--muted);letter-spacing:0.6px;margin-bottom:8px}
 .hero-title{font-family:var(--ff-serif);font-size:24px;line-height:1.06;margin:0;color:var(--deep);font-weight:700}
@@ -67,10 +68,10 @@ body{
 .hero-features{display:flex;gap:12px;margin-top:12px;list-style:none;padding:0;color:var(--muted);font-weight:700;flex-wrap:wrap}
 .hero-features li{background:linear-gradient(90deg, rgba(111,179,255,0.06), rgba(242,201,76,0.02));padding:6px 10px;border-radius:999px;font-size:13px}
 
-/* hero-right (portrait) */
+/* hero-right (portrait) - INSIDE hero without overflow */
 .hero-right{order:1;display:flex;justify-content:center}
 .hero-bg{width:100%;max-width:420px;height:220px;border-radius:14px;background-size:cover;background-position:center;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;background-image:linear-gradient(135deg, rgba(111,179,255,0.18), rgba(7,53,138,0.02))}
-.doctor-overlay{position:absolute;right:18px;bottom:-26px;width:120px;height:120px;border-radius:999px;padding:6px;background:linear-gradient(180deg,#fff,#fff);border:3px solid rgba(242,201,76,0.14);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 36px rgba(6,33,138,0.08)}
+.doctor-overlay{position:absolute;right:18px;bottom:14px;width:104px;height:104px;border-radius:999px;padding:5px;background:linear-gradient(180deg,#fff,#fff);border:3px solid rgba(242,201,76,0.12);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(6,33,138,0.08)}
 .doctor-overlay img{width:100%;height:100%;object-fit:cover;border-radius:999px}
 
 /* Section headings */
@@ -84,7 +85,7 @@ body{
 /* Service card */
 .service-card{background:linear-gradient(180deg,var(--card),#fbfdff);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .28s cubic-bezier(.2,.9,.3,1),box-shadow .28s}
 .service-card:hover{transform:translateY(-6px);box-shadow:0 26px 70px rgba(6,33,138,0.10)}
-.service-media{height:180px;background-size:cover;background-position:center;border-bottom:1px solid rgba(6,33,138,0.04);display:flex;align-items:center;justify-content:center}
+.service-media{height:200px;background-size:cover;background-position:center;border-bottom:1px solid rgba(6,33,138,0.04);display:flex;align-items:center;justify-content:center}
 .service-placeholder{width:56px;height:56px;opacity:0.06}
 .service-body{padding:12px;display:flex;flex-direction:column;gap:8px}
 .service-body h3{margin:0;color:var(--deep);font-size:15px;font-weight:700}
@@ -109,10 +110,11 @@ body{
 
 /* Desktop refinements */
 @media (min-width:900px){
+  body{overflow-x:visible}
   .hero-inner{flex-direction:row;align-items:center}
   .hero-title{font-size:40px}
   .hero-bg{height:420px;border-radius:20px}
-  .doctor-overlay{width:160px;height:160px;bottom:-32px;right:34px}
+  .doctor-overlay{width:160px;height:160px;bottom:24px;right:28px}
   .services-grid{grid-template-columns:repeat(3,1fr);gap:20px}
   .service-media{height:220px}
   .hero-features{gap:28px}
@@ -124,7 +126,7 @@ body{
 @media (min-width:1200px){
   .hero-title{font-size:54px}
   .hero-bg{width:460px;height:460px}
-  .doctor-overlay{width:180px;height:180px;bottom:-36px;right:40px}
+  .doctor-overlay{width:180px;height:180px;bottom:28px;right:36px}
 }
 
 /* Accessibility */
