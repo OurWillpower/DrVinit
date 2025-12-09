@@ -6,7 +6,7 @@
     <title>Dr. Vinit Chafekar | Shree Varad Maternity | Premium Gynaecologist Kalyan</title>
     
     <meta name="description" content="Expert obstetrics, gynecology, and maternity care by Dr. Vinit Chafekar (MD Physician, DGO). Trusted care at Shree Varad Maternity, Kalyan.">
-    <meta name="keywords" content="Gynecologist Kalyan, Maternity Hospital Kalyan, High Risk Pregnancy, Laparoscopic Surgery, Infertility Treatment, Dr. Vinit Chafekar">
+    <meta name="keywords" content="Gynecologist Kalyan, Maternity Hospital Kalyan, High Risk Pregnancy, Laparoscopic Surgery, Due Date Calculator, Dr. Vinit Chafekar">
     <meta name="author" content="Dr. Vinit Chafekar">
     
     <meta property="og:type" content="website">
@@ -101,6 +101,8 @@
           bookingModalOpen: false,
           selectedService: 'General Consultation',
           greeting: '',
+          clinicStatus: 'Closed',
+          statusColor: 'text-red-500',
           currentSlide: 0,
           slides: [
             {
@@ -133,6 +135,17 @@
               setInterval(() => {
                   this.currentSlide = (this.currentSlide + 1) % this.slides.length;
               }, 5000); 
+          },
+          checkStatus() {
+              const h = new Date().getHours();
+              // Open from 10 AM to 9 PM (21:00)
+              if (h >= 10 && h < 21) {
+                  this.clinicStatus = 'Open Now';
+                  this.statusColor = 'text-green-400';
+              } else {
+                  this.clinicStatus = 'Closed';
+                  this.statusColor = 'text-red-400';
+              }
           }
       }" 
       x-init="
@@ -141,6 +154,7 @@
           else if (hour < 18) greeting = 'Good Afternoon';
           else greeting = 'Good Evening';
           startSlider();
+          checkStatus();
       ">
 
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
@@ -150,13 +164,19 @@
                     <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center text-brand-navy font-bold font-serif text-xl shadow-lg border border-white/20">SV</div>
                     <div class="flex flex-col">
                         <span class="text-brand-white font-serif font-bold text-lg tracking-wide">Shree Varad</span>
-                        <span class="text-brand-gold text-[10px] uppercase tracking-widest">Maternity & Nursing</span>
+                        <div class="flex items-center gap-2">
+                             <span class="text-brand-gold text-[10px] uppercase tracking-widest">Maternity & Nursing</span>
+                             <span class="text-[10px] flex items-center gap-1 border border-gray-600 rounded px-1" :class="statusColor">
+                                <i class="fa-solid fa-circle text-[6px]"></i> <span x-text="clinicStatus"></span>
+                             </span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">Home</a>
                     <a href="#services" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">Services</a>
+                    <a href="#tools" class="text-brand-gold hover:text-white transition-colors text-sm uppercase tracking-wider font-bold">Smart Tools</a>
                     <a href="#about" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">About</a>
                     <a href="#contact" class="text-gray-300 hover:text-brand-gold transition-colors text-sm uppercase tracking-wider font-semibold">Contact</a>
                     <a href="tel:+917039196489" class="bg-brand-gold text-brand-navy px-6 py-2 rounded-full font-bold hover:bg-white hover:text-brand-navy transition-all shadow-lg transform hover:scale-105 border border-transparent hover:border-brand-gold">
@@ -177,6 +197,7 @@
             <div class="px-4 pt-4 pb-6 space-y-2">
                 <a href="#home" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Home</a>
                 <a href="#services" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Services</a>
+                <a href="#tools" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-gold font-bold bg-brand-teal/50">Smart Tools</a>
                 <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">About</a>
                 <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-3 rounded-md text-brand-white hover:bg-brand-teal hover:text-brand-gold transition">Contact</a>
             </div>
@@ -205,6 +226,8 @@
                 <div class="inline-block px-5 py-2 mb-6 border border-brand-gold/30 rounded-full bg-brand-navy/60 backdrop-blur-md shadow-lg" data-aos="fade-down">
                     <span class="text-brand-gold text-sm font-semibold tracking-wider uppercase flex items-center gap-2">
                         <i class="fa-regular fa-clock"></i> <span x-text="greeting + ', Welcome to Shree Varad'"></span>
+                        <span class="w-1 h-1 bg-white rounded-full mx-1"></span>
+                        <span x-text="clinicStatus" :class="statusColor"></span>
                     </span>
                 </div>
 
@@ -310,6 +333,39 @@
         </div>
     </section>
 
+    <section id="tools" class="py-20 bg-brand-navy text-white relative overflow-hidden" x-data="{ lmp: '', dueDate: 'Select Date', calculate() { if(this.lmp) { let d = new Date(this.lmp); d.setDate(d.getDate() + 280); this.dueDate = d.toDateString(); } } }">
+        <div class="absolute inset-0 bg-brand-gold/10 z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+             <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                 <div class="md:w-1/2" data-aos="fade-right">
+                     <span class="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2 block">Intelligent Care</span>
+                     <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6">Smart Pregnancy Calculator</h2>
+                     <p class="text-brand-slate text-lg mb-8">Not sure when your baby is arriving? Use our intelligent medical calculator to estimate your delivery date based on your last period.</p>
+                     
+                     <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-2xl">
+                         <label class="block text-sm font-bold mb-2 text-brand-gold uppercase">Select First Day of Last Period</label>
+                         <input type="date" x-model="lmp" @change="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-6">
+                         
+                         <div class="border-t border-gray-700 pt-6">
+                             <p class="text-sm text-gray-400">Estimated Due Date:</p>
+                             <h3 class="text-3xl font-serif font-bold text-brand-gold mt-2" x-text="dueDate"></h3>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                     <div class="relative w-80 h-80 bg-brand-gold rounded-full flex items-center justify-center animate-pulse">
+                         <div class="w-72 h-72 bg-brand-navy rounded-full flex items-center justify-center">
+                             <i class="fa-solid fa-baby text-9xl text-white"></i>
+                         </div>
+                         <div class="absolute -top-4 -right-10 bg-white text-brand-navy px-6 py-3 rounded-lg shadow-xl font-bold">
+                             <i class="fa-solid fa-check-circle text-green-500 mr-2"></i> Clinical Accuracy
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </section>
+
     <section id="services" class="py-24 bg-brand-light relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -349,20 +405,21 @@
                          data-aos="fade-up"
                          @click="bookingModalOpen = true; selectedService = service.title">
                         
-                        <div class="absolute inset-0 opacity-5 group-hover:opacity-15 transition-opacity duration-700 z-0">
-                            <img :src="service.bg" class="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[2000ms]">
+                        <div class="absolute inset-0 opacity-15 group-hover:opacity-25 transition-opacity duration-700 z-0 bg-brand-navy mix-blend-overlay"></div>
+                        <div class="absolute inset-0 opacity-15 group-hover:opacity-25 transition-opacity duration-700 z-0">
+                            <img :src="service.bg" class="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-[2000ms] filter grayscale hover:grayscale-0">
                         </div>
 
                         <div class="relative z-10 flex flex-col h-full text-center items-center">
-                            <div class="w-14 h-14 bg-brand-light rounded-2xl flex items-center justify-center mb-4 text-brand-navy text-2xl group-hover:bg-brand-navy group-hover:text-brand-gold transition-colors duration-300 shadow-sm group-hover:scale-110 transform">
+                            <div class="w-14 h-14 bg-brand-light/90 backdrop-blur rounded-2xl flex items-center justify-center mb-4 text-brand-navy text-2xl group-hover:bg-brand-navy group-hover:text-brand-gold transition-colors duration-300 shadow-sm group-hover:scale-110 transform">
                                 <i :class="service.icon" class="fa-solid"></i>
                             </div>
                             
                             <h3 class="text-lg font-serif font-bold text-brand-navy mb-2 group-hover:text-brand-gold transition-colors" x-text="service.title"></h3>
-                            <p class="text-gray-600 text-xs leading-relaxed mb-6 flex-grow" x-text="service.desc"></p>
+                            <p class="text-gray-600 text-xs leading-relaxed mb-6 flex-grow font-medium" x-text="service.desc"></p>
                             
                             <div class="mt-auto w-full">
-                                <button class="w-full py-2 rounded-lg border border-brand-light font-bold text-[10px] uppercase tracking-widest text-brand-navy group-hover:bg-brand-navy group-hover:text-brand-gold group-hover:border-brand-navy transition-all duration-300 flex items-center justify-center gap-2">
+                                <button class="w-full py-2 rounded-lg border border-brand-navy/20 font-bold text-[10px] uppercase tracking-widest text-brand-navy group-hover:bg-brand-navy group-hover:text-brand-gold group-hover:border-brand-navy transition-all duration-300 flex items-center justify-center gap-2 bg-white/50 backdrop-blur-sm">
                                     Book <i class="fa-solid fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all"></i>
                                 </button>
                             </div>
