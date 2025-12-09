@@ -1,4 +1,4 @@
-/* styles.css — mobile-first fixes for Bottle Green theme */
+/* styles.css — Bottle Green + Brushed Gold (restored 12 services, clear color accents) */
 
 /* tokens */
 :root{
@@ -33,10 +33,10 @@ body{margin:0;font-family:var(--ff-sans);color:var(--bottle-green);background:va
 .phone-link{color:var(--bottle-green);font-weight:700;text-decoration:none}
 
 /* HERO */
-/* keep hero height modest to avoid pushing content on mobiles */
+/* modest height to avoid overwhelming mobile */
 .hero{position:relative;margin:20px 0 30px}
-.hero-figure{height:260px;border-radius:12px;box-shadow:var(--shadow-lg);background:linear-gradient(135deg, rgba(3,49,32,0.06), rgba(212,175,55,0.02));overflow:hidden;position:relative}
-.hero-overlay{position:relative;margin-top:-120px;pointer-events:none} /* reduced overlap */
+.hero-figure{height:260px;border-radius:12px;box-shadow:var(--shadow-lg);background:linear-gradient(135deg, rgba(3,49,32,0.08), rgba(212,175,55,0.03));overflow:hidden;position:relative}
+.hero-overlay{position:relative;margin-top:-120px;pointer-events:none}
 .hero-content{max-width:var(--maxw);margin:0 auto;padding:18px;display:flex;gap:18px;align-items:center;justify-content:space-between;pointer-events:auto}
 .hero-copy{flex:1 1 60%}
 .eyebrow{font-size:13px;color:var(--muted);margin-bottom:6px}
@@ -48,7 +48,7 @@ body{margin:0;font-family:var(--ff-sans);color:var(--bottle-green);background:va
 .btn-hero{background:linear-gradient(90deg,var(--bottle-green),#0b4b3f);color:#fff;padding:10px 14px;border-radius:10px;border:0;font-weight:800}
 .btn-ghost{background:transparent;border:1px solid rgba(3,49,32,0.06);padding:9px 12px;border-radius:10px;color:var(--bottle-green)}
 
-/* hero card: on small screens we switch to block flow to prevent overlap */
+/* hero card: flows below on small screens */
 .hero-card{width:280px;background:var(--card);border-radius:12px;padding:14px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .portrait-initials{width:72px;height:72px;border-radius:10px;background:linear-gradient(180deg,#e8f6f0,#fff);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--bottle-green);font-size:20px}
 .meta-name{font-weight:700}
@@ -86,11 +86,11 @@ body{margin:0;font-family:var(--ff-sans);color:var(--bottle-green);background:va
 /* WhatsApp floater */
 .wa{position:fixed;right:14px;bottom:14px;width:52px;height:52px;border-radius:999px;background:linear-gradient(180deg,#25D366,#1ebe57);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 36px rgba(2,6,23,0.18);z-index:9999}
 
-/* responsive: mobile behaviours */
+/* responsive */
 @media (max-width:991px){
-  .hero-overlay{margin-top:-90px} /* less overlap */
+  .hero-overlay{margin-top:-90px}
   .hero-content{flex-direction:column-reverse;padding:12px;gap:12px}
-  .hero-card{width:100%;order:2} /* becomes block under hero copy */
+  .hero-card{width:100%;order:2}
   .services-grid{grid-template-columns:repeat(2,1fr)}
   .about-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
