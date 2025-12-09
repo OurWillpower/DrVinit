@@ -1,7 +1,7 @@
-/* scripts.js — stable booking + mobile improvements */
+/* scripts.js — booking prefill, year, mobile-friendly behaviors */
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Year
+  // Set current year in footer
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -24,18 +24,19 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       svcField.value = service;
     }
-    // Update modal title
+
+    // Update modal title for clarity
     var title = document.querySelector('#bookModal .modal-title');
     if (title) title.textContent = 'Book — ' + (service || 'Appointment');
 
-    // Focus first input after modal shows
+    // Focus first input shortly after modal shows
     setTimeout(function () {
       var first = document.querySelector('#bookModal input[type="text"], #bookModal input[type="tel"], #bookModal input[type="email"], #bookModal select');
       if (first) first.focus();
     }, 220);
   });
 
-  // Smooth scroll for Explore Services
+  // Smooth scroll for hero CTA
   var heroCta = document.querySelector('.btn-hero');
   if (heroCta) {
     heroCta.addEventListener('click', function (e) {
