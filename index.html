@@ -76,40 +76,7 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
-        
-        /* Chat Typing Animation */
-        .typing-dot {
-            animation: typing 1.4s infinite ease-in-out both;
-        }
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes typing {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
     </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Physician",
-      "name": "Dr. Vinit Chafekar",
-      "medicalSpecialty": "Obstetrics & Gynecology",
-      "url": "https://ourwillpower.github.io/DrVinit/",
-      "image": "https://ourwillpower.github.io/DrVinit/assets/doctor.jpg",
-      "telephone": "+917039196489",
-      "email": "info@shreevaradmaternity.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Shop No.9, Borgaonkar Towers, opp. Sharda Mandir School, Lal Chowki",
-        "addressLocality": "Kalyan",
-        "addressRegion": "Maharashtra",
-        "postalCode": "421301",
-        "addressCountry": "IN"
-      },
-      "priceRange": "$$"
-    }
-    </script>
 </head>
 <body class="font-sans bg-brand-light text-gray-800 antialiased overflow-x-hidden" 
       x-data="{ 
@@ -208,10 +175,6 @@
 
                     <a href="#about" class="text-gray-300 hover:text-brand-gold transition-colors text-xs font-bold uppercase tracking-widest">About</a>
                     <a href="#contact" class="text-gray-300 hover:text-brand-gold transition-colors text-xs font-bold uppercase tracking-widest">Contact</a>
-                    
-                    <a href="tel:+917039196489" class="w-8 h-8 rounded-full bg-brand-gold flex items-center justify-center text-brand-navy hover:bg-white transition-colors shadow-lg">
-                        <i class="fa-solid fa-phone text-xs"></i>
-                    </a>
                 </div>
 
                 <div class="md:hidden flex items-center">
@@ -542,8 +505,8 @@
         <a href="#" class="w-10 h-10 bg-pink-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
             <i class="fa-brands fa-instagram"></i>
         </a>
-        <a href="tel:+917039196489" class="w-10 h-10 bg-brand-navy text-brand-gold rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform border-2 border-brand-gold">
-            <i class="fa-solid fa-phone text-lg"></i>
+        <a href="tel:+917039196489" class="w-12 h-12 bg-brand-navy text-brand-gold rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform border-2 border-brand-gold">
+            <i class="fa-solid fa-phone text-xl"></i>
         </a>
         <a href="https://wa.me/917039196489?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment." 
            target="_blank"
@@ -734,12 +697,6 @@
             </div>
         </div>
     </div>
-
-    <a href="https://wa.me/917039196489?text=Hello,%20I%20would%20like%20to%20book%20an%20appointment." 
-       target="_blank"
-       class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#20ba5a] transition-all transform hover:scale-110 hover:-translate-y-1 animate-bounce">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-    </a>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
