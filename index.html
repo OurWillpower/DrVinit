@@ -376,23 +376,27 @@
                      </div>
                  </div>
 
-                 <div data-aos="fade-up" data-aos-delay="300" x-data="{ dob: '', schedule: [], generateSchedule() { if(!this.dob) return; let birth = new Date(this.dob); this.schedule = [ {age: 'Birth', vaccine: 'BCG, OPV-0, Hep-B1', date: new Date(birth)}, {age: '6 Weeks', vaccine: 'DTwP-1, IPV-1, Hep-B2, Hib-1, Rota-1, PCV-1', date: new Date(birth.getTime() + 42*24*60*60*1000)}, {age: '10 Weeks', vaccine: 'DTwP-2, IPV-2, Hib-2, Rota-2, PCV-2', date: new Date(birth.getTime() + 70*24*60*60*1000)}, {age: '14 Weeks', vaccine: 'DTwP-3, IPV-3, Hib-3, Rota-3, PCV-3, Hep-B3', date: new Date(birth.getTime() + 98*24*60*60*1000)}, {age: '6 Months', vaccine: 'Influenza-1, Typhoid-1', date: new Date(birth.setMonth(birth.getMonth()+6))}, {age: '9 Months', vaccine: 'MMR-1, Vitamin A', date: new Date(birth.setMonth(birth.getMonth()+3))}, {age: '12 Months', vaccine: 'Hep-A1', date: new Date(birth.setMonth(birth.getMonth()+3))}, {age: '15 Months', vaccine: 'MMR-2, Varicella-1, PCV Booster', date: new Date(birth.setMonth(birth.getMonth()+3))}, {age: '18 Months', vaccine: 'Hep-A2, Varicella-2, DTwP B1', date: new Date(birth.setMonth(birth.getMonth()+3))} ]; } }">
+                 <div data-aos="fade-up" data-aos-delay="300" x-data="{ dob: '', schedule: [], generateSchedule() { if(!this.dob) return; let birth = new Date(this.dob); let today = new Date(); let msPerDay = 24 * 60 * 60 * 1000; let ageInDays = (today - birth) / msPerDay; let milestones = [ {age: 'Birth', ageDays: 0, vaccines: 'BCG, OPV-0, Hep-B1 (GOI Mandate)'}, {age: '6 Weeks', ageDays: 42, vaccines: 'DTwP-1, IPV-1, Hep-B2, Hib-1, Rota-1, PCV-1 (GOI Mandate)'}, {age: '10 Weeks', ageDays: 70, vaccines: 'DTwP-2, IPV-2, Hib-2, Rota-2, PCV-2 (GOI Mandate)'}, {age: '14 Weeks', ageDays: 98, vaccines: 'DTwP-3, IPV-3, Hib-3, Rota-3, PCV-3, Hep-B3 (GOI Mandate)'}, {age: '6 Months', ageDays: 180, vaccines: 'Influenza-1 (IAP Recommended)'}, {age: '9 Months', ageDays: 270, vaccines: 'MMR-1 (IAP), Vit A (GOI), Typhoid (IAP)'}, {age: '12 Months', ageDays: 365, vaccines: 'Hep-A1 (IAP Recommended)'}, {age: '15 Months', ageDays: 450, vaccines: 'MMR-2, Varicella-1, PCV Booster (IAP)'}, {age: '18 Months', ageDays: 540, vaccines: 'DPT Booster-1, Hep-A2 (IAP)'}, {age: '2 Years', ageDays: 730, vaccines: 'Typhoid Booster (IAP)'}, {age: '4-6 Years', ageDays: 1460, vaccines: 'DPT Booster-2, MMR-3, Varicella-2 (IAP)'}, {age: '10 Years', ageDays: 3650, vaccines: 'Td (GOI), HPV (IAP - Girls)'} ]; this.schedule = milestones.filter(m => m.ageDays >= (ageInDays - 60) && m.ageDays <= (ageInDays + 365*2)); } }">
                      <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-2xl h-full flex flex-col">
-                         <h2 class="text-xl font-serif font-bold mb-4 text-center">Vaccination Chart</h2>
+                         <h2 class="text-xl font-serif font-bold mb-4 text-center">Vaccination Schedule</h2>
+                         <p class="text-xs text-brand-slate text-center mb-4">Shows recommended vaccines for the next 2 years based on age.</p>
                          <label class="block text-xs font-bold mb-2 text-brand-gold uppercase">Child's Date of Birth</label>
                          <input type="date" x-model="dob" @change="generateSchedule()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-4">
                          
                          <div class="mt-auto border-t border-gray-700 pt-4 flex-1 overflow-y-auto max-h-40 custom-scrollbar">
-                             <template x-if="schedule.length === 0">
+                             <template x-if="schedule.length === 0 && dob">
+                                 <p class="text-center text-gray-500 text-sm italic">No immediate vaccines due.</p>
+                             </template>
+                             <template x-if="!dob">
                                  <p class="text-center text-gray-500 text-sm italic">Enter DOB to see schedule</p>
                              </template>
                              <template x-for="item in schedule">
                                  <div class="mb-3 text-left border-b border-gray-700 pb-2 last:border-0">
-                                     <div class="flex justify-between items-center">
+                                     <div class="flex justify-between items-center mb-1">
                                          <span class="text-brand-gold text-xs font-bold" x-text="item.age"></span>
-                                         <span class="text-white text-[10px]" x-text="item.date.toDateString()"></span>
+                                         <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-white" x-text="item.vaccines.includes('GOI') ? 'GOI' : 'Private'"></span>
                                      </div>
-                                     <p class="text-gray-300 text-[10px] mt-1" x-text="item.vaccine"></p>
+                                     <p class="text-gray-300 text-[10px] leading-tight" x-text="item.vaccines"></p>
                                  </div>
                              </template>
                          </div>
