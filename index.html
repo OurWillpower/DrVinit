@@ -88,28 +88,6 @@
             40% { transform: scale(1); }
         }
     </style>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Physician",
-      "name": "Dr. Vinit Chafekar",
-      "medicalSpecialty": "Obstetrics & Gynecology",
-      "url": "https://ourwillpower.github.io/DrVinit/",
-      "image": "https://ourwillpower.github.io/DrVinit/assets/doctor.jpg",
-      "telephone": "+917039196489",
-      "email": "info@shreevaradmaternity.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Shop No.9, Borgaonkar Towers, opp. Sharda Mandir School, Lal Chowki",
-        "addressLocality": "Kalyan",
-        "addressRegion": "Maharashtra",
-        "postalCode": "421301",
-        "addressCountry": "IN"
-      },
-      "priceRange": "$$"
-    }
-    </script>
 </head>
 <body class="font-sans bg-brand-light text-gray-800 antialiased overflow-x-hidden" 
       x-data="{ 
@@ -314,10 +292,10 @@
                     </div>
                     <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-navy mb-6">
                         Dr. Vinit Chafekar <br>
-                        <span class="text-xl font-sans font-normal text-gray-500 block mt-2">MBBS, DGO | Infertility Specialist</span>
+                        <span class="text-xl font-sans font-normal text-gray-500 block mt-2">MBBS, DGO <br>Infertility Specialist</span>
                     </h2>
                     <p class="text-gray-600 mb-6 leading-relaxed text-lg">
-                        Dr. Vinit combines advanced medical expertise with a compassionate, patient-first philosophy. Specializing in high-risk pregnancies, infertility treatments, and minimally invasive procedures, he is dedicated to ensuring the safety and well-being of both mother and child in Kalyan.
+                        Dr. Vinit combines advanced medical expertise with a compassionate, patient-first philosophy. He holds a <strong>Fellowship & Diploma in Minimal Access Surgery</strong> and specializes in high-risk pregnancies, infertility treatments, and minimally invasive procedures, dedicated to ensuring the safety and well-being of both mother and child in Kalyan.
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                         <div class="flex items-center gap-3 p-3 bg-brand-light rounded-lg">
@@ -334,22 +312,44 @@
         </div>
     </section>
 
-    <section id="tools" class="py-16 md:py-20 bg-brand-navy text-white relative overflow-hidden" x-data="{ lmp: '', dueDate: 'Select Date', calculate() { if(this.lmp) { let d = new Date(this.lmp); d.setDate(d.getDate() + 280); this.dueDate = d.toDateString(); } } }">
+    <section id="tools" class="py-16 md:py-20 bg-brand-navy text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-brand-gold/10 z-0"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-             <div class="flex flex-col items-center text-center justify-center">
-                 <div class="md:w-2/3 w-full" data-aos="fade-up">
-                     <span class="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2 block">Intelligent Care</span>
-                     <h2 class="text-3xl md:text-5xl font-serif font-bold mb-6">Smart Pregnancy Calculator</h2>
-                     <p class="text-brand-slate text-lg mb-8">Not sure when your baby is arriving? Use our intelligent medical calculator to estimate your delivery date based on your last period.</p>
-                     
-                     <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 shadow-2xl max-w-xl mx-auto">
-                         <label class="block text-sm font-bold mb-2 text-brand-gold uppercase">Select First Day of Last Period</label>
-                         <input type="date" x-model="lmp" @change="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-6">
+             <div class="text-center mb-12" data-aos="fade-up">
+                <span class="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2 block">Intelligent Care</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold">Health Calculators</h2>
+                <p class="text-brand-slate text-sm mt-2">Plan your journey with our advanced tools.</p>
+             </div>
+
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                 
+                 <div data-aos="fade-right" x-data="{ lmp: '', dueDate: 'Select Date', calculate() { if(this.lmp) { let d = new Date(this.lmp); d.setDate(d.getDate() + 280); this.dueDate = d.toDateString(); } } }">
+                     <h2 class="text-2xl font-serif font-bold mb-4 text-center">Pregnancy Due Date</h2>
+                     <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-2xl">
+                         <label class="block text-xs font-bold mb-2 text-brand-gold uppercase">First Day of Last Period</label>
+                         <input type="date" x-model="lmp" @change="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-4">
                          
-                         <div class="border-t border-gray-700 pt-6">
-                             <p class="text-sm text-gray-400">Estimated Due Date:</p>
-                             <h3 class="text-3xl font-serif font-bold text-brand-gold mt-2" x-text="dueDate"></h3>
+                         <div class="border-t border-gray-700 pt-4">
+                             <p class="text-xs text-gray-400">Estimated Due Date:</p>
+                             <h3 class="text-2xl font-serif font-bold text-brand-gold mt-1" x-text="dueDate"></h3>
+                             <p class="text-[10px] text-red-300 mt-2 italic">*Note: This is an indicative reply. Do consult Dr. Vinit with regards to the same.</p>
+                         </div>
+                     </div>
+                 </div>
+
+                 <div data-aos="fade-left" x-data="{ lmp: '', cycle: 28, fertile: 'Select Date', calculate() { if(this.lmp) { let d = new Date(this.lmp); let ovulationDay = d.getDate() + (parseInt(this.cycle) - 14); d.setDate(ovulationDay); this.fertile = d.toDateString(); } } }">
+                     <h2 class="text-2xl font-serif font-bold mb-4 text-center">Ovulation & Fertility</h2>
+                     <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-2xl">
+                         <label class="block text-xs font-bold mb-2 text-brand-gold uppercase">First Day of Last Period</label>
+                         <input type="date" x-model="lmp" @change="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-3">
+                         
+                         <label class="block text-xs font-bold mb-2 text-brand-gold uppercase">Cycle Length (Days)</label>
+                         <input type="number" x-model="cycle" @input="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-4" placeholder="28">
+
+                         <div class="border-t border-gray-700 pt-4">
+                             <p class="text-xs text-gray-400">Est. Peak Fertility Date:</p>
+                             <h3 class="text-2xl font-serif font-bold text-brand-gold mt-1" x-text="fertile"></h3>
+                             <p class="text-[10px] text-red-300 mt-2 italic">*Note: This is an indicative reply. Do consult Dr. Vinit with regards to the same.</p>
                          </div>
                      </div>
                  </div>
