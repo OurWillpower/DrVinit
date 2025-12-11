@@ -345,11 +345,17 @@
 
              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                  
-                 <div data-aos="fade-up" data-aos-delay="100" x-data="{ lmp: '', dueDate: 'Select Date', calculate() { if(this.lmp) { let d = new Date(this.lmp); d.setDate(d.getDate() + 280); this.dueDate = d.toDateString(); } } }">
-                     <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-2xl h-full flex flex-col">
+                 <div data-aos="fade-up" data-aos-delay="100" x-data="{ lmp: '', dueDate: 'Select Date', calculate() { if(this.lmp) { let d = new Date(this.lmp); d.setDate(d.getDate() + 280); this.dueDate = d.toDateString(); } } }" class="relative group h-full">
+                     <div @click="bookingModalOpen = true; selectedService = 'Pregnancy Consultation'"
+                          class="absolute inset-y-0 left-0 w-8 bg-brand-gold hover:bg-white text-brand-navy hover:text-brand-gold transition-all duration-300 flex items-center justify-center cursor-pointer z-20 shadow-lg rounded-l-2xl overflow-hidden border-r border-white/20"
+                          title="Book Consultation">
+                         <span class="-rotate-90 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap">Consult Dr. Vinit</span>
+                     </div>
+                     
+                     <div class="ml-8 bg-gradient-to-br from-brand-navy/90 to-brand-teal/90 p-6 rounded-r-2xl border border-brand-gold/20 shadow-xl group-hover:shadow-gold/30 group-hover:-translate-y-1 transition-all duration-500 h-full flex flex-col">
                          <h2 class="text-xl font-serif font-bold mb-4 text-center">Pregnancy Due Date</h2>
                          <label class="block text-xs font-bold mb-2 text-brand-gold uppercase">First Day of Last Period</label>
-                         <input type="date" x-model="lmp" @change="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-4">
+                         <input type="date" x-model="lmp" @change="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-4 shadow-inner">
                          
                          <div class="mt-auto border-t border-gray-700 pt-4 text-center">
                              <p class="text-xs text-gray-400">Estimated Due Date:</p>
@@ -359,14 +365,20 @@
                      </div>
                  </div>
 
-                 <div data-aos="fade-up" data-aos-delay="200" x-data="{ lmp: '', cycle: 28, fertile: 'Select Date', calculate() { if(this.lmp) { let d = new Date(this.lmp); let ovulationDay = d.getDate() + (parseInt(this.cycle) - 14); d.setDate(ovulationDay); this.fertile = d.toDateString(); } } }">
-                     <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-2xl h-full flex flex-col">
+                 <div data-aos="fade-up" data-aos-delay="200" x-data="{ lmp: '', cycle: 28, fertile: 'Select Date', calculate() { if(this.lmp) { let d = new Date(this.lmp); let ovulationDay = d.getDate() + (parseInt(this.cycle) - 14); d.setDate(ovulationDay); this.fertile = d.toDateString(); } } }" class="relative group h-full">
+                     <div @click="bookingModalOpen = true; selectedService = 'Infertility Consultation'"
+                          class="absolute inset-y-0 left-0 w-8 bg-brand-gold hover:bg-white text-brand-navy hover:text-brand-gold transition-all duration-300 flex items-center justify-center cursor-pointer z-20 shadow-lg rounded-l-2xl overflow-hidden border-r border-white/20"
+                          title="Book Consultation">
+                         <span class="-rotate-90 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap">Consult Dr. Vinit</span>
+                     </div>
+                     
+                     <div class="ml-8 bg-gradient-to-br from-brand-navy/90 to-brand-teal/90 p-6 rounded-r-2xl border border-brand-gold/20 shadow-xl group-hover:shadow-gold/30 group-hover:-translate-y-1 transition-all duration-500 h-full flex flex-col">
                          <h2 class="text-xl font-serif font-bold mb-4 text-center">Ovulation & Fertility</h2>
                          <label class="block text-xs font-bold mb-2 text-brand-gold uppercase">First Day of Last Period</label>
-                         <input type="date" x-model="lmp" @change="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-3">
+                         <input type="date" x-model="lmp" @change="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-3 shadow-inner">
                          
                          <label class="block text-xs font-bold mb-2 text-brand-gold uppercase">Cycle Length (Days)</label>
-                         <input type="number" x-model="cycle" @input="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-4" placeholder="28">
+                         <input type="number" x-model="cycle" @input="calculate()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-4 shadow-inner" placeholder="28">
 
                          <div class="mt-auto border-t border-gray-700 pt-4 text-center">
                              <p class="text-xs text-gray-400">Est. Peak Fertility Date:</p>
@@ -376,15 +388,25 @@
                      </div>
                  </div>
 
-                 <div data-aos="fade-up" data-aos-delay="300" x-data="{ dob: '', schedule: [], generateSchedule() { if(!this.dob) return; let birth = new Date(this.dob); let today = new Date(); let msPerDay = 24 * 60 * 60 * 1000; let ageInDays = (today - birth) / msPerDay; let milestones = [ {age: 'Birth', ageDays: 0, vaccines: 'BCG, OPV-0, Hep-B1 (GOI Mandate)'}, {age: '6 Weeks', ageDays: 42, vaccines: 'DTwP-1, IPV-1, Hep-B2, Hib-1, Rota-1, PCV-1 (GOI Mandate)'}, {age: '10 Weeks', ageDays: 70, vaccines: 'DTwP-2, IPV-2, Hib-2, Rota-2, PCV-2 (GOI Mandate)'}, {age: '14 Weeks', ageDays: 98, vaccines: 'DTwP-3, IPV-3, Hib-3, Rota-3, PCV-3, Hep-B3 (GOI Mandate)'}, {age: '6 Months', ageDays: 180, vaccines: 'Influenza-1 (IAP Recommended)'}, {age: '9 Months', ageDays: 270, vaccines: 'MMR-1 (IAP), Vit A (GOI), Typhoid (IAP)'}, {age: '12 Months', ageDays: 365, vaccines: 'Hep-A1 (IAP Recommended)'}, {age: '15 Months', ageDays: 450, vaccines: 'MMR-2, Varicella-1, PCV Booster (IAP)'}, {age: '18 Months', ageDays: 540, vaccines: 'DPT Booster-1, Hep-A2 (IAP)'}, {age: '2 Years', ageDays: 730, vaccines: 'Typhoid Booster (IAP)'}, {age: '4-6 Years', ageDays: 1460, vaccines: 'DPT Booster-2, MMR-3, Varicella-2 (IAP)'}, {age: '10 Years', ageDays: 3650, vaccines: 'Td (GOI), HPV (IAP - Girls)'} ]; this.schedule = milestones.filter(m => m.ageDays >= (ageInDays - 60) && m.ageDays <= (ageInDays + 365*2)); } }">
-                     <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-2xl h-full flex flex-col">
+                 <div data-aos="fade-up" data-aos-delay="300" x-data="{ dob: '', schedule: [], generateSchedule() { if(!this.dob) return; let birth = new Date(this.dob); let today = new Date(); let msPerDay = 24 * 60 * 60 * 1000; let ageInDays = (today - birth) / msPerDay; let milestones = [ {age: 'Birth', ageDays: 0, vaccines: 'BCG, OPV-0, Hep-B1 (GOI Mandate)'}, {age: '6 Weeks', ageDays: 42, vaccines: 'DTwP-1, IPV-1, Hep-B2, Hib-1, Rota-1, PCV-1 (GOI Mandate)'}, {age: '10 Weeks', ageDays: 70, vaccines: 'DTwP-2, IPV-2, Hib-2, Rota-2, PCV-2 (GOI Mandate)'}, {age: '14 Weeks', ageDays: 98, vaccines: 'DTwP-3, IPV-3, Hib-3, Rota-3, PCV-3, Hep-B3 (GOI Mandate)'}, {age: '6 Months', ageDays: 180, vaccines: 'Influenza-1 (IAP Recommended)'}, {age: '9 Months', ageDays: 270, vaccines: 'MMR-1 (IAP), Vit A (GOI), Typhoid (IAP)'}, {age: '12 Months', ageDays: 365, vaccines: 'Hep-A1 (IAP Recommended)'}, {age: '15 Months', ageDays: 450, vaccines: 'MMR-2, Varicella-1, PCV Booster (IAP)'}, {age: '18 Months', ageDays: 540, vaccines: 'DPT Booster-1, Hep-A2 (IAP)'}, {age: '2 Years', ageDays: 730, vaccines: 'Typhoid Booster (IAP)'}, {age: '4-6 Years', ageDays: 1460, vaccines: 'DPT Booster-2, MMR-3, Varicella-2 (IAP)'}, {age: '10 Years', ageDays: 3650, vaccines: 'Td (GOI), HPV (IAP - Girls)'} ]; this.schedule = milestones.filter(m => m.ageDays >= (ageInDays - 60) && m.ageDays <= (ageInDays + 365*2)); } }" class="relative group h-full">
+                     <div @click="bookingModalOpen = true; selectedService = 'Vaccination Advice'"
+                          class="absolute inset-y-0 left-0 w-8 bg-brand-gold hover:bg-white text-brand-navy hover:text-brand-gold transition-all duration-300 flex items-center justify-center cursor-pointer z-20 shadow-lg rounded-l-2xl overflow-hidden border-r border-white/20"
+                          title="Book Consultation">
+                         <span class="-rotate-90 font-bold text-[10px] uppercase tracking-widest whitespace-nowrap">Consult Dr. Vinit</span>
+                     </div>
+
+                     <div class="ml-8 bg-gradient-to-br from-brand-navy/90 to-brand-teal/90 p-6 rounded-r-2xl border border-brand-gold/20 shadow-xl group-hover:shadow-gold/30 group-hover:-translate-y-1 transition-all duration-500 h-full flex flex-col">
                          <h2 class="text-xl font-serif font-bold mb-4 text-center">Children's Vaccination Chart</h2>
-                         
-                         <p class="text-xs text-brand-slate text-center mb-4">Shows recommended vaccines for the next 2 years based on age.</p>
+                         <p class="text-[10px] text-brand-slate text-center mb-4 italic">Shows upcoming vaccines based on DoB</p>
                          <label class="block text-xs font-bold mb-2 text-brand-gold uppercase">Child's Date of Birth</label>
-                         <input type="date" x-model="dob" @change="generateSchedule()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-4">
+                         <input type="date" x-model="dob" @change="generateSchedule()" class="w-full bg-brand-navy border border-gray-600 rounded-lg p-3 text-white focus:border-brand-gold outline-none mb-4 shadow-inner">
                          
                          <div class="mt-auto border-t border-gray-700 pt-4 flex-1 overflow-y-auto max-h-40 custom-scrollbar">
+                             <div class="grid grid-cols-3 gap-2 mb-2 text-[9px] text-brand-slate font-bold uppercase tracking-wider border-b border-gray-600 pb-1">
+                                 <span>Age</span>
+                                 <span>Due Date</span>
+                                 <span>Vaccine</span>
+                             </div>
                              <template x-if="schedule.length === 0 && dob">
                                  <p class="text-center text-gray-500 text-sm italic">No immediate vaccines due.</p>
                              </template>
@@ -392,12 +414,13 @@
                                  <p class="text-center text-gray-500 text-sm italic">Enter DOB to see schedule</p>
                              </template>
                              <template x-for="item in schedule">
-                                 <div class="mb-3 text-left border-b border-gray-700 pb-2 last:border-0">
-                                     <div class="flex justify-between items-center mb-1">
-                                         <span class="text-brand-gold text-xs font-bold" x-text="item.age"></span>
-                                         <span class="text-[10px] px-2 py-0.5 rounded bg-white/10 text-white" x-text="item.vaccines.includes('GOI') ? 'GOI' : 'Private'"></span>
+                                 <div class="grid grid-cols-3 gap-2 mb-2 text-left border-b border-gray-700/50 pb-2 last:border-0 hover:bg-white/5 p-1 rounded transition-colors">
+                                     <span class="text-brand-gold text-[10px] font-bold self-center" x-text="item.age"></span>
+                                     <span class="text-white text-[10px] self-center" x-text="item.date.toLocaleDateString()"></span>
+                                     <div class="flex flex-col">
+                                          <p class="text-gray-300 text-[9px] leading-tight" x-text="item.vaccines.split('(')[0]"></p>
+                                          <span class="text-[8px] text-brand-slate mt-0.5" x-text="item.vaccines.includes('GOI') ? '(GOI)' : '(Private)'"></span>
                                      </div>
-                                     <p class="text-gray-300 text-[10px] leading-tight" x-text="item.vaccines"></p>
                                  </div>
                              </template>
                          </div>
@@ -415,6 +438,7 @@
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-4">Our Medical Services</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto mb-10 text-lg">Comprehensive spectrum of 16 specialised medical services for women and children.</p>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <template x-for="service in [
                     { title: 'Adolescent Health', icon: 'fa-child-reaching', bg: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=600&q=80', desc: 'Puberty, periods & teen hygiene guidance.', tags: 'Wellness' },
@@ -434,13 +458,17 @@
                     { title: 'Midlife & Menopause', icon: 'fa-fan', bg: 'https://images.unsplash.com/photo-1584950969599-733d0279c29f?auto=format&fit=crop&w=600&q=80', desc: 'Expert care for midlife transitions.', tags: 'Wellness' },
                     { title: 'Nutrition & Yoga', icon: 'fa-apple-whole', bg: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80', desc: 'Holistic wellness for maternity & health.', tags: 'Wellness' }
                 ]" :key="service.title">
+                    
                     <div class="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-lg hover:shadow-gold hover:border-brand-gold/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col"
                          data-aos="fade-up"
                          @click="bookingModalOpen = true; selectedService = service.title">
+                        
                         <div class="absolute inset-0 z-0">
                             <img :src="service.bg" class="w-full h-full object-cover opacity-15 group-hover:opacity-30 transition-all duration-700 transform scale-100 group-hover:scale-110 filter grayscale group-hover:grayscale-0">
                         </div>
+                        
                         <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 gold-fade-overlay z-0 pointer-events-none"></div>
+
                         <div class="relative z-10 flex flex-col h-full text-center items-center">
                             <div class="w-14 h-14 bg-brand-light/90 backdrop-blur rounded-2xl flex items-center justify-center mb-4 text-brand-navy text-2xl group-hover:bg-brand-navy group-hover:text-brand-gold transition-colors duration-300 shadow-sm group-hover:scale-110 transform">
                                 <i :class="service.icon" class="fa-solid"></i>
@@ -466,6 +494,7 @@
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-navy mb-4">What Our Patients Say</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto text-lg">Real stories of joy, recovery, and new beginnings from families we've had the privilege to serve.</p>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-brand-light p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-transparent hover:border-brand-gold/20" data-aos="fade-up" data-aos-delay="100">
                     <div class="text-brand-gold text-4xl mb-4 opacity-50"><i class="fa-solid fa-quote-left"></i></div>
@@ -550,8 +579,17 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="h-[400px] md:h-[500px] bg-gray-100 rounded-2xl overflow-hidden shadow-2xl border-4 border-white relative" data-aos="fade-left">
-                     <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Shop%20No.9%2C%20Borgaonkar%20Towers%2C%20opp.%20Sharda%20Mandir%20School%2C%20Samarth%20Co-Operative%20Housing%20Society%2C%20Lal%20Chowki%2C%20Kalyan%2C%20Maharashtra%20421301&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+                     <iframe 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0" 
+                        src="https://maps.google.com/maps?q=Shop%20No.9%2C%20Borgaonkar%20Towers%2C%20opp.%20Sharda%20Mandir%20School%2C%20Samarth%20Co-Operative%20Housing%20Society%2C%20Lal%20Chowki%2C%20Kalyan%2C%20Maharashtra%20421301&t=&z=15&ie=UTF8&iwloc=&output=embed">
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -568,13 +606,22 @@
                     <p class="text-sm max-w-xs mx-auto md:mx-0 leading-relaxed mb-6">Premium maternity and gynecological care in Kalyan. Dedicated to the health and joy of every mother and child.</p>
                     <p class="text-xs text-gray-500">© 2025 Dr. Vinit Chafekar. All rights reserved.</p>
                 </div>
+                
                 <div class="flex flex-col items-center md:items-end gap-4 md:w-1/3">
                     <h4 class="text-brand-gold font-bold uppercase tracking-widest text-sm">Connect With Us</h4>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300"><i class="fa-brands fa-instagram text-lg"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300"><i class="fa-brands fa-facebook-f text-lg"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300"><i class="fa-brands fa-youtube text-lg"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300">
+                            <i class="fa-brands fa-youtube text-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-navy transition-all duration-300">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
                     </div>
                 </div>
             </div>
